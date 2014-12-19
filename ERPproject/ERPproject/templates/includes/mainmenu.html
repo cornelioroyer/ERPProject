@@ -1,0 +1,208 @@
+<div class="menu">
+    <ul id="nav" class="sf-menu">
+        <li class="nav-icon-home current_page_item">
+            <a href="/">
+                Home
+                <div style="position:absolute; left: 50%;">
+                    <span class="triangle">&nbsp;</span>
+                </div>
+            </a>
+        </li>
+
+        <li class="nav-icon-monitor">
+            <a href="#">
+                Perusahaan
+                <div style="position:absolute; left: 50%;">
+                    <span class="triangle">&nbsp;</span>
+                </div>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-icon-home-small ">
+                    <a href="/about/profil-perusahaan">
+                        Profil Perusahaan
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-icon-bubble-small ">
+                    <a href="/about/direksi">Pesan dari Direksi
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-icon-sales-small ">
+                    <a href="/about/agen-luar-negeri">Agen Penjualan Luar Negeri
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-icon-lab-small ">
+                    <a href="/about/penelitian">
+                        Penelitian dan Pengembangan
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-icon-cert-small ">
+                    <a href="/about/sertifikasi">
+                        Sertifikasi
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-icon-newspaper">
+            <a href="/about/news">
+                Berita
+                <div style="position:absolute; left: 50%;">
+                    <span class="triangle">&nbsp;</span>
+                </div>
+            </a>
+        </li>
+        <li class="nav-icon-globe">
+            <a href="/about/klien">
+                Klien
+                <div style="position:absolute; left: 50%;">
+                    <span class="triangle">&nbsp;</span>
+                </div>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-icon-team-small ">
+                    <a href="/about/klien/domestik">
+                        Domestik
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-icon-globe-small ">
+                    <a href="/about/klien/internasional">
+                        Internasional
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-icon-works">
+            <a href="/item/product">
+                Produk
+                <div style="position:absolute; left: 50%;">
+                    <span class="triangle">&nbsp;</span>
+                </div>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-icon-color-small ">
+                    <a href="/item/product_item/1">
+                        Farmasi
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-icon-drink-small ">
+                    <a href="/item/product_item/2">
+                        Minuman Ringan
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-icon-first-small ">
+                    <a href="/item/product_item/3">
+                        Minuman Beralkohol
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-icon-lab-small ">
+                    <a href="/item/product_item/4">
+                        Jar dan Saus
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-icon-design-small ">
+                    <a href="/item/product_item/5">
+                        Kosmetik
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </li>{% if not user.is_staff %}
+        <li class="nav-icon-cart">
+            <a href="/order/index">
+                Order
+                <div style="position:absolute; left: 50%;">
+                    <span class="triangle">&nbsp;</span>
+                </div>
+            </a>{% if user.is_authenticated %}
+            <ul class="sub-menu">
+                <li class="nav-icon-team-small ">
+                    <a href="/about/complaint">
+                        Komplain
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-icon-team-small ">
+                    <a href="/order/create_order">
+                        Order Form
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>{% endif %}
+        </li>{% endif %}
+        <li class="nav-icon-book">
+            <a href="/about">
+                Tentang Kami
+                <div style="position:absolute; left: 50%;">
+                    <span class="triangle">&nbsp;</span>
+                </div>
+            </a>
+            <ul class="sub-menu">
+                <li class="nav-icon-team-small ">
+                    <a href="/about/developer">
+                        Developer
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-icon-phone-small ">
+                    <a href="/about/contact">
+                        Kontak
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+
+                <li class="nav-icon-code-small ">
+                    <a href="/about/pabrik">
+                        Pabrik
+                        <div style="position:absolute; left: 50%;">
+                            <span class="triangle">&nbsp;</span>
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
+    </ul>
+</div>

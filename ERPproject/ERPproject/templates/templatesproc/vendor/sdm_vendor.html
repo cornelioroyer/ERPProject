@@ -1,0 +1,213 @@
+{% extends 'templatesproc/base_vendor.html' %}
+{%block title%}Pemilik, Direksi dan Tenaga Ahli Vendor{%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block extra_navigation%}
+	<div class="breadcrumb_divider"></div> <a class="current">Pemilik, Direksi dan Tenaga Ahli</a>
+{%endblock%}
+{%block content%}
+	<article class="module width_full">
+		<header><h3 class="tabs_involved">Pemilik, Direksi dan Tenaga Ahli</h3>
+		<ul class="tabs">
+   			<li><a href="#tab1">Pemilik</a></li> 
+			<li><a href="#tab2">Direksi</a></li> 
+			<li><a href="#tab3">Tenaga Ahli</a></li>
+		</ul>
+		</header>
+	<div class="isi_post">
+	<div class="tab_container">
+		<div id="tab1" class="tab_content">
+			<b>Identitas Pemilik</b><br><br>
+			<table width="100%">
+			{% if ada5 == 0%}
+			<tr>
+				<td colspan="5"><font color="red">Belum ada identitas pemilik</font></td>
+			</tr>
+			{%endif%}
+			
+			{%if ada5 > 0%}
+			<tr>
+				<th bgcolor="#fdc89a" width="28%">Nama</th>
+				<th bgcolor="#fdc89a" width="20%">No. KTP</th>
+				<th bgcolor="#fdc89a" width="24%">Alamat</th>
+				<th bgcolor="#fdc89a" width="10%">Modal</th>
+				<th bgcolor="#fdc89a" width="8%">Dokumen</th>
+				<th bgcolor="#fdc89a" width="10%">Aksi</th>
+			</tr>
+			{%for owners in owner%}
+			<tr>
+				<td bgcolor="#fde7d4" align="center">{{owners.owner_name}}</td>
+				<td bgcolor="#fde7d4" align="center">{{owners.owner_ktp_no}}</td>
+				<td bgcolor="#fde7d4" align="center">{{owners.owner_address}}</td>
+				<td bgcolor="#fde7d4" align="center">{{owners.capital_ownership}} %</td>
+				<td bgcolor="#fde7d4" align="center"><a href="{{owners.get_absolute_url}}">Download</a></td>
+				<td bgcolor="#fde7d4" align="center">
+					<font size="2">
+					<a href="{{owners.url_edit}}" title="Edit"><img src="/media/static/staticproc/images/pencil32.png" width="18%"/></a>
+						&nbsp&nbsp&nbsp
+					<a href="{{owners.url_delete}}" title="Hapus"><img src="/media/static/staticproc/images/error.png" width="18%"/></a>
+					</font>
+				</td>
+			</tr>
+			{%endfor%}
+			{%endif%}
+			<tr>
+				<td colspan="5"><a href="/add_owner/"><img src="/media/static/staticproc/images/pencil32.png" width="2%"/> Masukkan identitas pemilik</a></td>
+			</tr>
+			</table>
+			<hr size="1" width="600px" align="left">
+		</div>
+			
+		<div id="tab2" class="tab_content">
+			<b>Identitas Direksi</b><br><br>
+			<table width="100%">
+			{% if ada6 == 0%}
+			<tr>
+				<td colspan="5"><font color="red">Belum ada identitas direksi</font></td>
+			</tr>
+			{%endif%}
+			
+			{%if ada6 > 0%}
+			<tr>
+				<th bgcolor="#fdc89a" width="19%">Nama</th>
+				<th bgcolor="#fdc89a" width="14%">NPWP</th>
+				<th bgcolor="#fdc89a" width="14%">No. KTP</th>
+				<th bgcolor="#fdc89a" width="19%">Alamat</th>
+				<th bgcolor="#fdc89a" width="14%">Jabatan</th>
+				<th bgcolor="#fdc89a" width="8%">Dokumen</th>
+				<th bgcolor="#fdc89a" width="10%">Aksi</th>
+			</tr>
+			{%for direksis in direksi%}
+			<tr>
+				<td bgcolor="#fde7d4" align="center">{{direksis.board_of_directors_name}}</td>
+				<td bgcolor="#fde7d4" align="center">{{direksis.board_of_directors_npwp}}</td>
+				<td bgcolor="#fde7d4" align="center">{{direksis.board_of_directors_ktp_no}}</td>
+				<td bgcolor="#fde7d4" align="center">{{direksis.board_of_directors_address}}</td>
+				<td bgcolor="#fde7d4" align="center">{{direksis.occupation}}</td>
+				<td bgcolor="#fde7d4" align="center"><a href="{{direksis.get_absolute_url}}">Download</a></td>
+				<td bgcolor="#fde7d4" align="center"><font size="2"><a href="{{direksis.url_edit}}" title="Edit"><img src="/media/static/staticproc/images/pencil32.png" width="18%"/></a>
+				&nbsp&nbsp&nbsp 
+				<a href="{{direksis.url_delete}}" title="Hapus"><img src="/media/static/staticproc/images/error.png" width="18%"/></a></font></td>
+			</tr>
+			{%endfor%}
+			{%endif%}
+			<tr>
+				<td colspan="5"><a href="/add_direksi/"><img src="/media/static/staticproc/images/pencil32.png" width="2%"/>Masukkan identitas direksi</a></td>
+			</tr>
+			</table>
+			<hr size="1" width="600px" align="left">
+		</div>
+			
+		<div id="tab3" class="tab_content">
+			<b>Identitas Tenaga Ahli</b><br><br>
+			<table width="100%">
+			<tr>
+				<td colspan="7" bgcolor="#b6bafe">- Tenaga Ahli Tetap</td>
+			</tr>
+			{% if tetap == 0%}
+			<tr>
+				<td colspan="8"><font color="red">Belum ada identitas tenaga ahli tetap</font></td>
+			</tr>
+			{%endif%}
+			
+			{%if tetap > 0%}
+			{%for tenagas in tenaga1%}
+			<tr>
+				<th bgcolor="#fdc89a" width="5%">No.</th>
+				<th bgcolor="#fdc89a" width="25%" colspan="2">Nama</th>
+				<th bgcolor="#fdc89a" width="15%">NPWP</th>
+				<th bgcolor="#fdc89a" width="15%">No. KTP</th>
+				<th bgcolor="#fdc89a" width="25%">Alamat</th>
+				<th bgcolor="#fdc89a" width="15%">No. SKA</th>
+			</tr>
+			<tr>
+				<td bgcolor="#fde7d4" align="center" rowspan="3">{{forloop.counter}}</td>
+				<td bgcolor="#fde7d4" colspan="2" align="center">{{tenagas.experts_name}}</td>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.experts_npwp}}</td>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.experts_ktp_no}}</td>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.experts_address}}</td>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.ska_no}}</td>
+			</tr>
+			<tr>
+				<th bgcolor="#fdc89a" width="15%">Berlaku SKA</th>
+				<th bgcolor="#fdc89a" width="10%">Dokumen</th>
+				<th bgcolor="#fdc89a" width="%">No. Ijazah</th>
+				<th bgcolor="#fdc89a" width="%">Pend. Terakhir</th>
+				<th bgcolor="#fdc89a" width="%">Keahlian</th>
+				<th bgcolor="#fdc89a" width="%">Aksi</th>
+			</tr>
+			<tr>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.ska_valid_until}}</td>
+				<td bgcolor="#fde7d4" align="center"><a href="{{tenagas.get_absolute_url}}">Download</a></td>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.diploma_no}}</td>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.last_education}}</td>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.expertise}}</td>
+				<td bgcolor="#fde7d4" align="center"><a href="{{tenagas.url_edit}}" title="Edit"><img src="/media/static/staticproc/images/pencil32.png" width="12%"/></a>&nbsp&nbsp&nbsp
+				<a href="{{tenagas.url_delete}}" title="Edit"><img src="/media/static/staticproc/images/error.png" width="12%"/></a></td>
+			</tr>
+			<tr>
+				<td colspan="7" bgcolor="#d3d5ff"></td>
+			</tr>
+			{%endfor%}
+			{%endif%}
+			</table>
+			<br>
+			<table width="100%">
+			<tr>
+				<td colspan="7" bgcolor="#b6bafe">- Tenaga Ahli Tidak Tetap</td>
+			</tr>
+			{% if t_tetap == 0%}
+			<tr>
+				<td colspan="8"><font color="red">Belum ada identitas tenaga tidak ahli tetap</font></td>
+			</tr>
+			{%endif%}
+			
+			{%if t_tetap > 0%}
+			{%for tenagas in tenaga2%}
+			<tr>
+				<th bgcolor="#fdc89a" width="5%">No.</th>
+				<th bgcolor="#fdc89a" width="25%" colspan="2">Nama</th>
+				<th bgcolor="#fdc89a" width="15%">NPWP</th>
+				<th bgcolor="#fdc89a" width="15%">No. KTP</th>
+				<th bgcolor="#fdc89a" width="25%">Alamat</th>
+				<th bgcolor="#fdc89a" width="15%">No. SKA</th>
+			</tr>
+			<tr>
+				<td bgcolor="#fde7d4" align="center" rowspan="3">{{forloop.counter}}</td>
+				<td bgcolor="#fde7d4" colspan="2" align="center">{{tenagas.experts_name}}</td>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.experts_npwp}}</td>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.experts_ktp_no}}</td>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.experts_address}}</td>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.ska_no}}</td>
+			</tr>
+			<tr>
+				<th bgcolor="#fdc89a" width="15%">Berlaku SKA</th>
+				<th bgcolor="#fdc89a" width="10%">Dokumen</th>
+				<th bgcolor="#fdc89a" width="%">No. Ijazah</th>
+				<th bgcolor="#fdc89a" width="%">Pend. Terakhir</th>
+				<th bgcolor="#fdc89a" width="%">Keahlian</th>
+				<th bgcolor="#fdc89a" width="%">Aksi</th>
+			</tr>
+			<tr>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.ska_valid_until}}</td>
+				<td bgcolor="#fde7d4" align="center"><a href="{{tenagas.get_absolute_url}}">Download</a></td>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.diploma_no}}</td>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.last_education}}</td>
+				<td bgcolor="#fde7d4" align="center">{{tenagas.expertise}}</td>
+				<td bgcolor="#fde7d4" align="center"><a href="{{tenagas.url_edit}}" title="Edit"><img src="/media/static/staticproc/images/pencil32.png" width="12%"/></a>&nbsp&nbsp&nbsp
+				<a href="{{tenagas.url_delete}}" title="Hapus"><img src="/media/static/staticproc/images/error.png" width="12%"/></a></td>
+			</tr>
+			<tr>
+				<td colspan="7" bgcolor="#d3d5ff"></td>
+			</tr>
+			{%endfor%}
+			{%endif%}
+			<tr>
+				<td colspan="8"><a href="/add_ta/"><img src="/media/static/staticproc/images/pencil32.png" width="2%"/>Masukkan identitas tenaga ahli</a></td>
+			</tr>
+			 </table>
+			<hr size="1" width="600px" align="left">
+		</div>
+		</div>
+		</div>
+	</article>
+{%endblock%}

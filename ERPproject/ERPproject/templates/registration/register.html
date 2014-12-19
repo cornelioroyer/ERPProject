@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+
+{% block primary %}
+
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Register</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">Accounts</a> &gt;
+                <a class="no-link current" href="#">Register</a>
+            </p><hr>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block sidebar %}
+    {% include "includes/sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+  
+    <div class="page type-page status-publish hentry group">
+        <div class="tabs-container">
+            <ul class="tabs">
+                <li><h4><a href="#tab1" title="Registrasi"><i class="icon-group" style="color:#000;font-size:20px;width:20px;height:20px"></i> Form Registrasi</a></h4></li>
+            </ul>
+            <div class="border-box group">
+                <div id="tab1" class="panel group">
+
+                    <p>Silahkan isi form registrasi berikut untuk menjadi mitra kerja bersama PT. IGLAS Persero, dan tunggu konfirmasi kami selanjutnya. <br>Terima Kasih.</p>
+
+                    <form enctype="multipart/form-data" method="post" action="">
+                        {% csrf_token %}
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td colspan="4"><div align="center"><h2>Informasi Login</h2></div>
+                                    {% if form.errors %}
+                                        <p>&nbsp;</p>
+                                        <p align="center"><font color="red">
+
+                                        Please correct the errors below {{ form.non_field_errors }}
+
+                                    {% endif %}</font></p><br></td>
+                            </tr>
+                            <tr>
+                                <td width="10" rowspan="3">
+                                    &nbsp;
+                                </td>
+                                <td width="21%">{% if form.username.errors %}<font color="red">Username *</font>
+                                {% else %}Username{% endif %}
+                                </td>
+                                <td width="3%">:</td>
+                                <td width="76%">{{ form.username }} <font color="red">{% if form.username.errors %}
+                            {{ form.username.errors.as_text }}{% endif %}</font></td>
+                            </tr>
+
+                            <tr>
+                                <td>{% if form.password1.errors %}<font color="red">Password *</font>
+                                {% else %}Password{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.password1 }}  <font color="red">{% if form.password1.errors %}
+                            {{ form.password1.errors.as_text }}{% endif %}</font></td>
+                            </tr>
+                            <tr>
+                                <td>{% if form.password2.errors %}<font color="red">Password (again) *</font>
+                                {% else %}Password (again){% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.password2 }}  <font color="red">{% if form.password2.errors %}
+                            {{ form.password2.errors.as_text }}{% endif %}</font></td>
+                            </tr>
+                            <tr><td colspan="4"><div align="center"><h2>Informasi Perusahaan</h2></div></tr>
+                            <tr><td colspan="4">&nbsp;</tr>
+                            <tr>
+                                <td width="10" rowspan="5">
+                                    &nbsp;
+                                </td>
+                                <td width="21%">{% if form.name.errors %}<font color="red">Nama Pegawai *</font>
+                                {% else %}Nama Pegawai{% endif %}
+                                </td>
+                                <td width="3%">:</td>
+                                <td width="76%">{{ form.name }} {{ form.name.help_text }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>{% if form.position.errors %}<font color="red">Jabatan *</font>
+                                {% else %}Jabatan{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.position }} {{ form.position.help_text }}</td>
+                            </tr>
+                            <tr>
+                                <td>{% if form.type.errors %}<font color="red">Bentuk Badan Usaha *</font>
+                                {% else %}Bentuk Badan Usaha{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.type }} {{ form.type.help_text }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>{% if form.corporate.errors %}<font color="red">Nama Perusahaan *</font>
+                                {% else %}Nama Perusahaan{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.corporate }} {{ form.corporate.help_text }}</td>
+                            </tr>
+                            <tr>
+
+                                <td>{% if form.business.errors %}<font color="red">Kegiatan Bisnis *</font>
+                                {% else %}Kegiatan Bisnis{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.business }} </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.industry.errors %}<font color="red">Bidang Industri *</font>
+                                {% else %}Bidang Industri{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.industry }}</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.country.errors %}<font color="red">Negara *</font>
+                                {% else %}Negara{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.country }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.zip_code.errors %}<font color="red">Kode Pos *</font>
+                                {% else %}Kode Pos{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.zip_code }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.currency.errors %}<font color="red">Mata Uang (default) *</font>
+                                {% else %}Mata Uang (default){% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.currency }} {{ form.currency.help_text }}</td>
+                                <td></td>
+                            </tr>
+
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.address.errors %}<font color="red">Alamat *</font>
+                                {% else %}Alamat{% endif %}</td>
+                                <td>:</td>
+                                <td height="30">{{ form.address }}{{ form.address.help_text }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.phone.errors %}<font color="red">Telepon *</font>
+                                {% else %}Telepon{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.phone }} {{ form.phone.help_text }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.email.errors %}<font color="red">Email *</font>
+                                {% else %}Email{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.email }} {{ form.email.help_text }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.captcha.errors %}<font color="red">Kode Captcha *</font>
+                                {% else %}Kode Captcha{% endif %}</td>
+                                <td>:</td>
+                                <td height="30">{{ form.captcha }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="submit" value="Register"/>&nbsp;<input type="reset" value="Reset"/></td>
+
+                            </tr>
+                        </table>
+                    </form>
+                </div></div></div></div><br><br>
+{% endblock %}
+{% block extrastyle %}
+    <script>
+        $('.js-captcha-refresh').click(function(){
+            $form = $(this).parents('form');
+
+            $.getJSON($(this).data('url'), {}, function(json) {
+                // This your should update captcha image src and captcha hidden input
+            });
+
+            return false;
+        });</script>
+{% endblock %}

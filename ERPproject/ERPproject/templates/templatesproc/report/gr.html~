@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>Print PO: {{data.no_reg}}</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/media/static/jsPDF/examples/css/smoothness/jquery-ui-1.8.17.custom.css">
+	<link rel="stylesheet" type="text/css" href="/media/static/jsPDF/examples/css/main.css">
+
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/dist/jspdf.debug.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/basic.js"></script>
+
+	<script>
+		$(function() {
+			$("#accordion-basic, #accordion-text, #accordion-graphic").accordion({
+				autoHeight: false,
+				navigation: true
+			});
+			$( "#tabs" ).tabs();
+			$(".button").button();
+		});
+	</script>
+</head>
+
+<body>
+	<div class="to_pdf">
+		<div style="border-width: 2px; width:50%;border-style: dotted; padding: 1em; font-size:120%;line-height: 1.5em;" id="printdiv">
+			<img src="/media/static/staticproc/images/header_pdf.png" width="80%">
+			<p style="font-size:100%;text-align:center">Laporan Penerimaan Barang (No Reg: {{data.no_reg}})</p>
+			<span style="font-size:90%">
+				<div>Referensi PO: {{data.br_sent_date}}</div>
+				<div>Tgl Rencana Penerimaan: {{data.purchase_order_id.po_add_date}}</div>
+				<div>Tgl Penerimaan Barang: {{data.receipt_date}}</div>
+				<div>Nomor Surat Jalan: {{data.delivery_orders}}</div>
+				<div>Denda: {{data.denda()}}</div>
+			</span>
+		</div>
+	</div>
+	<button onclick="javascript:printreport()" class="button"><img src="/media/static/staticproc/images/doc.png" width="15%"> Download</button>
+</body>
+</html>

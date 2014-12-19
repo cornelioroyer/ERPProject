@@ -1,0 +1,177 @@
+[
+    {
+        "model": "master_sales.Tax",
+        "pk": 1,
+        "fields": {
+            "name": "PPN",
+            "description": "Standar Pajak Pertambahan Nilai",
+            "percentage": "2.5"
+        }
+    },
+    {
+        "model": "master_sales.Tax",
+        "pk": 2,
+        "fields": {
+            "name": "PPh",
+            "description": "Standar Pajak Penghasilan",
+            "percentage": "2"
+        }
+    },
+    {
+        "model": "master_sales.Tax",
+        "pk": 3,
+        "fields": {
+            "name": "PPn BM",
+            "description": "Standar Pajak Pertambahan Nilai Barang Mewah",
+            "percentage": "3"
+        }
+    },
+    {
+        "model": "master_sales.Currency",
+        "pk": 1,
+        "fields": {
+            "name": "Rupiah",
+            "code": "IDR",
+            "rate": "1",
+            "pre_symbol": "Rp",
+            "post_symbol": ""
+        }
+    },
+    {
+        "model": "master_sales.Currency",
+        "pk": 2,
+        "fields": {
+            "name": "US Dollar",
+            "code": "USD",
+            "rate": "0",
+            "pre_symbol": "$",
+            "post_symbol": ""
+        }
+    },
+    {
+        "model": "master_sales.Currency",
+        "pk": 3,
+        "fields": {
+            "name": "Pounds Sterling",
+            "code": "GBP",
+            "rate": "0",
+            "pre_symbol": "£",
+            "post_symbol": ""
+        }
+    },
+    {
+        "model": "master_sales.Currency",
+        "pk": 4,
+        "fields": {
+            "name": "Euro",
+            "code": "EUR",
+            "rate": "0",
+            "pre_symbol": "€",
+            "post_symbol": ""
+        }
+    },
+    {
+        "model": "master_sales.PaymentTerm",
+        "pk": 1,
+        "fields": {
+            "name": "Fast",
+            "description": "",
+            "period": "15"
+        }
+    },
+    {
+        "model": "master_sales.PaymentTerm",
+        "pk": 2,
+        "fields": {
+            "name": "Standard",
+            "description": "",
+            "period": "30"
+        }
+    },
+    {
+        "model": "master_sales.PaymentTerm",
+        "pk": 3,
+        "fields": {
+            "name": "Ordinary",
+            "description": "",
+            "period": "60"
+        }
+    },
+    {
+        "model": "master_sales.Bank",
+        "pk": 1,
+        "fields": {
+            "name": "Bank Mandiri",
+            "description": "Bank Mandiri",
+            "logo": "uploads/logo/bank/bankmandiri.png"
+        }
+    },
+    {
+        "model": "master_sales.Bank",
+        "pk": 2,
+        "fields": {
+            "name": "BCA",
+            "description": "Bank Central Asia",
+            "logo": "uploads/logo/bank/bankbca.png"
+        }
+    },
+    {
+        "model": "master_sales.Bank",
+        "pk": 3,
+        "fields": {
+            "name": "BRI",
+            "description": "Bank Rakyat Indonesia",
+            "logo": "uploads/logo/bank/bankbri.png"
+        }
+    },
+    {
+        "model": "master_sales.Bank",
+        "pk": 4,
+        "fields": {
+            "name": "BNI",
+            "description": "Bank Negara Indonesia",
+            "logo": "uploads/logo/bank/bankbni.png"
+        }
+    },{
+        "model": "master_sales.Bank",
+        "pk": 5,
+        "fields": {
+            "name": "BII",
+            "description": "Bank International Indonesia",
+            "logo": "uploads/logo/bank/bankbii.png"
+        }
+    },
+    {
+        "model": "master_sales.Bank",
+        "pk": 6,
+        "fields": {
+            "name": "Citibank",
+            "description": "Citibank Indonesia Branch",
+            "logo": "uploads/logo/bank/citibank.png"
+        }
+    },{
+        "model": "master_sales.Bank",
+        "pk": 7,
+        "fields": {
+            "name": "Bank Mega",
+            "description": "Bank Mega",
+            "logo": "uploads/logo/bank/bankmega.png"
+        }
+    },
+    {
+        "model": "master_sales.ShippingMethods",
+        "pk": 1,
+        "fields": {
+            "name": "Loko Gudang",
+            "info": "Barang diambil langsung oleh pembeli ke gudang penjual"
+        }
+    },
+    {
+        "model": "master_sales.ShippingMethods",
+        "pk": 2,
+        "fields": {
+            "name": "Franco Gudang",
+            "info": "Barang dikirim langsung oleh penjual ke gudang pembeli"
+        }
+    }
+]

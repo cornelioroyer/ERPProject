@@ -1,0 +1,4 @@
+{% if isimenu == 'login' %}<a href="/proc/login/"><div class="login"></div></a>  <a href="/proc/register/"><div class="register"></div></a>{% endif %}
+{% if isimenu == 'vendor' %}<a href="/proc/logout/">Log Out</a> | Welcome {{uname}}, <a href="/dashboard/">Control Panel</a>{% endif %}
+{% if isimenu == 'staff' %}<a href="/proc/logout/">Log Out</a> | Welcome {{uname}}, <a href="/internal/">Control Panel</a>{% endif %}
+{% if isimenu == 'home' %}<a href="/procurement/"><div class="home"></div></a>{% endif %}

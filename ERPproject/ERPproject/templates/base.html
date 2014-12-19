@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--[if IE 6]>
+<html id="ie6" class="ie"lang="en-US">
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7"  class="ie"lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8"  class="ie"lang="en-US">
+<![endif]-->
+<!--[if IE 9]>
+<html id="ie9"  class="ie"lang="en-US">
+<![endif]-->
+<!--[if gt IE 9]>
+<html class="ie"lang="en-US">
+<![endif]-->
+<!--[if !IE]>
+<html lang="en-US">
+<![endif]-->
+
+<!-- START HEAD -->
+<head>
+    {% block head %}
+        <meta charset="UTF-8"/>
+
+        <!-- this line will appear only if the website is visited with an iPad -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes"/>
+
+        <title>.:: PT. IGLAS (Persero) | Glass Packaging Industry ::.</title>
+
+        <!-- RESET STYLESHEET -->
+        <link rel="stylesheet" type="text/css" media="all" href="/media/static/css/reset.css"/>
+        <!-- BOOTSTRAP STYLESHEET -->
+        <link rel="stylesheet" type="text/css" media="all" href="/media/static/css/bootstrap.css"/>
+        <!-- MAIN THEME STYLESHEET -->
+        <link rel="stylesheet" type="text/css" media="all" href="/media/static/css/style.css"/>
+
+        <link rel='stylesheet' id='custom-css' href='/media/static/css/custom.css' type='text/css' media='all'/>
+        <link rel='stylesheet' id='google-fonts-css'
+              href='http://fonts.googleapis.com/css?family=Oswald%7CDroid+Sans%7CPlayfair+Display%7COpen+Sans+Condensed:300,400,800%3A300%7CRokkitt%7CShadows+Into+Light%7CMaven+Pro:400,700%7CAbel%7CMontez'
+              type='text/css' media='all'/>
+        <link rel='stylesheet' id='responsive-css' href='/media/static/css/responsive.css' type='text/css' media='all'/>
+        <link rel='stylesheet' id='thickbox-css' href='/media/static/js/thickbox/thickbox.css' type='text/css'
+              media='all'/>
+        <link rel='stylesheet' id='tipsy-css' href='/media/s
+        tatic/css/tipsy.css' type='text/css' media='all'/>
+
+        <link rel='stylesheet' id='fonts-css' href='/media/static/css/font-awesome.css' type='text/css' media='all'/>
+        <link rel='stylesheet' id='full-descriptor-css'
+              href='/media/static/css/portfolios/full-description/css/style.css' type='text/css' media='all'/>
+        <link rel='stylesheet' id='slide-details-css' href='/media/static/css/portfolios/slide-detail/css/style.css'
+              type='text/css' media='all'/>
+        <link rel='stylesheet' id='shortcode-css' href='/media/static/css/shortcodes.css' type='text/css' media='all'/>
+
+        <link rel='stylesheet' id='colorbox-css' href='/media/static/css/colorbox.css' type='text/css' media='all'/>
+        <link rel='stylesheet' id='custom-button-mfast-3-css' href='/media/static/css/buttons/mfast-3.css'
+              type='text/css' media='all'/>
+        <link rel='stylesheet' id='flexslider-css' href='/media/static/css/sliders/flexslider/css/flexslider.css'
+              type='text/css' media='all'/>
+        <link rel='stylesheet' id='flexslider-elegant-css'
+              href='/media/static/css/sliders/flexslider-elegant/css/slider.css' type='text/css' media='all'/>
+        <link rel='stylesheet' id='rs-css' href='/media/static/css/sliders/revolution-slider/css/slider.css'
+              type='text/css' media='all'/>
+        <link rel='stylesheet' id='rs-settings-css'
+              href='/media/static/css/sliders/revolution-slider/rs-plugin/css/settings.css' type='text/css'
+              media='all'/>
+        <link rel='stylesheet' id='rs-captions-css'
+              href='/media/static/css/sliders/revolution-slider/rs-plugin/css/captions.css' type='text/css'
+              media='all'/>
+
+        <!-- [favicon] begin -->
+        <link rel="shortcut icon" type="image/x-icon" href="/media/static/images/favicon.gif"/>
+        <link rel="icon" type="image/x-icon" href="/media/static/images/favicon.gif"/>
+        <!-- [favicon] end -->
+
+        <script type='text/javascript' src='/media/static/js/jquery/jquery.js'></script>
+    {% endblock %}
+    {% block extrastyle %}
+    {% endblock %}
+</head>
+<!-- END HEAD -->
+
+<!-- START BODY -->
+<body class="home page no_js responsive stretched">
+
+<!-- START BG SHADOW -->
+<div class="bg-shadow">
+
+    <!-- START WRAPPER -->
+    <div id="wrapper" class="container group">
+        {% block topbar %}
+            <!-- START TOP BAR -->
+            {% include "includes/topbar.html" %}
+        {% endblock %}
+        <!-- END TOP BAR -->
+
+        <!-- START HEADER -->
+        <div id="header" class="group">
+            {% block header %}
+                <div class="group container">
+                    <div class="row">
+                        <div class="span12">
+
+                            <div class="row">
+                                <!-- START LOGO -->
+                                <div id="logo" class="span3 group">
+
+                                    <a id="logo-img" href="/" title="PT. IGLAS Persero">
+                                        <img src="/media/static/images/logo.png" title="PT. IGLAS Persero"
+                                             alt="PT. IGLAS Persero">
+                                    </a>
+
+                                </div>
+                                <!-- END LOGO -->
+                                <div id="menu" class="span8 group">
+                                    <!-- START MAIN NAVIGATION -->
+                                    {% include "includes/mainmenu.html" %}
+                                    <!-- END MAIN NAVIGATION -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="border-header"></div>
+            {% endblock %}
+        </div>
+        <!-- END HEADER -->
+
+        <!-- START SLIDER -->
+        <div id="slider-revolution-slider" class="slider slider-revolution-slider revolution-slider">
+            {% block slider %}
+            {% endblock %}
+        </div>
+        <!-- END SLIDER -->
+        {% block primary %}
+        {% endblock %}
+        <!-- START PRIMARY -->
+        <div id="primary" class="sidebar-right">
+            <div class="container group">
+                <div class="row">
+                    {% block column %}
+
+                    {% endblock %}
+                    {% block text %}
+
+                    {% endblock %}
+                    <div id="content-home" class="span9 content group">
+                        {% block content %}
+
+                        {% endblock %}
+                    </div>
+
+                    <!-- END CONTENT -->
+
+                    <!-- START SIDEBAR -->
+                    <div id="sidebar-home-3" class="span3 sidebar group">
+                        {% block sidebar %}
+
+                        {% endblock %}
+                    </div>
+                    <!-- END SIDEBAR -->
+
+                    <!-- START EXTRA CONTENT -->
+                    <!-- END EXTRA CONTENT -->
+
+                </div>
+                {% block box %}
+                    {% include "includes/box.html" %}
+                {% endblock %}
+            </div>
+        </div>
+        <!-- END PRIMARY -->
+
+
+        <!-- START FOOTER -->
+        <div id="footer">
+            {% block footer %}
+                {% include "includes/footer.html" %}
+            {% endblock %}
+        </div>
+        <!-- END FOOTER -->
+
+        <!-- START COPYRIGHT -->
+        <div id="copyright">
+            {% block copyright %}
+                {% include "includes/copy.html" %}
+            {% endblock %}
+        </div>
+        <!-- END COPYRIGHT -->
+
+    </div>
+    <!-- END WRAPPER -->
+
+</div>
+<!-- END BG SHADOW -->
+
+
+<!-- START CUSTOM SCRIPT -->
+
+<!-- END CUSTOM SCRIPT -->
+
+<script type='text/javascript' src='/media/static/js/jquery.colorbox-min.js'></script>
+<script type='text/javascript' src='/media/static/js/jquery.flexslider-min.js'></script>
+<script type='text/javascript' src='/media/static/js/jquery.tweetable.js'></script>
+<script type='text/javascript' src='/media/static/js/jquery.superfish.js'></script>
+<script type='text/javascript' src='/media/static/js/jquery.themepunch.plugins.min.js'></script>
+<script type='text/javascript' src='/media/static/js/jquery.themepunch.revolution.js'></script>
+<script type='text/javascript' src='/media/static/css/portfolios/filterable/js/jquery.filterable.js'></script>
+<script type='text/javascript' src='/media/static/js/jquery.tipsy.js'></script>
+<script type='text/javascript' src='/media/static/js/responsive.js'></script>
+<script type='text/javascript' src='/media/static/js/jquery.mobilemenu.js'></script>
+<script type='text/javascript' src='/media/static/js/shortcodes.js'></script>
+<script type='text/javascript' src='/media/static/js/jquery/jquery.masonry.min.js'></script>
+<script type='text/javascript' src='/media/static/js/jquery.custom.js'></script>
+
+</body>
+<!-- END BODY -->
+</html>

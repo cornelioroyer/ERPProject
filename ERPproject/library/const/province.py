@@ -1,0 +1,37 @@
+''' @author: Fery Febriyan Syah '''
+
+from django.conf import settings
+ugettext = lambda s: s
+
+PROVINCE = getattr (settings, 'PROVINCE', ((1, ugettext ('NANGGROE ACEH DARUSSALAM')),
+                                           (2, ugettext ('SUMATERA UTARA')),
+                                           (3, ugettext ('SUMATERA BARAT')),
+                                           (4, ugettext ('JAMBI')),
+                                           (5, ugettext ('RIAU')),
+                                           (6, ugettext ('KEPULAUAN RIAU')),
+                                           (7, ugettext ('BENGKULU')),
+                                           (8, ugettext ('SUMATERA SELATAN')),
+                                           (9, ugettext ('KEPULAUAN BANGKA BELITUNG')),
+                                           (10, ugettext ('LAMPUNG')),
+                                           (11, ugettext ('DKI JAKARTA')),
+                                           (12, ugettext ('JAWA BARAT')),
+                                           (13, ugettext ('BANTEN')),
+                                           (14, ugettext ('JAWA TENGAH')),
+                                           (15, ugettext ('DI YOGYAKARTA')),
+                                           (16, ugettext ('JAWA TIMUR')),
+                                           (17, ugettext ('BALI')),
+                                           (18, ugettext ('NUSA TENGGARA BARAT')),
+                                           (19, ugettext ('NUSA TENGGARA TIMUR')),
+                                           (20, ugettext ('KALIMANTAN BARAT')),
+                                           (21, ugettext ('KALIMANTAN SELATAN')),
+                                           (22, ugettext ('KALIMANTAN TIMUR')),
+                                           (23, ugettext ('KALIMANTAN UTARA')),
+                                           (24, ugettext ('SULAWESI UTARA')),
+                                           (25, ugettext ('GORONTALO')),
+                                           (26, ugettext ('SULAWESI SELATAN')),
+                                           (27, ugettext ('SULAWESI TENGAH')),
+                                           (28, ugettext ('SULAWESI TENGGARA')),
+                                           (29, ugettext ('SULAWESI BARAT')),
+                                           (30, ugettext ('MALUKU UTARA')),
+                                           (31, ugettext ('PAPUA')),
+                                           (32, ugettext ('PAPUA BARAT'))))

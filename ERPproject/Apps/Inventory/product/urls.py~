@@ -1,0 +1,8 @@
+__author__ = 'FARID ILHAM AL-Q'
+from django.conf.urls import patterns, url
+urlpatterns = patterns('',
+                       url(r'product/$', 'apps.inventory.product.views.index'),
+                       url(r'product_item/(?P<id>.*)/$', 'apps.inventory.product.views.item'),
+                       url(r'product_item_detail/(?P<id>.*)/$', 'apps.inventory.product.views.detail_item'),
+
+                       )

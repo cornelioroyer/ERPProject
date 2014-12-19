@@ -1,0 +1,20 @@
+body{
+	background-color: #fdfdfd;
+	color: #2e2e2e;
+	margin: 0;
+	padding: 0;
+	font-size: 14px;
+    line-height: 28px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+div.content{
+    border: 1px;
+	background-color: #00000;
+	max-width: 640px;
+    width: 50%;
+    padding: 2%;
+    margin: 28px  auto;
+}
+
+

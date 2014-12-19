@@ -1,0 +1,70 @@
+<html>
+<head>
+	<title>Print PO: {{data.no_reg}}</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/media/static/jsPDF/examples/css/smoothness/jquery-ui-1.8.17.custom.css">
+	<link rel="stylesheet" type="text/css" href="/media/static/jsPDF/examples/css/main.css">
+
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/dist/jspdf.debug.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/basic.js"></script>
+
+	<script>
+		$(function() {
+			$("#accordion-basic, #accordion-text, #accordion-graphic").accordion({
+				autoHeight: false,
+				navigation: true
+			});
+			$( "#tabs" ).tabs();
+			$(".button").button();
+		});
+	</script>
+</head>
+
+<body>
+	<div class="to_pdf">
+		<div style="border-width: 2px; width:50%;border-style: dotted; padding: 1em; font-size:120%;line-height: 1.5em;" id="printdiv">
+			<img src="/media/static/staticproc/images/header_pdf.png" width="80%">
+			<p style="font-size:100%;text-align:center">Request Quotation (No Reg: {{data.no_reg}})</p>
+			<span style="font-size:90%">
+				<div>Tgl Kirim Permintaan Penawaran: {{data.br_sent_date}}</div>
+				<div>Tgl Kadaluarsa: {{data.br_end_date}}</div>
+			
+				<table cellspacing="0" width="100%"> 
+					<tr> 
+						<td width="5%">No.</td>
+						<td width="15%">Nama Brg</td>
+						<td width="12%">Jenis Brg</td>
+						<td width="11%">Satuan</td>
+						<td width="10%">Jumlah</td>
+					</tr>
+					{% for i in item %}
+					<tr>
+						{% if i.data_purchase_request != None %}
+							<td>{{forloop.counter}}</td>
+							<td>{{i.data_purchase_request.request_goods_name}}</td>
+							<td>{{i.data_purchase_request.goods_type_id}}</td>
+							<td>{{i.data_purchase_request.unit_of_measure_id}}</td>
+							<td>{{i.data_purchase_request.request_amount}}</td>
+						{% endif %}
+						{% if i.data_rush_order != None %}
+							<td>{{forloop.counter}}</td>
+							<td>{{i.data_rush_order.ro_goods_name}}</td>
+							<td>{{i.data_rush_order.goods_type_id}}</td>
+							<td>{{i.data_rush_order.unit_of_measure_id}}</td>
+							<td>{{i.data_rush_order.ro_amount}}</td>
+						{% endif %}
+					</tr>
+					{% endfor %}
+				</table>
+				<p><strong>Deskripsi Tambahan: </strong></p>
+				{{data.br_detail|safe}}
+				<p><strong>Nilai Penawaran Anda: </strong>_______________________</p>
+			</span>
+		</div>
+	</div>
+	<button onclick="javascript:printreport()" class="button"><img src="/media/static/staticproc/images/doc.png" width="15%"> Download</button>
+</body>
+</html>

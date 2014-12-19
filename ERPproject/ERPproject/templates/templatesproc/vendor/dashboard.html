@@ -1,0 +1,22 @@
+{% extends 'templatesproc/base_vendor.html' %}
+{%block title%}Dashboard Vendor | PT IGLAS (Persero){%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block extra_navigation%}
+{%endblock%}
+    {% block content %}
+		<article class="module width_full">
+			<header><h3>Welcome</h3></header>
+			<h3>Selamat datang di Control Panel untuk Vendor pengadaan barang/jasa PT IGLAS (Persero), Gresik </h3>
+			<p style="margin-left:20px;margin-right:20px">
+				Menu-menu dan kegunaannya:<br>
+				- IDENTITAS, untuk edit profil perusahaan anda demi mendukung kesempatan memenangkan pelelangan<br>
+				- PELELANGAN, semua tentang pelelangan yang ada dan yang Anda ikuti ada disini<br>
+				- KOTAK MASUK, Kotak Masuk untuk Permintaan Penawaran, Purchase Order, dan Klaim yang dikirim oleh PT IGLAS (Persero) kepada Anda<br>
+				<br>
+				Untuk mengikuti pelelangan anda harus masuk ke menu Procurement List untuk memilih Pelelangan yang akan anda ikuti. 
+				Setelah mendaftar anda baru dapat memasukkan penawaran ketika pelelangan tersebut masih dalam masa "Penawaran". 
+				Ketika pelelangan tersebut telah dalam masa "Selesai", maka akan diumumkan siapa pemenangnya. 
+				Pemenang akan dikirimi PO yang akan masuk di Kotak Masuk Purchase Order.
+			</p>
+		</article>
+    {% endblock %}

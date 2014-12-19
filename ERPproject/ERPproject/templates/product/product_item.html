@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block sidebar %}
+{% include "includes/sidebar.html" %}
+{% endblock %}
+{% block primary %}
+
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Produk</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">Item</a>>
+                <a class="no-link current" href="#">Produk</a>
+            </p><hr>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block content %}
+    <div class="page type-page status-publish hentry group">
+
+    <div class="tabs-container">
+
+        <ul class="tabs">
+            <li><h4><a href="#tab1" title="Welcome"><i class="icon-home" style="color:#000;font-size:20px;width:20px;height:20px"></i> Produk</a></h4></li>
+        </ul>
+
+        <div class="border-box group">
+            <div id="tab1" class="panel group">
+                {% for botol in botol %}<table width="100%" border="1">
+
+                    <tr>
+                        <td width="10%"><img  width="100px" height="100px" src="{{ MEDIA_URL }}{{ botol.image }}"><br>&nbsp;</td>
+                        <td width="50%" align="left" valign="top"><b><a href="/item/product_item_detail/{{ botol.id }}">{{ botol.name | upper }}</a> </b><br>{{ botol.description }}<br><br><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>{% endfor %}
+            </div></div></div></div>
+{% endblock %}

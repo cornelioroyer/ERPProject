@@ -1,0 +1,56 @@
+III.1		Major_Material _________________________[MaM]
+III.1.A.	Soda Abu (Na2CO3)_______________________[MaM1]
+III.1.B.	Limestone (batu bintang) (CaCO3)________[MaM2]
+III.1.C.	Silicate (SiO2)_________________________[MaM3]
+III.1.D.	Cullet (beling)_________________________[MaM4]
+
+
+III.2		Minor_Material__________________[MiM]
+III.2.A.	Sodium Sulfat (Na2SO4)__________[MiM1]
+III.2.B.	Aluminium Hydroxide (Al2O3)_____[MiM2]
+
+
+III.3		Colour_Material__________________________________[CM]
+III.3.A.	Hijau-Natrium Bichromate (Na2Cr2O7)______________[CM1]
+III.3.B.	Amber-Hematite (Fe3O4), arang (C), Belerang (S)__[CM2]
+
+
+III.4		Uncolour_Material________[UcM]
+III.4.A.	Selenium (Se)____________[UcM1]
+III.4.B.	Cobalt Oksida (CoO)______[UcM2]
+III.4.C.	Arsenicum (As2O3)________[UcM3]
+III.4.D.	Natrium Nitrat (NaNO3)___[UcM4]
+
+
+III.5		Stabililator_Material______[SM]
+III.5.A.	Alumine	(AL2O3)____________[SM1]
+III.5.B.	Calsite	(CaCO3)____________[SM2]
+III.5.C.	Dolomite ( CaMg (CO3)2 )___[SM3]
+
+
+III.3.F.	Batch Composition
+1.		Taget Glass composition
+2.		Calculated Glass composition
+3.		Real Glass composition
+
+ Minor
+	Colour
+	Uncolour
+	Stabilitator
+
+Cat Label
+	-Cyan(C)
+ 	-Magenta(M)
+	-Yellow(Y)
+	-Black(K) 
+
+Case
+	carton
+	plastik
+	tali
+
+http://phidya.wordpress.com/2010/04/20/enterprise-resource-planning-erp/
+
+
+
+

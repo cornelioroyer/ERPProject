@@ -1,0 +1,25 @@
+{% extends 'templateasset/base.html' %}
+{% block title %} PT.IGLAS(Persero){% endblock %}
+{%block uname%}<p>Welcome, <strong>{{c.username}}</strong></p>{%endblock%}
+
+{% block content %}
+    <div class="page type-page status-publish hentry group">
+    <div class="tabs-container">
+        
+    <div class="border-box group">
+            <div id="tab1" class="panel group">
+        <div align="center"><h3>PENGUMUMAN PELELANGAN </h3></div>
+        <p>&nbsp;</p>
+			<table>
+				<tr><td>No. Pejualan</td><td>:</td><td>{{c.no_reg}}</td></tr>
+				<tr><td>Nama Pelelangan</td><td>:</td><td>{{c.title}}</td></tr>
+				<tr><td>Harga Awal</td><td>:</td><td>{{c.sale}}</td></tr>
+				<tr><td>Pemenang Lelang</td><td>:</td><td>{{c.customer_name}}</td></tr>
+				<tr><td>Jumlah Penawaran</td><td>:</td><td>{{c.bid_value}}</td></tr>
+				<tr><td>TanggalPenawaran</td><td>:</td><td>{{c.add_date}}</td></tr>
+			</table>
+        <form enctype="multipart/form-data" method="post" action="">
+            
+        </form>
+    </div></div></div></div><br><br>
+{% endblock %}

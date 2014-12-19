@@ -1,0 +1,79 @@
+{% extends 'templatesproc/base_vendor.html' %}
+{%block title%}{{post.title}} | PT IGLAS (Persero){%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block extra_navigation%}
+	<div class="breadcrumb_divider"></div><a href="/list_reg_proc/1">Registered Procurement</a> 
+	<div class="breadcrumb_divider"></div> <a class="current">{{post.title}}</a>
+	
+{%endblock%}
+    {% block content %}
+		<article class="module width_3_quarter">
+		<header><h3 class="tabs_involved">{{post.title}}</h3></header>
+		<div class="isi_post">
+            <font color="blue">
+                Posted on
+                <time datetime="{{post.proc_add_date|date:"c"}}">
+                {{post.proc_add_date|date}}
+                </time>
+			</font>
+			<p>
+				<hr size="1">
+				Klasifikasi: {{post.classification}} <br>
+				Bidang: {{post.fields}} <br>
+				Sub Bidang: {{post.sub_fields}} <br><br>
+				Detail pengadaan:
+				<br>{{post.detail_proc|safe}}
+				Anggaran: Rp {{post.proc_budget}}
+				<br>Tgl Habis Pendaftaran: {{post.end_enlisting|date}} | Pukul: {{post.end_enlisting|time}} WIB
+				<br>Tgl Habis Penawaran: {{post.end_bid|date}} | Pukul: {{post.end_bid|time}} WIB
+				<br>Tgl Habis Masa Sanggah: {{post.end_expostulating|date}} | Pukul: {{post.end_expostulating|time}} WIB
+				<hr size="1">
+			</p>
+			Dalam masa :
+			<font color="green">{{post.status}}</font>
+			<br>
+			{% if ven.bid_value == None %}
+				<font color="red">Belum ada nilai penawaran yang anda masukkan</font>
+			{%endif%}
+			{% if ven.bid_value != None %}
+				<font color="blue">Nilai penawaran anda : Rp {{ven.bid_value}}</font>
+			{%endif%}
+			{% if ven.doc_bid == "" %}
+				<br><font color="red">Belum ada dokumen penawaran yang anda upload</font>
+			{%endif%}
+			{% if ven.doc_bid != "" %}
+				<br><font color="blue">Download dokumen penawaran Anda, </font><a href="/download_ur_doc/{{ven.id}}">disini</a>
+			{%endif%}
+			<br>
+			{% if post.status == "Penawaran" %}
+				<a href="/edit_bidding/{{post.slug}}">Edit Penawaran</a>
+			{%endif%}
+			{% if post.status == "Selesai" %}
+				<font color="green">{{post.winner_m}}</font>
+			{%endif%}
+			<br><br>
+		</div>
+		</article>
+		{%if post.status != "Selesai" %}
+		<article class="module width_quarter">
+			<header><h3>Messages</h3></header>
+			<div class="message_list">
+				<div class="module_content">
+					{%for msg in pesan%}
+					<div class="message">
+						<p>{{msg.message|safe}}</p>
+						<p>{{msg.msg_add_date}}
+						<p><strong>{{msg.uname}}</strong></p>
+					</div>
+					{%endfor%}
+				</div>
+			</div>
+			<footer>
+				<form class="post_message" method="post" action="/bidding/{{post.slug}}/">{% csrf_token %}
+					<input type="text" value="Message" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;" name="msg">
+					<input type="submit" class="btn_post_message" value=""/>
+				</form>
+			</footer>
+		</article>
+		{%endif%}
+    {% endblock %}

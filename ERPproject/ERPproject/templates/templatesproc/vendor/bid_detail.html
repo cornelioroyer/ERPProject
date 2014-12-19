@@ -1,0 +1,83 @@
+{% extends 'templatesproc/base_vendor.html' %}
+{%block title%}Detail Permintaan Penawaran {{post.no_reg}} | PT IGLAS (Persero){%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block extra_navigation%}
+	<div class="breadcrumb_divider"></div><a href="/bid_inbox/">Request Quotation Inbox</a> 
+	<div class="breadcrumb_divider"></div> <a class="current">{{post.no_reg}}</a>
+	
+{%endblock%}
+    {% block content %}
+		<article class="module width_full">
+		<header><h3 class="tabs_involved">{{post.no_reg}}</h3></header>
+		<div class="isi_post">
+            <font color="blue">
+                Sent date:
+                <time datetime="{{post.proc_add_date|date:"c"}}">
+                {{post.br_sent_date}}
+                </time>
+			</font>
+			<p>
+				<hr size="1">
+				Detail atau pesan permintaan penawaran:
+				<br>{{post.br_detail|safe}}
+				<br>
+				{% if post.bid_value == None or post.bid_value == "" %}
+					<font color="red">Anda belum memasukkan nilai penawaran</font>
+				{%endif%}
+				{% if post.bid_value != None%}
+					Penawaran Anda : Rp {{post.bid_value}},-
+				{%endif%}
+				<br>
+				Pesan Anda : "{{post.br_message|safe}}"
+				<hr size="1">
+			</p>
+			{% if post.status == "Penawaran" %}
+				<font color="blue">Update Nilai Penawaran atau Pesan Anda,</font>
+				<br><br>
+				<form action="/post_bidding/{{post.id}}" class="post_filter" method="post">{% csrf_token %}
+					<input type="text" value="Nilai Penawaran (Rp)" width="10px" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;" name="val">
+					<input type="text" value="Pesan" width="10px" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;" name="msg">
+					<input type="submit" value="Go" class="alt_btn"/>
+				</form>
+			{%endif%}
+			<br>
+			Tanggal kadaluarsa permintaan penawaran: <font color="red">{{post.br_end_date|date}}</font> | Pukul: <font color="red">{{post.br_end_date|time}} WIB</font>
+			<br>
+			<a href="/print_rq/{{post.id}}" target="blank"><img src="/media/static/staticproc/images/print.png" width="2%"> Cetak</a>
+			<br><br>
+		</div>
+		</article>
+		<article class="module width_full">
+			<header><h3 class="tabs_involved">Item Barang/Jasa meliputi (Total ada {{jml}}):</h3> </header>
+			<div class="tab_container">
+				<div id="tab1" class="tab_content">
+				<table class="tablesorter" cellspacing="0" width="100%"> 
+					<thead> 
+						<th width="5%">No.</th>
+						<th width="40%">Nama Barang</th>
+						<th width="20%">Jenis Barang</th>
+						<th width="20%">Satuan</th>
+						<th width="15%">Jumlah</th>
+					</thead>
+					{% for i in item %}
+					<tr>
+						{% if i.data_purchase_request != None %}
+							<td>{{forloop.counter}}</td>
+							<td>{{i.data_purchase_request.request_goods_name}}</td>
+							<td>{{i.data_purchase_request.goods_type_id}}</td>
+							<td>{{i.data_purchase_request.unit_of_measure_id}}</td>
+							<td>{{i.data_purchase_request.request_amount}}</td>
+						{% endif %}
+						{% if i.data_rush_order != None %}
+							<td>{{forloop.counter}}</td>
+							<td>{{i.data_rush_order.ro_goods_name}}</td>
+							<td>{{i.data_rush_order.goods_type_id}}</td>
+							<td>{{i.data_rush_order.unit_of_measure_id}}</td>
+							<td>{{i.data_rush_order.ro_amount}}</td>
+						{% endif %}
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</article>
+    {% endblock %}

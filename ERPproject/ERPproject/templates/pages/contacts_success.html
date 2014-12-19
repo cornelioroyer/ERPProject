@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block primary %}
+    <!-- START MAP -->
+    <div id="map">
+        <iframe width="100%" height="330px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                src="https://maps.google.com/maps?q=-7.188495,112.654386&amp;num=1&amp;t=h&amp;ie=UTF8&amp;z=14&amp;ll=-7.188878,112.654409&amp;output=embed"></iframe>
+        <br/>
+        <small><a
+                href="https://maps.google.com/maps?q=-7.188495,112.654386&amp;num=1&amp;t=h&amp;ie=UTF8&amp;z=14&amp;ll=-7.188878,112.654409&amp;source=embed"
+                style="color:#0000FF;text-align:left">Lihat Peta Lebih Besar</a></small>
+        <div id="map-handler" class="container">
+            <a href="#">[x] Close</a>
+        </div>
+    </div>
+    <script type='text/javascript'>
+        var l10n_handler = {"map_close": "[x] Close", "map_open": "[x] Open"};
+    </script>
+    <!-- END MAP --><!-- START PAGE META -->
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Kontak</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">About</a> &gt;
+                <a class="no-link current" href="#">Contact</a>
+            </p><hr>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block sidebar %}
+   {% include "includes/sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="page type-page status-publish hentry group">
+        <h3>Kontak Kami</h3>
+
+        <h5>Terima kasih atas kritik, saran dan pesan anda. semoga bisa membangun kami menjadi lebih baik lagi dalam melayani customer.</h5>
+
+        <p>anda akan dibawa ke halaman utama dalam waktu 5 detik.</p>
+
+    </div>
+{% endblock %}
+{% block extrastyle %}
+    <script type="text/javascript">
+        setTimeout(function () {
+            window.location.href = "/";
+        }, 5000);
+    </script>
+{% endblock %}

@@ -1,0 +1,184 @@
+__author__ = 'FARID ILHAM Al-Q'
+
+from django.contrib import admin
+from django import forms
+from suit.widgets import EnclosedInput
+from Apps.Distribution.master_sales.models import *
+from suit.widgets import AutosizedTextarea, SuitSplitDateTimeWidget
+from django.db.models import Q
+from django.utils.translation import ugettext as _
+from library.const.order import READONLY_FISCAL, READONLY_PERIOD
+
+class PaymentAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description', 'period']
+    list_filter = ['name', 'period']
+    search_fields = ['name', 'description', 'period']
+
+    def suit_cell_attributes(self, obj, column):
+        if column == 'period':
+            return {'class': 'text-center'}
+
+admin.site.register(PaymentTerm, PaymentAdmin)
+
+from django.contrib.admin.widgets import AdminFileWidget
+from django.utils.safestring import mark_safe
+
+
+class BankImage(AdminFileWidget):
+    def render(self, name, value, attrs=None):
+        output = []
+        if value and getattr(value, "url", None):
+            image_url = value.url
+            file_name=str(value)
+            output.append(u' <a href="%s" target="_blank"><img width="200px" height="150px" src="%s" alt="%s" /></a> %s ' % \
+                (image_url, image_url, file_name, _(' ')))
+        output.append(super(AdminFileWidget, self).render(name, value, attrs))
+        return mark_safe(u''.join(output))
+
+
+class BankAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description', 'display_image']
+    search_fields = ['name', 'description']
+
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name == 'logo':
+            request = kwargs.pop("request", None)
+            kwargs['widget'] = BankImage
+            return db_field.formfield(**kwargs)
+        return super(BankAdmin,self).formfield_for_dbfield(db_field, **kwargs)
+
+    def suit_cell_attributes(self, obj, column):
+        if column == 'display_image':
+            return {'class': 'text-center'}
+admin.site.register(Bank, BankAdmin)
+
+
+class ShippingAdmin(admin.ModelAdmin):
+    list_display = ['name', 'info']
+    list_filter = ['name']
+    search_fields = ['name', 'info']
+admin.site.register(ShippingMethods, ShippingAdmin)
+
+
+class FormCall(forms.ModelForm):
+
+    class Meta:
+        model = LogCall
+        widgets = {'summary': AutosizedTextarea(attrs={'rows': '3'}),
+                   'date': SuitSplitDateTimeWidget}
+
+
+class LoggedCallAdmin(admin.ModelAdmin):
+    list_display = ['customer', 'cust_name', 'no_phone', 'date', 'summary', 'status']
+    search_fields = ['customer', 'summary']
+    list_filter = ['date']
+    form = FormCall
+
+    fieldsets = [(None, {
+        'fields': ['customer', 'duration', 'category', 'priority', 'summary', 'status', 'date',]
+    })]
+
+    def suit_cell_attributes(self, obj, column):
+        if column == 'date':
+            return {'class': 'text-center'}
+        elif column == 'status':
+            return {'class': 'text-center'}
+
+    def queryset(self, request):
+        if request.user.is_staff:
+            return LogCall.objects.filter(status=1)
+        return LogCall.objects.filter(status=1)
+
+admin.site.register(LogCall, LoggedCallAdmin)
+
+
+class ScheduleFormCall(forms.ModelForm):
+
+    class Meta:
+        widgets = {'summary': AutosizedTextarea(attrs={'rows': '3'}),
+                   'date': SuitSplitDateTimeWidget}
+
+
+class ScheduledCallAdmin(admin.ModelAdmin):
+    list_display = ['customer', 'cust_name', 'no_phone', 'date', 'summary', 'status']
+    search_fields = ['customer', 'summary']
+    list_filter = ['date']
+    form = ScheduleFormCall
+
+    fieldsets = [(None, {
+        'fields': ['customer', 'duration', 'category', 'priority', 'summary', 'status', 'date']
+    })]
+
+    def suit_cell_attributes(self, obj, column):
+        if column == 'date':
+            return {'class': 'text-center'}
+        elif column == 'status':
+            return {'class': 'text-center'}
+
+    def queryset(self, request):
+        if request.user.is_staff:
+            return LogCall.objects.filter(Q(status=2) | Q(status=3))
+        return LogCall.objects.filter(Q(status=2) | Q(status=3))
+
+admin.site.register(ScheduledCall, ScheduledCallAdmin)
+
+from Apps.Distribution.master_sales.models import StaffPerson
+from django.contrib.auth.admin import CustomStaffAdmin
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserChangeForm
+
+class StaffAdmin(admin.ModelAdmin):
+    list_display = ['user', 'employee', 'department', 'section']
+    raw_id_fields = ['user']
+    list_filter = ['user', 'employee']
+    search_fields = ['user', 'employee']
+
+admin.site.register(StaffPerson, StaffAdmin)
+
+
+class InlineStaff(admin.StackedInline):
+    model = StaffPerson
+    extra = 1
+    verbose_name_plural = 'Data Staff'
+    verbose_name = 'Staff '
+    max_num = 1
+
+
+class CustomStaffForm(UserChangeForm):
+    class Meta:
+        widgets = {
+            'last_login': SuitSplitDateTimeWidget,
+            'date_joined': SuitSplitDateTimeWidget,
+        }
+
+
+class UserStaff(User):
+    class Meta:
+        proxy = True
+        verbose_name_plural = 'Akun Staff'
+        verbose_name = 'Akun Staff'
+        ordering = ["id"]
+
+    def save(self, force_insert=True, force_update=True, using=None, update_fields=None):
+        self.is_staff = True
+        super(UserStaff, self).save()
+
+
+class UserStaffAdmin(CustomStaffAdmin):
+    list_display = ('username', 'email', 'date_joined', 'is_active', 'is_staff', )
+    list_filter = ('is_active', 'is_staff', 'date_joined', 'last_login')
+    list_editable = ('is_active', 'is_staff')
+    search_fields = ('username', 'first_name', 'last_name', 'email')
+    form = CustomStaffForm
+
+    def suit_cell_attributes(self, obj, column):
+        if column == 'is_active':
+            return {'class': 'text-center'}
+        elif column == 'is_staff':
+            return {'class': 'text-center'}
+
+    def queryset(self, request):
+        if request.user.is_staff:
+            return UserStaff.objects.filter(Q(is_staff=True))
+
+admin.site.register(UserStaff, UserStaffAdmin)

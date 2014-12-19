@@ -1,0 +1,75 @@
+{% extends 'templatesproc/base_vendor.html' %}
+{%block title%}Daftar Semua Pelelangan | PT IGLAS (Persero){%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block extra_navigation%}
+	<div class="breadcrumb_divider"></div> <a class="current">List Procurement</a>
+{%endblock%}
+    {% block content %}
+	<article class="module width_full">
+		<header><h3 class="tabs_involved">List Semua Procurement (Total ada {{n}})</h3> </header>
+		
+
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+			<form action="/list_proc/2" class="post_filter" method="post">{% csrf_token %}
+				<input type="text" value="Keyword" width="10px" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;" name="keyword">
+				<select name="com_class">
+					<option>Klasifikasi -</option>
+					{% for cs in c%}
+						<option>{{cs.classification_detail}}</option>
+					{%endfor%}
+				</select>
+				<select name="com_fields">
+					<option>Bidang -</option>
+					{% for fs in f%}
+						<option>{{fs.fields_detail}}</option>
+					{%endfor%}
+				</select>
+				<select name="com_sub">
+					<option>Sub Bidang -</option>
+					{% for ss in s%}
+						<option>{{ss.sub_fields_detail}}</option>
+					{%endfor%}
+				</select>
+				<input type="submit" value="Go" class="alt_btn"/>
+			</form>
+			{%if enter == True %}
+				<br>
+				<font color="#2081da"><b>---->Keyword "{{key}}" , Klasifikasi "{{k}}", Bidang "{{b}}", Sub Bidang "{{sb}}"</b></font>
+			{%endif%}
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+    				<th>Judul</th> 
+    				<th>Dibuat tgl</th> 
+    				<th>Pendaftaran sampai</th>
+					<th>Pemenang</th>
+				</tr> 
+			</thead> 
+			<tbody> 
+				{% for post in postx %}
+				<tr> 
+    				<td><a href="/post_detail/{{post.slug}}/">{{post.title}}</a></td> 
+    				<td><time datetime="{{post.proc_add_date|date:"c"}}">
+						{{post.proc_add_date|date}}
+						</time></td> 
+    				<td>{{post.end_enlisting|date}}</td>
+					<td>{{post.winner_m}}</td>
+				</tr> 
+				{% endfor %}
+			<tbody>
+			</table>
+		</div>
+		<p align="center">
+		Pages: 
+		{% for num in postx.paginator.page_range %}
+		  {% ifequal num postx.number %}
+			<span class="current"><font color="red"><b>{{ num }}</b></font></span>
+		  {% else %}
+			<a href="?page={{ num }}"> {{ num }}</a>
+		  {% endifequal %} 
+		{% endfor %}
+		</p>
+		</div>
+	</article>
+    {% endblock %}

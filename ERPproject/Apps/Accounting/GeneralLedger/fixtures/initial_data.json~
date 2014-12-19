@@ -1,0 +1,519 @@
+[
+    {
+        "model": "GeneralLedger.Ms_Journal",
+        "pk": 1,
+        "fields": {
+            "Code": "PENJUALAN",
+            "Journal_Name": "Jurnal Penjualan",
+            "Type": 1
+        }
+    },{
+        "model": "GeneralLedger.Ms_Journal",
+        "pk": 2,
+        "fields": {
+            "Code": "BELANJA",
+            "Journal_Name": "Jurnal Belanja",
+            "Type": 2
+        }
+    },{
+        "model": "GeneralLedger.Ms_Journal",
+        "pk": 3,
+        "fields": {
+            "Code": "PENGGAJIAN",
+            "Journal_Name": "Jurnal Penggajian",
+            "Type": 3
+        }
+    },{
+        "model": "GeneralLedger.Ms_Journal",
+        "pk": 4,
+        "fields": {
+            "Code": "KAS",
+            "Journal_Name": "Jurnal Kas",
+            "Type": 4
+        }
+    },{
+        "model": "GeneralLedger.Ms_Journal",
+        "pk": 5,
+        "fields": {
+            "Code": "BANK",
+            "Journal_Name": "Jurnal Bank",
+            "Type": 5
+        }
+    },{
+        "model": "GeneralLedger.Ms_Journal",
+        "pk": 6,
+        "fields": {
+            "Code": "PENYUSUTAN",
+            "Journal_Name": "Jurnal Pennyusutan",
+            "Type": 6
+        }
+    },{
+        "model": "GeneralLedger.Ms_Journal",
+        "pk": 7,
+        "fields": {
+            "Code": "PENYESUAIAN",
+            "Journal_Name": "Jurnal Penyesuaian",
+            "Type": 7
+        }
+    },{
+        "model": "GeneralLedger.Ms_Journal",
+        "pk": 8,
+        "fields": {
+            "Code": "PEMINDAHAN",
+            "Journal_Name": "Jurnal Pemindahan",
+            "Type": 8
+        }
+    },{
+        "model": "GeneralLedger.Ms_Journal",
+        "pk": 9,
+        "fields": {
+            "Code": "PERMODALAN",
+            "Journal_Name": "Jurnal Permodalan",
+            "Type": 9
+        }
+    },{
+        "model": "GeneralLedger.Ms_Journal",
+        "pk": 10,
+        "fields": {
+            "Code": "UMUM",
+            "Journal_Name": "Jurnal Umum",
+            "Type": 10
+        }
+    },{
+        "model": "GeneralLedger.Ms_Fiscal_Years",
+        "pk": 1,
+        "fields": {
+            "Code": "2012",
+            "Fiscal_Year": "2012",
+            "Start_Fiscal": "2012-01-01",
+            "End_Fiscal": "2012-12-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Fiscal_Years",
+        "pk": 2,
+        "fields": {
+            "Code": "2013",
+            "Fiscal_Year": "2013",
+            "Start_Fiscal": "2013-01-01",
+            "End_Fiscal": "2013-12-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Fiscal_Years",
+        "pk": 3,
+        "fields": {
+            "Code": "2014",
+            "Fiscal_Year": "2014",
+            "Start_Fiscal": "2014-01-01",
+            "End_Fiscal": "2014-12-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Fiscal_Years",
+        "pk": 4,
+        "fields": {
+            "Code": "2015",
+            "Fiscal_Year": "2015",
+            "Start_Fiscal": "2015-01-01",
+            "End_Fiscal": "2015-12-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 1,
+        "fields": {
+            "Code": "2012/01",
+            "Period_Name": "Januari 2012",
+            "Fiscal_Year": 1,
+            "Start_Period": "2012-01-01",
+            "End_Period": "2012-01-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 2,
+        "fields": {
+            "Code": "2012/02",
+            "Period_Name": "Februari 2012",
+            "Fiscal_Year": 1,
+            "Start_Period": "2012-02-01",
+            "End_Period": "2012-02-29",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 3,
+        "fields": {
+            "Code": "2012/03",
+            "Period_Name": "Maret 2012",
+            "Fiscal_Year": 1,
+            "Start_Period": "2012-03-01",
+            "End_Period": "2012-03-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 4,
+        "fields": {
+            "Code": "2012/04",
+            "Period_Name": "April 2012",
+            "Fiscal_Year": 1,
+            "Start_Period": "2012-04-01",
+            "End_Period": "2012-04-30",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 5,
+        "fields": {
+            "Code": "2012/05",
+            "Period_Name": "Mei 2012",
+            "Fiscal_Year": 1,
+            "Start_Period": "2012-05-01",
+            "End_Period": "2012-05-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 6,
+        "fields": {
+            "Code": "2012/06",
+            "Period_Name": "Juni 2012",
+            "Fiscal_Year": 1,
+            "Start_Period": "2012-06-01",
+            "End_Period": "2012-06-30",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 7,
+        "fields": {
+            "Code": "2012/07",
+            "Period_Name": "Juli 2012",
+            "Fiscal_Year": 1,
+            "Start_Period": "2012-07-01",
+            "End_Period": "2012-07-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 8,
+        "fields": {
+            "Code": "2012/08",
+            "Period_Name": "Agustus 2012",
+            "Fiscal_Year": 1,
+            "Start_Period": "2012-08-01",
+            "End_Period": "2012-08-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 9,
+        "fields": {
+            "Code": "2012/09",
+            "Period_Name": "September 2012",
+            "Fiscal_Year": 1,
+            "Start_Period": "2012-09-01",
+            "End_Period": "2012-09-30",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 10,
+        "fields": {
+            "Code": "2012/10",
+            "Period_Name": "Oktober 2012",
+            "Fiscal_Year": 1,
+            "Start_Period": "2012-10-01",
+            "End_Period": "2012-10-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 11,
+        "fields": {
+            "Code": "2012/11",
+            "Period_Name": "November 2012",
+            "Fiscal_Year": 1,
+            "Start_Period": "2012-11-01",
+            "End_Period": "2012-11-30",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 12,
+        "fields": {
+            "Code": "2012/12",
+            "Period_Name": "Desember 2012",
+            "Fiscal_Year": 1,
+            "Start_Period": "2012-12-01",
+            "End_Period": "2012-12-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 13,
+        "fields": {
+            "Code": "2013/01",
+            "Period_Name": "Januari 2013",
+            "Fiscal_Year": 2,
+            "Start_Period": "2013-12-01",
+            "End_Period": "2013-12-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 14,
+        "fields": {
+            "Code": "2013/02",
+            "Period_Name": "Februari 2013",
+            "Fiscal_Year": 2,
+            "Start_Period": "2013-02-01",
+            "End_Period": "2013-02-28",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 15,
+        "fields": {
+            "Code": "2013/03",
+            "Period_Name": "Maret 2013",
+            "Fiscal_Year": 2,
+            "Start_Period": "2013-03-01",
+            "End_Period": "2013-03-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 16,
+        "fields": {
+            "Code": "2013/04",
+            "Period_Name": "April 2013",
+            "Fiscal_Year": 2,
+            "Start_Period": "2013-04-01",
+            "End_Period": "2013-04-30",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 17,
+        "fields": {
+            "Code": "2013/05",
+            "Period_Name": "Mei 2013",
+            "Fiscal_Year": 2,
+            "Start_Period": "2013-05-01",
+            "End_Period": "2013-05-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 18,
+        "fields": {
+            "Code": "2013/06",
+            "Period_Name": "Juni 2013",
+            "Fiscal_Year": 2,
+            "Start_Period": "2013-06-01",
+            "End_Period": "2013-06-30",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 19,
+        "fields": {
+            "Code": "2013/07",
+            "Period_Name": "Juli 2013",
+            "Fiscal_Year": 2,
+            "Start_Period": "2013-07-01",
+            "End_Period": "2013-07-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 20,
+        "fields": {
+            "Code": "2013/08",
+            "Period_Name": "Agustus 2013",
+            "Fiscal_Year": 2,
+            "Start_Period": "2013-08-01",
+            "End_Period": "2013-08-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 21,
+        "fields": {
+            "Code": "2013/09",
+            "Period_Name": "September 2013",
+            "Fiscal_Year": 2,
+            "Start_Period": "2013-09-01",
+            "End_Period": "2013-09-30",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 22,
+        "fields": {
+            "Code": "2013/10",
+            "Period_Name": "Oktober 2013",
+            "Fiscal_Year": 2,
+            "Start_Period": "2013-10-01",
+            "End_Period": "2013-10-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 23,
+        "fields": {
+            "Code": "2013/11",
+            "Period_Name": "November 2013",
+            "Fiscal_Year": 2,
+            "Start_Period": "2013-11-01",
+            "End_Period": "2013-11-30",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 24,
+        "fields": {
+            "Code": "2013/12",
+            "Period_Name": "Desember 2013",
+            "Fiscal_Year": 2,
+            "Start_Period": "2013-12-01",
+            "End_Period": "2013-12-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 25,
+        "fields": {
+            "Code": "2014/01",
+            "Period_Name": "Januari 2014",
+            "Fiscal_Year": 3,
+            "Start_Period": "2014-12-01",
+            "End_Period": "2014-12-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 26,
+        "fields": {
+            "Code": "2014/02",
+            "Period_Name": "Februari 2014",
+            "Fiscal_Year": 3,
+            "Start_Period": "2014-02-01",
+            "End_Period": "2014-02-28",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 27,
+        "fields": {
+            "Code": "2014/03",
+            "Period_Name": "Maret 2014",
+            "Fiscal_Year": 3,
+            "Start_Period": "2014-03-01",
+            "End_Period": "2014-03-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 28,
+        "fields": {
+            "Code": "2014/04",
+            "Period_Name": "April 2014",
+            "Fiscal_Year": 3,
+            "Start_Period": "2014-04-01",
+            "End_Period": "2014-04-30",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 29,
+        "fields": {
+            "Code": "2014/05",
+            "Period_Name": "Mei 2014",
+            "Fiscal_Year": 3,
+            "Start_Period": "2014-05-01",
+            "End_Period": "2014-05-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 30,
+        "fields": {
+            "Code": "2014/06",
+            "Period_Name": "Juni 2014",
+            "Fiscal_Year": 3,
+            "Start_Period": "2014-06-01",
+            "End_Period": "2014-06-30",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 31,
+        "fields": {
+            "Code": "2014/07",
+            "Period_Name": "Juli 2014",
+            "Fiscal_Year": 3,
+            "Start_Period": "2014-07-01",
+            "End_Period": "2014-07-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 32,
+        "fields": {
+            "Code": "2014/08",
+            "Period_Name": "Agustus 2014",
+            "Fiscal_Year": 3,
+            "Start_Period": "2014-08-01",
+            "End_Period": "2014-08-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 33,
+        "fields": {
+            "Code": "2014/09",
+            "Period_Name": "September 2014",
+            "Fiscal_Year": 3,
+            "Start_Period": "2014-09-01",
+            "End_Period": "2014-09-30",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 34,
+        "fields": {
+            "Code": "2014/10",
+            "Period_Name": "Oktober 2014",
+            "Fiscal_Year": 3,
+            "Start_Period": "2014-10-01",
+            "End_Period": "2014-10-31",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 35,
+        "fields": {
+            "Code": "2014/11",
+            "Period_Name": "November 2014",
+            "Fiscal_Year": 3,
+            "Start_Period": "2014-11-01",
+            "End_Period": "2014-11-30",
+            "Status": 0
+        }
+    },{
+        "model": "GeneralLedger.Ms_Period",
+        "pk": 36,
+        "fields": {
+            "Code": "2014/12",
+            "Period_Name": "Desember 2014",
+            "Fiscal_Year": 3,
+            "Start_Period": "2014-12-01",
+            "End_Period": "2014-12-31",
+            "Status": 0
+        }
+    }
+]

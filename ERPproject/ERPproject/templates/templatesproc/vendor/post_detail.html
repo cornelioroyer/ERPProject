@@ -1,0 +1,48 @@
+{% extends 'templatesproc/base_vendor.html' %}
+{%block title%}{{post.title}} | PT IGLAS (Persero){%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block extra_navigation%}
+	<div class="breadcrumb_divider"></div><a href="/list_proc/1">List Procurement</a> 
+	<div class="breadcrumb_divider"></div> <a class="current">{{post.title}}</a>
+	
+{%endblock%}
+    {% block content %}
+		<article class="module width_full">
+		<header><h3 class="tabs_involved">{{post.title}}</h3></header>
+		<div class="isi_post">
+            <font color="blue">
+                Posted on
+                <time datetime="{{post.proc_add_date|date:"c"}}">
+                {{post.proc_add_date|date}}
+                </time>
+			</font>
+			<p>
+				<hr size="1">
+				Klasifikasi: {{post.classification}} <br>
+				Bidang: {{post.fields}} <br>
+				Sub Bidang: {{post.sub_fields}} <br><br>
+				Detail pengadaan:
+				<br>{{post.detail_proc|safe}}
+				Anggaran: Rp {{post.proc_budget}}
+				<br>Tgl Habis Pendaftaran: {{post.end_enlisting|date}} | Pukul: {{post.end_enlisting|time}} WIB
+				<br>Tgl Habis Penawaran: {{post.end_bid|date}} | Pukul: {{post.end_bid|time}} WIB
+				<br>Tgl Habis Masa Sanggah: {{post.end_expostulating|date}} | Pukul: {{post.end_expostulating|time}} WIB
+				<hr size="1">
+			</p>
+			Dalam masa :
+			<font color="green">{{post.status}}
+			<br>
+			{% if blhAkses == True and post.status == "Pendaftaran" and ikut == False%}
+				<a href="/add_tender/{{post.slug}}">Daftar ke Pelelangan ini</a>
+			{%endif%}
+			{% if ikut == True%}
+				Anda telah mendaftar ke dalam pelelangan ini.
+				<a href="/bidding/{{post.slug}}">Klik untuk masuk lebih lanjut</a>
+			{%endif%}
+			{% if post.status == "Selesai" %}
+				<br><font color="red">{{post.winner_m}}</font>
+			{%endif%}
+			<br><br>
+		</div>
+		<article>
+    {% endblock %}

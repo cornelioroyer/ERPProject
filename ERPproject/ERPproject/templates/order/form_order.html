@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block primary %}
+
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Form Order</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">Form Order</a>
+            </p>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block sidebar %}
+        {% include "includes/sidebaraccounts.html" %}
+{% endblock %}
+
+{% block content %}
+
+    <div class="page type-page status-publish hentry group">
+        <div class="tabs-container">
+            <ul class="tabs">
+                <li><h4><a href="#tab1" title="Update"><i class="icon-group" style="color:#000;font-size:20px;width:20px;height:20px"></i> Form Order</a></h4></li>
+            </ul>
+            <div class="border-box group">
+                <div id="tab1" class="panel group">
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="Order">
+                    </form>
+                </div></div></div></div>
+{% endblock %}

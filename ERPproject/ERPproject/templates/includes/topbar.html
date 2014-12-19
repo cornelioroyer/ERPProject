@@ -1,0 +1,22 @@
+<div id="topbar">
+    <div class="container">
+        <div class="row">
+            <div id="last-tweets-3" class="widget-first span6 widget last-tweets">
+                <p>.::{% if user.is_authenticated %}{% if user.is_staff %}
+                    <a href="{% url THEME_ADMIN_URL|default:"admin:index" %}" target="_blank">DASHBOARD</a> |
+                {% endif %} <a href="/accounts/logout">LOGOUT ({{ user|upper }})</a> |
+                    <a href="/accounts/profile">MY ACCOUNT</a> | {% else %} Selamat Datang Tamu !!
+                    &nbsp &nbsp |<a href="/accounts/login"> LOGIN</a> |
+                    <a href="/accounts/register"> REGISTER</a> |{% endif %}
+                    <a href="/procurement"> e-PROCUREMENT</a> | <a href="/lelangaset"> LELANG ASET</a> ::.</p>
+
+            </div>
+            <div class=" widget-last span6 widget widget_text">
+                <div class="textwidget">
+                    <div class="button-search"></div>
+                    <input type="text" name="search" placeholder="Search" value=""/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

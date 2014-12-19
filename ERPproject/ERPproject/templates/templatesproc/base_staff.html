@@ -1,0 +1,66 @@
+	<!DOCTYPE html>
+    <html>
+	<link rel="stylesheet" type="text/css" href="/media/static/staticproc/style.css">
+	<link href="/media/static/staticproc/tabcontent/template6/tabcontent.css" rel="stylesheet" type="text/css" />
+	<script src="/media/static/staticproc/tabcontent/tabcontent.js" type="text/javascript"></script> 
+	
+	{%block extra%}{%endblock%}
+        <head>
+            <meta charset="utf-8">
+            <title>
+                {% block title %}{% endblock %}
+            </title>
+            </head>
+        <body>
+				<div class="header">
+					<div class="dropdown1">
+						<ul id="menu" width="100px">
+							<li><a href="#">*Navigation*
+								<ul class="submenu">
+									<li><a href="/procurement">Home</a></li>
+									<li><a href="/proc/logout">Logout</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="dropdown2">
+						<ul id="menu" width="100px">
+							<li><a href="#">*   Permintaan   *</a>
+								{%block menu%}{%endblock%}
+								<ul class="submenu">
+									<li><a href="/internal/">Front Page</a></li>
+									<li><a href="/rkb_page/">Buat RKB</a></li>
+									<li><a href="/pp_page/">Permintaan Pembelian</a></li>
+									<li><a href="/ro_page/">Rush Order</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="dropdown2">
+						<ul id="menu" width="100px">
+							<li><a href="#">*Perencanaan*</a>
+								<ul class="submenu">
+									<li><a href="/hist_rkb/1">History RKB</a></li>
+									<li><a href="/hist_pp/1">History PP</a></li>
+									<li><a href="/hist_ro/1">History RO</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="aplikasi">
+					Welcome <font color="blue">{%block uname%}{%endblock%}</font>
+					</div>
+					<div class="txt-head">
+						<font size="4px" color="white">e-Procurement PT. IGLAS</font>
+					</div>
+					<div class="icon">
+						<img src="/media/static/staticproc/images/iglas2.png" width="50px" height="50px">
+					</div>
+				</div>
+				<div class="content_panel">
+					{% block content %}
+					{% endblock %}
+				</div>
+				{% include 'templatesproc/internal/footer.html' %}
+        </body>
+    </html>

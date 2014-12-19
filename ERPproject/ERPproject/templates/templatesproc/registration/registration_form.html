@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Register</title>
+        <style type="text/css">
+            th {
+                text-align: right;
+                padding-right: 10px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <h2>Register</h2>
+        <form action="/accounts/register/" method="POST">{% csrf_token %}
+            <table>
+            {{form}}
+            </table>
+        <p>
+            <input style="margin-left: 320px;" type="submit" value="Submit" />
+        </p>
+        </form>
+    </body>
+</html>

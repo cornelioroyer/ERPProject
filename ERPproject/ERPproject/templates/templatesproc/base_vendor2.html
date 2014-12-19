@@ -1,0 +1,45 @@
+	<!DOCTYPE html>
+    <html>
+	<link rel="stylesheet" type="text/css" href="/media/static/staticproc/style.css">
+	<link href="/media/static/staticproc/tabcontent/template6/tabcontent.css" rel="stylesheet" type="text/css" />
+	<script src="/media/static/staticproc/tabcontent/tabcontent.js" type="text/javascript"></script> 
+	{%block extrahead%}{%endblock%}
+        <head>
+            <meta charset="utf-8">
+            <title>
+                {% block title %}{% endblock %}
+            </title>
+				<div class="header">
+					<div class="dropdown1">
+						<ul id="menu" width="100px">
+							<li><a href="#">*Navigation*
+								<ul class="submenu">
+									<li><a href="/procurement">Home</a></li>
+									<li><a href="/proc/logout">Logout</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="dropdown2">
+						<ul id="menu" >
+							<li><a href="#">*All Application*</a>
+								<ul class="submenu">
+									<li><a href="/vendor_page/">Profile</a></li>
+									<li><a href="#">Procurement List</a></li>
+									<li><a href="#">Registered Procurement</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="aplikasi">
+					Welcome <font color="blue">{%block uname%}{%endblock%}</font> to Control Panel
+					</div>
+				</div>
+            </head>
+        <body>
+            <div class="content_panel">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </body>
+    </html>

@@ -1,0 +1,25 @@
+{% extends 'templateasset/base.html' %}
+{% block title %} PT.IGLAS(Persero){% endblock %}
+{%block uname%}<p>Welcome, <strong>{{c.username}}</strong></p>{%endblock%}
+
+{% block content %}
+    <div class="page type-page status-publish hentry group">
+    <div class="tabs-container">
+        
+    <div class="border-box group">
+            <div id="tab1" class="panel group">
+        <div align="center"><h3>PROFIL PELANGGGAN</h3></div>
+        <p>&nbsp;</p>
+			<table>
+				<tr><td>Nama</td><td>:</td><td>{{c.customer_name}}</td></tr>
+				<tr><td>Alamat</td><td>:</td><td>{{c.customer_address}}</td></tr>
+				<tr><td>Kota</td><td>:</td><td>{{c.customer_city}}</td></tr>
+				<tr><td>Telp</td><td>:</td><td>{{c.customer_phone}}</td></tr>
+				<tr><td>Fax</td><td>:</td><td>{{c.fax}}</td></tr>
+				<tr><td>email</td><td>:</td><td>{{c.email}}</td>
+			</table>
+        <form enctype="multipart/form-data" method="post" action="">
+            
+        </form>
+    </div></div></div></div><br><br>
+{% endblock %}

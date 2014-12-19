@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+
+{% block primary %}
+
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Profil</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">Update Profil</a>
+            </p>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block sidebar %}
+        {% include "includes/sidebaraccounts.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="page type-page status-publish hentry group">
+    <div class="tabs-container">
+        <ul class="tabs">
+            <li><h4><a href="#tab1" title="Update"><i class="icon-group" style="color:#000;font-size:20px;width:20px;height:20px"></i> Update Profil</a></h4></li>
+           </ul>
+    <div class="border-box group">
+            <div id="tab1" class="panel group">
+        <div align="center"><h3>UPDATE PROFIL PERUSAHAAN</h3></div>
+        <p>&nbsp;</p>
+
+        <p><font color="red"> {% if form.errors %}
+
+            Please correct the errors below: {{ form.non_field_errors }}
+
+        {% endif %}</font></p>
+
+        <form enctype="multipart/form-data" method="post" action="">
+            {% csrf_token %}
+
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="10" rowspan="4">
+                      &nbsp;
+                    </td>
+                    <td width="100">Nama Pegawai</td>
+                    <td width="15">:</td>
+                    <td width="300">{{ form.name }}</td>
+                </tr>
+                <tr>
+                    <td>Jabatan</td>
+                    <td width="15">:</td>
+                    <td>{{ form.position }}</td>
+                </tr>
+                <tr>
+                    <td>Nama Perusahaan</td>
+                    <td width="15">:</td>
+                    <td>{{ form.corporate }}</td>
+                </tr>
+                <tr>
+
+                    <td>Kegiatan Bisnis</td>
+                    <td width="15">:</td>
+                    <td>{{ form.business }}</td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Bidang Industri</td>
+                    <td width="15">:</td>
+                    <td>{{ form.industry }}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>N.P.W.P Perusahaan</td>
+                    <td width="15">:</td>
+                    <td>{{ form.npwp }}</td>
+
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Telepon</td>
+                    <td width="15">:</td>
+                    <td>{{ form.phone }}</td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Email</td>
+                    <td width="15">:</td>
+                    <td>{{ form.email }}</td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Website</td>
+                    <td width="15">:</td>
+                    <td>{{ form.website }}</td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Fax</td>
+                    <td width="15">:</td>
+                    <td>{{ form.fax }}</td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Alamat</td>
+                    <td width="15">:</td>
+                    <td height="30">{{ form.address }}</td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Kota/Kabupaten</td>
+                    <td width="15">:</td>
+                    <td>{{ form.city }}</td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Provinsi</td>
+                    <td width="15">:</td>
+                    <td>{{ form.province }}</td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Kode Pos</td>
+                    <td width="15">:</td>
+                    <td>{{ form.zip_code }}</td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Negara</td>
+                    <td width="15">:</td>
+                    <td>{{ form.country }}</td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Logo Perusahaan</td>
+                    <td width="15">:</td>
+                    <td>{{ form.logo }}</td>
+
+                </tr>
+
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Nama Bank</td>
+                    <td width="15">:</td>
+                    <td>{{ form.bank_name }}</td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Cabang</td>
+                    <td width="15">:</td>
+                    <td>{{ form.bank_branch }}</td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>Atas Nama</td>
+                    <td width="15">:</td>
+                    <td>{{ form.bank_account_name }}</td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>No. Rekening</td>
+                    <td width="15">:</td>
+                    <td>{{ form.rek }}</td>
+
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td></td>
+                    <td width="15"></td>
+                    <td><input type="submit" value="Save Changes"></td>
+
+                </tr>
+            </table>
+        </form>
+    </div></div></div></div><br><br>
+{% endblock %}

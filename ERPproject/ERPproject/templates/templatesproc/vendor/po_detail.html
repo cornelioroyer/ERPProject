@@ -1,0 +1,86 @@
+{% extends 'templatesproc/base_vendor.html' %}
+{%block title%}Detail Purchase Order {{post.no_reg}} | PT IGLAS (Persero){%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block extra_navigation%}
+	<div class="breadcrumb_divider"></div><a href="/po_inbox/">Purchase Order Inbox</a> 
+	<div class="breadcrumb_divider"></div> <a class="current">{{post.no_reg}}</a>
+	
+{%endblock%}
+    {% block content %}
+		<article class="module width_full">
+		<header><h3 class="tabs_involved">{{post.no_reg}}</h3></header>
+		<div class="isi_post">
+            <font color="blue">
+                Sent date:
+                <time datetime="{{post.proc_add_date|date:"c"}}">
+                {{post.po_date_sent}}
+                </time>
+			</font>
+			<p>
+				<hr size="1">
+				Detail Purchase Order:
+				<br>{{post.po_agreement|safe}}
+				<br>
+				Rencana Tanggal Penerimaan Barang: {{post.goods_receipt_plan}}
+				<br>Barang dikirim ke: {{post.ship_to|safe}}
+				<br>NB: Denda yang akan diberlakukan yaitu per {{post.set_of_delay}}, dengan presentase {{post.delay_fine}}%.
+			</p>
+			<a href="/print_po/{{post.id}}" target="blank"><img src="/media/static/staticproc/images/print.png" width="2%"/> Print</a>
+			<br>
+			<br>
+		</div>
+		</article>
+		<article class="module width_full">
+			<header><h3 class="tabs_involved">Item Barang/Jasa meliputi (Total ada {{jml}}):</h3> </header>
+			<div class="tab_container">
+				<div id="tab1" class="tab_content">
+				<table class="tablesorter" cellspacing="0" width="100%"> 
+					<thead> 
+						<th width="5%">No.</th>
+						<th width="15%">Nama Barang</th>
+						<th width="10%">Jenis Barang</th>
+						<th width="10%">Satuan</th>
+						<th width="10%">Jumlah Brg</th>
+						<th width="12%">Harga Satuan</th>
+						<th width="3%"></td>
+						<th width="12%" align="right">Harga Total Rupiah</font></td>
+						<th width="3%"></td>
+						<th width="20%" align="right">Total Harga</font></td>
+					</thead>
+					{% for i in item_pp %}
+					<tr>
+						<td>{{forloop.counter}}</td>
+						<td>{{i.request_goods_name}}</td>
+						<td>{{i.goods_type_id}}</td>
+						<td>{{i.unit_of_measure_id}}</td>
+						<td>{{i.request_amount}}</td>
+						<td>{{i.currency_id}} {{i.request_unit_price}}</td>
+						<td>Rp</td>
+						<td align="right">{{i.request_total_rupiah}}</td>
+						<td>Rp</td>
+						<td align="right">{{i.request_total_price}}</td>
+					</tr>
+					{% endfor %}
+					{% for i in item_ro %}
+					<tr>
+						<td>{{forloop.counter}}</td>
+						<td>{{i.ro_goods_name}}</td>
+						<td>{{i.goods_type_id}}</td>
+						<td>{{i.unit_of_measure_id}}</td>
+						<td>{{i.ro_amount}}</td>
+						<td>{{i.currency_id}} {{i.ro_unit_price}}</td>
+						<td>Rp</td>
+						<td align="right">{{i.ro_total_rupiah}}</td>
+						<td>Rp</td>
+						<td align="right">{{i.ro_total_price}}</td>
+					</tr>
+					{% endfor %}
+					<tr>
+						<td colspan="8" align="right"><b>Total:</b></td>
+						<td>Rp</td>
+						<td align="right">{{total}}</td>
+					</tr>
+				</table>
+			</div>
+		</article>
+    {% endblock %}

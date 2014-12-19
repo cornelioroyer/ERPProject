@@ -1,0 +1,103 @@
+{% extends 'templatesproc/base_staff.html' %}
+{%block title%}Home Staff | IGLAS Procurement{%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block content%}
+	<h3>Rencana Kebutuhan Barang</h3>
+	{% if ada == 0 %}
+	<p>
+	Departemen {{d.department}} belum membuat RKB untuk bulan depan.<br>
+	Paling lambat pengumpulan RKB adalah tanggal 20 bulan ini,<br>
+	<a href="/make_rkb/">Klik disini untuk buat RKB</a>
+	</p>
+	{% endif %}
+	{% if ada > 0 %}
+	{%for hs in h %}
+	<table width=100%>
+		<tr>
+			<td width="50%"><b>Tahun Anggaran: {{intyear}}</b></td>
+			<td width="50%"><b>Jumlah Anggaran: Rp {{b_value}}</b></td>
+		</tr>
+		<tr>
+			<td width="50%"><b>Terbagi: {{b_devided}} periode</b></td>
+			<td width="50%">Anggaran per Periode: Rp {{bagi}}</td>
+		</tr>
+		<tr>
+			<td width="50%"></td><td width="50%">Periode ke-{{periode}} , {{n}}</td>
+		</tr>
+		<tr>
+			<td width="50%"><b>No. Reg. : {{hs.no_reg}}</b></td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="3" bgcolor="#f9f9f9">
+		
+		<tr valign="top">
+			<td width="3%"><font color="#0c03c2">No.</font></td>
+			<td width="14%"><font color="#0c03c2">Nama Barang</font></td>
+			<td width="10%"><font color="#0c03c2">Jenis Barang</font></td>
+			<td width="8%"><font color="#0c03c2">Satuan</font></td>
+			<td width="10%"><font color="#0c03c2">Rencana Pakai</font></td>
+			<td width="8%"><font color="#0c03c2">Rencana Beli</font></td>
+			<td width="11%"><font color="#0c03c2">Harga Satuan</font></td>
+			<td width="2%"></td>
+			<td width="11%" align="right"><font color="#0c03c2">Jumlah</font></td>
+			<td width="2%"></td>
+			<td width="11%" align="right"><font color="#0c03c2">Total Harga</font></td>
+			{% if hs.lock == False %}
+			<td width="10%" align="center"><font color="#0c03c2">Aksi</font></td>
+			{%endif%}
+		</tr>
+		<tr>
+			<td colspan="12"><hr size="1"></td>
+		</tr>
+		{% if ada_data == 0 %}
+		<tr>
+			<td colspan="12" align="center" bgcolor="white"><font color="red">Belum ada item yang di masukkan</font></td>
+		</tr>
+		{%endif%}
+		{%if ada_data > 0 %}
+		{% for datas in data %}
+		{% with n=1 %}
+		<tr cellpadding="3" valign="top">
+			<td>{{forloop.counter}}</td>
+			<td>{{datas.plan_goods_name}}</td>
+			<td>{{datas.goods_type_id}}</td>
+			<td>{{datas.unit_of_measure_id}}</td>
+			<td>{{datas.plan_used}}</td>
+			<td>{{datas.plan_amount}}</td>
+			<td>{{datas.currency_id}} {{datas.plan_unit_price}}</td>
+			<td>Rp</td>
+			<td align="right">{{datas.plan_total_rupiah}}</td>
+			<td>Rp</td>
+			<td align="right">{{datas.plan_total_price}}</td>
+			{% if hs.lock == False %}
+			<td align="center"><font size="2"><a href="{{datas.url_edit}}">Edit</a> | <a href="{{datas.url_delete}}">Hapus</a></font></td>
+			{% endif %}
+		</tr>
+		{%endwith%}
+		{%endfor%}
+		<tr>
+			<td colspan="12"><hr size="1"></td>
+		</tr>
+		<tr>
+			<td colspan="9" align="right"><b>Total:</b></td>
+			<td>Rp</td>
+			<td align="right">{{total}}</td>
+		</tr>
+		{%endif%}
+		
+	</table>
+	<table width="100%">
+		<tr>
+			<td colspan="12">Total pengeluaran periode ini <b>Rp {{total_all}}</b>, Sisa Anggaran pada periode ini adalah <b>Rp {{sisa}}</b>, 
+				<br>sisa tidak boleh minus, jika minus maka Pengendali tidak akan menyetujui RKB yang telah dibuat.</td>
+		</tr>
+		<tr>
+			{% if hs.lock == False %}
+			<td width="15%"><a href="/add_rkb/">Tambah Item</a></td>
+			<td width="85%"><a href="{{hs.get_absolute_url}}">Lock RKB</a></td>
+			{%endif%}
+		</tr>
+	</table>
+	{%endfor%}
+	{% endif %}
+{%endblock%}

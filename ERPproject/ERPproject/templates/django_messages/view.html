@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load i18n %} 
+{% load url from future %}
+
+{% block content %}
+    <div class="page type-page status-publish hentry group">
+    <div class="tabs-container">
+    <ul class="tabs">
+        <li><h4><a href="#tab1" title="Kotak Masuk"><i class="icon-group" style="color:#000;font-size:20px;width:20px;height:20px"></i> Kotak Masuk</a></h4></li>
+    </ul>
+
+    <div class="border-box group">
+    <div id="tab1" class="panel group">
+<h2>{% trans "Detail Pesan" %}</h2>
+<p class="message-headers">
+    <p><strong>{% trans "Judul"|upper %}</strong> : {{ message.subject }}</p>
+    <p><strong>{% trans "Pengirim"|upper %}</strong> : {{ message.sender }}</p>
+    <p><strong>{% trans "Terkirim"|upper %} </strong>: {{ message.sent_at|date:_("DATETIME_FORMAT")}}</p>
+    <p><strong>{% trans "Penerima"|upper %}</strong> : {{ message.recipient }}</p>
+    <p><strong>{% trans "Isi"|upper %}</strong> :<br>{{ message.body|linebreaksbr }}</p><br /><br />
+
+{% ifequal message.recipient.pk user.pk %}
+<p><button class="btn-ultraviolet-rays-1"><a href="{% url 'messages_reply' message.id %}">{% trans "Reply" %}</a></button>
+{% endifequal %}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btn-hem-5"><a href="{% url 'messages_delete' message.id %}">{% trans "Delete" %}</a></button> </p></div></div></div></div>
+{% endblock %}
+{% block primary %}
+
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Lihat Pesan</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">Lihat Pesan</a>
+            </p>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block sidebar %}
+        {% include "includes/sidebaraccounts.html" %}
+{% endblock %}

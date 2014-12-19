@@ -1,0 +1,10 @@
+{% extends 'templateasset/base.html' %}
+{%block title%}IGLAS Procurement{%endblock%}
+{%block meta%}<meta http-equiv="refresh" content="3;/{{destination}}/">{%endblock%}
+{% block content %}
+<p align="center">
+	<font color="blue">{{msg1}}</font>
+
+	<br><a href="/{{destination}}" style="text-decoration:none">< -- Klik untuk kembali ke Control Panel jika tidak otomatis redirect</a>
+<p>
+{% endblock %}

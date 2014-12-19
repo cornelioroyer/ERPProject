@@ -1,0 +1,25 @@
+{% extends 'templateasset/base.html' %}
+{% block title %} PT.IGLAS(Persero){% endblock %}
+{%block uname%}<p>Welcome, <strong>{{c.username}}</strong></p>{%endblock%}
+
+{% block content %}
+	{% for p in detail%}
+		<div>
+			<h2>
+				<a href="/detail/{{p.slug}}">
+					{{p.title}}
+				</a>		
+			</h2>
+			<p>{{p.detail_sale|safe}}</p>
+			<p>
+				Posted On
+				<time datetime="{{p.sale_add_date|date:'c'}}">
+				{{p.sale_add_date|date}}
+				</time>
+			<p>
+			
+			</p>
+			</p>
+		</div>
+	{% endfor %}
+{% endblock %}

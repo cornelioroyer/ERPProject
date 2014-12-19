@@ -1,0 +1,19 @@
+{% extends 'templatesproc/base_vendor.html'%}
+{%block title%}Edit Informasi | IGLAS Procurement{%endblock%}
+{%block content%}
+	<article class="module width_3_quarter">
+	<header><h3 class="tabs_involved">Masukkan Data {{data}}</h3></header>
+	<form method="post" action="edit_vendor">
+		{% csrf_token %}
+		<table>
+			<tr>{{form}}
+			</tr>
+			<tr>
+				<td></td>
+				<td align="right"><input type="submit" value="Submit" class="alt_btn"/></td>
+			</tr>
+		</table>
+	</form>
+	<br>
+	</article>
+{%endblock%}

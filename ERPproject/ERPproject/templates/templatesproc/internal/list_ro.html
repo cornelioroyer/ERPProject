@@ -1,0 +1,139 @@
+{% extends 'templatesproc/base_staff.html' %}
+{%block extra%}
+	<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+{%endblock%}
+{%block title%}History {{hist_of}} | IGLAS Procurement{%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block content%}
+	<h3>Riwayat {{hist_of}}</h3>
+	<ul class="tabs" data-persist="true"> 
+		<li class="selected"><a href="#view7">Per Bulan</a></li> 
+		<li><a href="#view8">Semua Item</a></li> 
+		<li><a href="#view9">Frequent Order</a></li> 
+	</ul>
+	<div class="tabcontents">
+		<div id="view7">
+			<form action="/hist_ro/2" class="post_filter" method="post">{% csrf_token %}
+				<input type="text" value="Pencarian Kode Bulan" width="10px" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;" name="keyword">
+				Sort by Kode Bulan: <select name="com_sort">
+					<option value="Terbaru">Terbaru</option>
+					<option value="Terlama">Terlama</option>
+				</select>
+				<input type="submit" value="Go" class="alt_btn"/>
+			</form>
+			{%if enter == True %}
+				<br>
+				<font color="#2081da"><b>---->Keyword "{{key}}" , Sort By "{{s}}"</b></font>
+			{%endif%}
+			<br>
+			<table width="100%" align="left" cellspacing="0" cellpadding="5">
+				<tr align="left" bgcolor="silver">
+					<th width="30%">No Reg</th>
+					<th width="30%">Kode Bulan</th>
+					<th width="30%">Tanggal Buat</th>
+				</tr>
+				{%for rkbs in rkb%}
+				{% if forloop.counter|divisibleby:2 == 0 %}<tr align="left" bgcolor="white">{%endif%}
+				{% if forloop.counter|divisibleby:2 != 0 %}<tr align="left" bgcolor="#d3d5ff">{%endif%}
+					<td><a href="/detail_ro/{{rkbs.id}}" title="Detail RO {{rkbs.no_reg}}">{{rkbs.no_reg}}</a></td>
+					<td>{{rkbs.ro_month}}</td>
+					<td>{{rkbs.ro_add_date}}</td>
+				</tr>
+				{%endfor%}
+			</table>
+			<p align="center">
+				Pages: 
+				{% for num in rkb.paginator.page_range %}
+				  {% ifequal num rkb.number %}
+					<span class="current"><font color="red"><b>{{ num }}</b></font></span>
+				  {% else %}
+					<a href="?page={{ num }}"> {{ num }}</a>
+				  {% endifequal %} 
+				{% endfor %}
+			</p>
+		</div>
+		
+		<div id="view8">
+			<form action="/hist_ro/3" class="post_filter" method="post">{% csrf_token %}
+				<input type="text" value="Pencarian nama barang" width="10px" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;" name="keyword2">
+				Sort by Tanggal Buat: <select name="com_sort2">
+					<option value="Terbaru">Terbaru</option>
+					<option value="Terlama">Terlama</option>
+				</select>
+				<input type="submit" value="Go" class="alt_btn"/>
+			</form>
+			{%if enter2 == True %}
+				<br>
+				<font color="#2081da"><b>---->Keyword "{{key2}}" , Sort By "{{s2}}"</b></font>
+			{%endif%}
+			<br>
+			<table width="100%" align="left" cellspacing="0" cellpadding="5">
+				<tr align="left" bgcolor="silver">
+					<th width="3%">No.</th>
+					<th width="14%">Nama Barang</th>
+					<th width="10%">Jenis Barang</th>
+					<th width="8%">Satuan</th>
+					<th width="10%">Rencana Pakai</th>
+					<th width="8%">Rencana Beli</th>
+					<th width="11%">Harga Satuan</th>
+					<th width="2%"></th>
+					<th width="11%" align="right">Jumlah</font></th>
+					<th width="2%"></th>
+					<th width="11%" align="right">Total Harga</th>
+				</tr>
+				{%for ds in dr%}
+				{% if forloop.counter|divisibleby:2 == 0 %}<tr align="left" bgcolor="white">{%endif%}
+				{% if forloop.counter|divisibleby:2 != 0 %}<tr align="left" bgcolor="#d3d5ff">{%endif%}
+					<td>{{forloop.counter}}</td>
+					<td>{{ds.ro_goods_name}}</td>
+					<td>{{ds.goods_type_id}}</td>
+					<td>{{ds.unit_of_measure_id}}</td>
+					<td>{{ds.ro_used}}</td>
+					<td>{{ds.ro_amount}}</td>
+					<td>{{ds.currency_id}} {{ds.ro_unit_price}}</td>
+					<td>Rp</td>
+					<td align="right">{{ds.ro_total_rupiah}}</td>
+					<td>Rp</td>
+					<td align="right">{{ds.ro_total_price}}</td>
+				</tr>
+				{%endfor%}
+			</table>
+			<p align="center">
+				Pages: 
+				{% for numbs in dr.paginator.page_range %}
+				  {% ifequal numbs dr.number %}
+					<span class="current"><font color="red"><b>{{ numbs }}</b></font></span>
+				  {% else %}
+					<a href="?page_all={{ numbs }}"> {{ numbs }}</a>
+				  {% endifequal %} 
+				{% endfor %}
+			</p>
+		</div>
+		
+		<div id="view9">
+			<table width="100%" align="left" cellspacing="0" cellpadding="5">
+				<tr align="left" bgcolor="silver">
+					<th>No.</th>
+					<th>Nama Barang dan Jumlah Permintaan</th>
+				</tr>
+				{%for n in lst %}
+				{% if forloop.counter|divisibleby:2 == 0 %}<tr align="left" bgcolor="white">{%endif%}
+				{% if forloop.counter|divisibleby:2 != 0 %}<tr align="left" bgcolor="#d3d5ff">{%endif%}
+					<td>{{forloop.counter}}</td>
+					<td>{{n}}</td>
+				</tr>
+				{%endfor%}
+			</table>
+			<p align="center">
+				Pages: 
+				{% for numbs in lst.paginator.page_range %}
+				  {% ifequal numbs lst.number %}
+					<span class="current"><font color="red"><b>{{ numbs }}</b></font></span>
+				  {% else %}
+					<a href="?page_count={{ numbs }}"> {{ numbs }}</a>
+				  {% endifequal %} 
+				{% endfor %}
+			</p>
+		</div>
+	</div>
+{%endblock%}

@@ -1,0 +1,12 @@
+<table id="result_totals">
+    <tfoot>
+        <tr>
+            {% for total in totals_row %}<td>{{ total }}</td>{% endfor %}
+        </tr>
+    </tfoot>
+</table>
+
+<script type="text/javascript">
+    django.jQuery('#result_list').append(django.jQuery('#result_totals tfoot')[0])
+    django.jQuery('#result_totals').remove()
+</script>

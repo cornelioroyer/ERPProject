@@ -1,0 +1,13 @@
+{% extends 'templateasset/base.html' %}
+{% block title %} PT.IGLAS(Persero){% endblock %}
+{%block uname%}<p>Welcome, <strong>{{c.username}}</strong></p>{%endblock%}
+
+{% block content %}
+	<h1 align="center">Pengumuman Pelelangan</h1>
+	<table border="2">
+		<tr><td><b>No</b></td><td><b>Judul</b></td><td><b>Harga Awal</b></td><td><b>Batas Pendaftaran</b></td><td><b>Tgl Batas Penawaran</b></td><td><b>Pemenang Lelang</b></td><td><b>Penawaran</b></td>
+		{% for p in p%}
+		<tr><td>{{p.sale}}</td><td><b>{{p.title}}</b></td><td>{{p.total_price}}</td><td>{{p.end_enlisting}} </td><td>{{p.end_bid}}</td><td>{{p.winner}}</td><td>{{p.harga_deal}}</td>
+		{%endfor%}
+	</table>
+{% endblock %}

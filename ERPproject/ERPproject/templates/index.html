@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block slider %}
+    {% include "includes/slider.html" %}
+{% endblock %}
+{% block column %}
+    {% include "includes/column.html" %}
+{% endblock %}
+{% block text %}
+    <div class="row box-title">
+        <div class="span5">
+            <div class="border-line"></div>
+        </div>
+
+        <h3 class="spanu">PT. IGLAS (Persero)</h3>
+
+        <div class="span5">
+            <div class="border-line"></div>
+        </div>
+    </div>
+{% endblock %}
+{% block content %}
+    <div id="post-480" class="post-480 page type-page status-publish hentry group">
+        <div class="tabs-container">
+            <ul class="tabs">
+                <li><h4><a href="#tab1" title="welcome"><i class="icon-home" style="color:#000;font-size:20px;width:20px;height:20px"></i> PT. IGLAS Persero</a></h4></li>
+            </ul>
+            <div class="border-box group">
+                <div id="tab1" class="panel group">
+        <h2>{{ flatpage.title|safe }}</h2>
+
+        <p>
+            {{ flatpage.content|safe }}
+        </p>
+    </div></div></div></div>
+    <!-- START COMMENTS -->
+    <div id="comments"></div>
+    <!-- END COMMENTS -->
+{% endblock %}
+{% block sidebar %}
+    {% include "includes/sidebar.html" %}
+{% endblock %}

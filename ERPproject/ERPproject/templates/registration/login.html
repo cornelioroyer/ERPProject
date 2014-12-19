@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block primary %}
+
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Login</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">Accounts</a> &gt;
+                <a class="no-link current" href="#">Login</a>
+            </p><hr>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block sidebar %}
+{% include "includes/sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="page type-page status-publish hentry group">
+        <div class="tabs-container">
+            <ul class="tabs">
+                <li><h4><a href="#tab1" title="Change_Username"><i class="icon-group" style="color:#000;font-size:20px;width:20px;height:20px"></i> Login</a></h4></li>
+            </ul>
+
+            <div class="border-box group">
+                <div id="tab1" class="panel group">
+                    <div align="center">
+        <form method='post' action=''>{% csrf_token %}
+            <h3>Form Login</h3><br>
+            <table>
+                {{ form }}
+                <tr><td></td><td>Belum punya akun? <a href="/accounts/register">Silahkan daftar disini</a></td></tr>
+                <tr><td></td><td>Lupa password anda <a href="/accounts/password_reset">Klik Disini</a></td></tr>
+                <tr><td></td><td><input type='submit' value="Login" /></td></tr>
+            </table>
+        </form><br>
+    </div></div></div></div></div>
+{% endblock %}

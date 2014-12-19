@@ -1,0 +1,11 @@
+{% extends 'templatesproc/base.html' %}
+{%block title%}Login Required | IGLAS Procurement{%endblock%}
+{%block meta%}<meta http-equiv="refresh" content="3;/procurement">{%endblock%}
+{% block content %}
+<p align="center">
+	<font color="red">Login Required !! {{level}}</font>
+	<br>Anda harus login terlebih dahulu untuk dapat melakukan proses ini
+	<br><a href="/proc/login" style="text-decoration:none">< -- Klik untuk Login jika tidak otomatis redirect</a>
+	<br><a href="/procurement" style="text-decoration:none">< -- Klik untuk kembali ke Home</a>
+<p>
+{% endblock %}

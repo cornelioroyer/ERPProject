@@ -1,0 +1,47 @@
+{% extends 'templatesproc/base_vendor.html' %}
+{%block title%}Purchase Order Inbox | PT. IGLAS (Persero){%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block extra_navigation%}
+	<div class="breadcrumb_divider"></div> <a class="current">Purchase Order Inbox</a>
+{%endblock%}
+    {% block content %}
+	<article class="module width_full">
+		<header><h3 class="tabs_involved">Purchase Order (Total ada {{jml}})</h3> </header>
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+			<table class="tablesorter" cellspacing="0" width="100%"> 
+			<thead> 
+				<tr> 
+    				<th width="30%">No REG.</th> 
+    				<th width="20%">Dikirim Tanggal</th> 
+    				<th width="25%">Denda Keterlambatan (%)</th>
+					<th width="25%">Tgl Rencana Penerimaan Barang</th>
+				</tr> 
+			</thead> 
+			<tbody> 
+				{% for post in postx %}
+				<tr> 
+    				<td><a href="/po_detail/{{post.id}}/">{{post.no_reg}}</a></td> 
+    				<td><time datetime="{{post.br_sent_date|date:"c"}}">
+						{{post.po_date_sent}}
+						</time></td> 
+    				<td>{{post.delay_fine}}% ({{post.set_of_delay.set_of_delay_detail}})</td>
+					<td>{{post.goods_receipt_plan}}</td>
+				</tr> 
+				{% endfor %}
+			<tbody>
+			</table>
+		</div>
+		<p align="center">
+		Pages: 
+		{% for num in postx.paginator.page_range %}
+		  {% ifequal num postx.number %}
+			<span class="current"><font color="red"><b>{{ num }}</b></font></span>
+		  {% else %}
+			<a href="?page={{ num }}"> {{ num }}</a>
+		  {% endifequal %} 
+		{% endfor %}
+		</p>
+		</div>
+	</article>
+    {% endblock %}

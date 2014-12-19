@@ -1,0 +1,10 @@
+{% extends 'templateasset/base.html' %}
+{%block title%}Bidding| IGLAS Procurement{%endblock%}
+{%block meta%}<meta http-equiv="refresh" content="3;/{{destination}}/">{%endblock%}
+{% block content %}
+<p align="center">
+	<h2><font color="red">Bidding Success{{level}}</font></h2>
+	<br><h1>Pesan Anda Telah Terkirim </h1>
+	<br><a href="/{{destination}}/" style="text-decoration:none">< -- Klik untuk kembali ke Sebelumnya</a></br>
+<p>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_list %}
+{% load url from future %}
+{% load admin_urls %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}" />
+  {{ media.css }}
+{% endblock %}
+
+{% block extrahead %}
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/dist/jspdf.debug.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/basic.js"></script>
+{{ block.super }}
+{{ media.js }}
+{% if action_form %}{% if actions_on_top or actions_on_bottom %}
+<script type="text/javascript">
+(function($) {
+    $(document).ready(function($) {
+        $("tr input.action-select").actions();
+    });
+})(django.jQuery);
+</script>
+{% endif %}{% endif %}
+{% endblock %}
+{% block content %}
+	<div class="to_pdf">
+		<div style="border-width: 2px; width:50%;border-style: dotted; padding: 1em; font-size:120%;line-height: 1.5em;" id="printdiv">
+			<img src="/media/static/staticproc/images/header_pdf.png" width="100%">
+			<h2 align="center"><u>DATA BARANG</u></h2>
+			<h5 align="center">NO: {{ data.number }}</h5>
+
+
+			<span style="font-size:90%">
+				<div>Tgl Pesanan: {{data.id}}</div>
+				<div>Dikirim ke: {{data.commodity_name}}</div>
+
+				<table cellspacing="0" width="100%">
+					<tr>
+						<td width="5%">No.</td>
+						<td width="15%">Nama Barang</td>
+						<td width="12%">Warna</td>
+						<td width="11%">Kuantum</td>
+						<td width="16%">Harga Satuan</td>
+						<td width="20%" align="right">Jumlah Harga</td>
+					</tr>
+					<tr>
+						<td>1</td>
+						<td>{{item.name}}</td>
+						<td>{{item.color}}</td>
+						<td>{{item.quantity}}</td>
+						<td>{{item.price}}</td>
+						<td align="right"> {{ item.amount }}</td>
+					</tr>
+
+				</table>
+                <p><strong>Jumlah ({{ data.currency.code|upper }}): </strong>{{ data.display_price }}</p>
+				<p><strong>Pajak ({{ data.tax }})</strong> : {{ data.total_tax }}</p>
+                <p><strong>Total ({{ data.currency.code|upper }}): </strong>{{ data.display_price }}</p>
+			</span>
+		</div>
+	</div>
+	<button onclick="javascript:printreport()" class="button"><img src="/media/static/staticproc/images/doc.png" width="15%"> Download</button>
+{% endblock %}

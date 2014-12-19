@@ -1,0 +1,82 @@
+<div id="sidebar-about" class="span3 sidebar group">
+    <div id="text-2" class="widget-2 widget-last widget widget_text">
+        <h3>My Accounts</h3>
+
+        <div class="sidebar-nav">
+            <ul>
+
+                {% if user.is_staff %}
+                <li>
+                    <i class="icon-caret-right" style="color:#000;font-size:12px;width:12px;height:12px"></i>
+                    <span><a href="{% url THEME_ADMIN_URL|default:"admin:index" %}" target="_blank">Dashboard</a></span>
+                </li>
+                {% endif %}
+
+                {% if not user.is_staff %}
+                <li>
+                    <i class="icon-caret-right" style="color:#000;font-size:12px;width:12px;height:12px"></i>
+                    <span><a href="/accounts/profile">My Profil</a></span>
+                </li>
+                <li>
+                    <i class="icon-caret-right" style="color:#000;font-size:12px;width:12px;height:12px"></i>
+                    <span><a href="/accounts/update">Update Profil</a></span>
+                </li>
+                <li>
+                    <i class="icon-caret-right" style="color:#000;font-size:12px;width:12px;height:12px"></i>
+                    <span><a href="/accounts/username_change">Ganti Username</a></span>
+                </li>
+                <li>
+                    <i class="icon-caret-right" style="color:#000;font-size:12px;width:12px;height:12px"></i>
+                    <span><a href="/accounts/password_change">Ganti Password</a> </span>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+    <div id="text-2" class="widget-2 widget-last widget widget_text">
+        <h3>Messages</h3>
+
+        <div class="sidebar-nav">
+            <ul>
+                <li>
+                    <i class="icon-caret-right" style="color:#000;font-size:12px;width:12px;height:12px"></i>
+                    <span><a href="{% url 'messages_compose' %}">Pesan Baru</a></span>
+                </li>
+                <li>
+                    <i class="icon-caret-right" style="color:#000;font-size:12px;width:12px;height:12px"></i>
+                    <span><a href="{% url 'messages_inbox' %}">Kotak Masuk</a></span>
+                </li>
+                <li>
+                    <i class="icon-caret-right" style="color:#000;font-size:12px;width:12px;height:12px"></i>
+                    <span><a href="{% url 'messages_outbox' %}">Pesan Terkirim</a></span>
+                </li>
+                <li>
+                    <i class="icon-caret-right" style="color:#000;font-size:12px;width:12px;height:12px"></i>
+                    <span><a href="{% url 'messages_trash' %}">Sampah</a></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="text-2" class="widget-2 widget-last widget widget_text">
+        {% if  not user.is_staff %}
+        <h3>My Order</h3>
+
+        <div class="sidebar-nav">
+            <ul>
+
+                <li>
+                    <i class="icon-caret-right" style="color:#000;font-size:12px;width:12px;height:12px"></i>
+                    <span><a href="/customer/order">New Order</a></span>
+                </li>
+                <li>
+                    <i class="icon-caret-right" style="color:#000;font-size:12px;width:12px;height:12px"></i>
+                    <span><a href="/customer/history">History Order</a></span>
+                </li>
+
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,40 @@
+	{% extends 'templatesproc/base.html' %}
+    
+    {% block title %}{{post.title}}{% endblock %}
+	{% block menu %}
+	{% include 'templatesproc/vendor/menu.html' %}
+	{% endblock%}
+    {% block content %}
+    <article>
+		<a href="/procurement/"><div class="home"></div></a>
+        <header>
+			<br><br>
+            <h1> {{post.title}} </h1>
+            <p><font color="blue">
+                Posted on
+                <time datetime="{{post.proc_add_date|date:"c"}}">
+                {{post.proc_add_date|date}}
+                </time>
+			</font>
+            </p>
+        </header>
+        <p class="detail_proc">
+            <hr size="1">
+			Klasifikasi: {{post.classification}} <br>
+			Bidang: {{post.fields}} <br>
+			Sub Bidang: {{post.sub_fields}} <br><br>
+			Detail pengadaan:
+			<br>{{post.detail_proc|safe}}
+			Tgl Habis Pendaftaran: {{post.end_enlisting|date}} | Pukul: {{post.end_enlisting|time}} WIB
+			<br>Tgl Habis Penawaran: {{post.end_bid|date}} | Pukul: {{post.end_bid|time}} WIB
+			<br>Tgl Habis Masa Sanggah: {{post.end_expostulating|date}} | Pukul: {{post.end_expostulating|time}} WIB
+			<hr size="1">
+        </p>
+		Dalam masa :
+		<font color="green">{{post.status}}
+		{% if post.status == "Selesai" %}
+			<br><font color="blue">{{post.winner_m}}</font>
+		{%endif%}
+		<br>
+    </article>
+    {% endblock %}

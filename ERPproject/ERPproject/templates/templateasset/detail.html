@@ -1,0 +1,58 @@
+{% extends 'templateasset/base.html' %}
+
+{%block uname%}<p>Welcome, <strong>{{c.username}}</strong></p>{%endblock%}
+
+{% block title %}{{post.title}}{% endblock %}
+
+{% block content %}
+<article>
+	<header>
+		<h1> {{post.title}}</h1>
+		<p>
+			Posted On 
+			<time datetime= "{{detail.sale_add_date|date:"c"}}">
+			{{detail.sale_add_date|date}}
+			</time>
+		</p>
+	</header>
+	
+		<p class="detail_sale">
+		
+		<table>
+			<tr><td><b><h1>Title</h1></b></td><td>:</td><td><b><h1>{{detail.title}}</h1></b></td>
+			<tr><td>Harga Awal </td><td>:</td><td> Rp.{{detail.total_price}}-</td>
+			<tr><td>Detail Penjualan</td> <td>:</td><td> {{detail.detail_sale|safe}}</td>
+			<tr><td>Batas Pendaftaran </td><td>: </td><td>{{detail.end_enlisting}}</td>
+			<tr><td>Batas Penawaran </td><td>: </td><td>{{detail.end_bid}}</td>
+			{% if detail.status == 'Pendaftaran' %}
+				{% if ada == False %}
+					<tr><td>Status</td><td> :</td> <td>{{detail.status}} [<a href="/daftarproc/{{detail.slug}}">Daftar Klik disini</a>]</td>
+				{%endif%}
+				{% if ada == True %}
+					<tr><td>Status</td><td> :</td> <td>{{detail.status}} <font color="green">[Anda telah mendaftar]</font></td>
+					<tr><td></td><td></td> <td> >> <a href="/value/{{detail.slug}}/">Klik disini untuk melanjutkan</a></td>
+				{%endif%}
+			{%endif%}
+			{% if detail.status == 'Penawaran Dibuka' %}
+				{% if ada == False %}
+					<tr><td>Status</td><td> :</td> <td><font color="blue">{{detail.status}} </font></td>
+				{%endif%}
+				{% if ada == True %}
+					<tr><td>Status</td><td> :</td> <td><font color="blue">{{detail.status}} [<a href="/value/{{detail.slug}}/"> Klik disini untuk penawaran</a>]</font></td>
+					{{form}}
+				{%endif%}
+			{%endif%}
+			{% if detail.status == 'Penawaran Ditutup' %}
+				<tr><td>Status</td><td> :</td> <td><font color="red">{{detail.status}}</a></td>
+			{%endif%}
+			<tr><td>[<b><a href="/allproc/">Back</a></b>]</td><td></td><td></td>
+		</table>
+		<table>
+			<tr><td><h1>Gambar Asset</h1></td></tr>
+			<tr><td align="center"><img src="/media/{{detail.image}}" width=50% /></td></tr>
+			<tr><td></td></tr>
+		</table>
+		</p>
+		
+</article>
+{% endblock %}

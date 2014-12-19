@@ -1,0 +1,34 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/media/static/jsPDF/examples/css/smoothness/jquery-ui-1.8.17.custom.css">
+	<link rel="stylesheet" type="text/css" href="/media/static/jsPDF/examples/css/main.css">
+
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/dist/jspdf.debug.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/basic.js"></script>
+//**
+	<script>
+		$(function() {
+			$("#accordion-basic, #accordion-text, #accordion-graphic").accordion({
+				autoHeight: false,
+				navigation: true
+			});
+			$( "#tabs" ).tabs();
+			$(".button").button();
+		});
+	</script>
+</head>
+
+<body>
+	<div class="to_pdf">
+		<div style="border-width: 2px; width:50%;border-style: dotted; padding: 1em; font-size:120%;line-height: 1.5em;" id="printsubledgerdiv">
+			<p style="font-size:100%;text-align:center">Purchase Order</p>
+			<span style="font-size:90%">
+			</span>
+		</div>
+	</div>
+	<button onclick="javascript:printsubledger()" class="button"><img src="/media/static/staticproc/images/doc.png" width="15%"> Download</button>
+</body>
+</html>

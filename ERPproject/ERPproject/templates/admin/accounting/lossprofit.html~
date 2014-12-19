@@ -1,0 +1,214 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_list %}
+{% load url from future %}
+{% load admin_urls %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}" />
+  {{ media.css }}
+{% endblock %}
+
+{% block extrahead %}
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/dist/jspdf.debug.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/basic.js"></script>
+{{ block.super }}
+{{ media.js }}
+{% if action_form %}{% if actions_on_top or actions_on_bottom %}
+<script type="text/javascript">
+(function($) {
+    $(document).ready(function($) {
+        $("tr input.action-select").actions();
+    });
+})(django.jQuery);
+</script>
+{% endif %}{% endif %}
+{% endblock %}
+
+{% block bodyclass %}change-list{% endblock %}
+{% block content %}
+
+<style type="text/css">
+    .box{
+        padding: 20px;
+        display: none;
+        margin-top: 20px;
+    }
+    .tahun{}
+    .bulan{}
+</style>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('input[type="radio"]').click(function(){
+            if($(this).attr("value")=="tahun"){
+                $(".box").hide();
+                $(".tahun").show();
+            }
+            if($(this).attr("value")=="bulan"){
+                $(".box").hide();
+                $(".bulan").show();
+            }
+        });
+    });
+</script>
+
+<div id="content-main">
+    <div>
+        <p><b>Pilih Jenis Laporan Yang Akan Dibuat :</b></p>
+        <label><input type="radio" name="colorRadio" value="tahun"> Tahun </label>
+        <label><input type="radio" name="colorRadio" value="bulan"> Bulan </label>
+    </div>
+    <div class="tahun box">
+        <form id="changelist-search" class="form-inline" method="post" action="/admin/accounting/lossprofit/">{% csrf_token %}
+            <div class="search-container"> 
+                <span class="search-filters">
+                    <select class="auto-width search-filter" style="max-width: 200px" data-name="com_fiscal">
+                    	<option data-name="com_fiscal">Pilih Tahun -</option>
+					    {% for cs in fiscal %}
+					        <option data-name="com_fiscal">{{cs.Fiscal_Year}}</option>
+					    {%endfor%}
+                    </select>
+                </span>
+                <input class="btn btn-info" type="submit" value="Laporkan">
+             </div>
+        </form>    
+    </div>
+    <div class="bulan box">
+            <form id="changelist-search" class="form-inline" method="post" action="/admin/accounting/lossprofit/">{% csrf_token %}
+            <div class="search-container"> 
+                <span class="search-filters">
+                    <select class="auto-width search-filter" style="max-width: 200px" data-name="com_period">
+                    	<option data-name="com_period">Pilih Bulan -</option>
+					    {% for cs in period %}
+					        <option data-name="com_period">{{cs.Period_Name}}</option>
+					    {%endfor%}
+                    </select>
+                </span>
+                <input class="btn btn-info" type="submit" value="Laporkan">
+             </div>
+        </form>
+    </div></br>
+	{% if a != '' %}
+	<button onclick="javascript:reportlossprofit()" class="button"><img src="/media/static/staticproc/images/doc.png" width="15%"> Download</button></br>
+	<div style="border-width: 2px; width:90%;border-style: dotted; padding: 1em; font-size:120%;line-height: 1.5em;" id="divlossprofit">       
+        <div class="results">
+            <p style ="text-align:left"><img style="float:left; margin:0 10px 0 0; padding:0;" src="/media/static/images/iglas.jpg" width="5%" alt="logo"/><b>PT. IGLAS Persero (Gresik)</b></p>
+		    <p style="font-size:130%;text-align:center"><b>Laporan Laba/Rugi Tahun {{a}}</b></p>
+
+            <p><b>Pendapatan : </b></p>
+            <table cellspacing="0" width="200%" border="1"id="result_list" class="table table-striped table-bordered table-hover table-condensed">
+                <tr>
+                    <td style ="text-align:center" width="10%"><b>Kode Akun </b></td>
+                    <td style ="text-align:center" width="20%"><b>Nama Akun </b></td>
+                    <td style ="text-align:center" width="15%"><b>Kredit </b></td>
+                    <td style ="text-align:center" width="15%"><b>Debit </b></td>
+                </tr>
+                {% for a in income %}
+                <tr>
+                    <td style ="text-align:center" width="10%">{{ a.Account_Code }}</td>
+                    <td style ="text-align:left" width="20%">{{ a.Account_Name }}</td>
+                    <td style ="text-align:center" width="15%">{{ a.debit }}</td>
+                    <td style ="text-align:center" width="15%">{{ a.credit }}</td>  
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td style ="text-align:center" width="10%"></td>
+                    <td style ="text-align:center" width="20%"><b>Total </b></td>
+                    <td style ="text-align:center" width="15%"><b>{{ debincomefis }} </b></td>
+                    <td style ="text-align:center" width="15%"><b>{{ creincomefis }} </b></td>
+                </tr>
+            </table>
+            <p><b>Beban - Beban : </b></p>       
+            <table cellspacing="0" width="200%" border="1"id="result_list" class="table table-striped table-bordered table-hover table-condensed">
+                <tr>
+                    <td style ="text-align:center" width="10%"><b>Kode Akun </b></td>
+                    <td style ="text-align:center" width="20%"><b>Nama Akun </b></td>
+                    <td style ="text-align:center" width="15%"><b>Debit </b></td>
+                    <td style ="text-align:center" width="15%"><b>Kredit </b></td>
+                </tr>
+                {% for a in expense %}
+                <tr>
+                    <td style ="text-align:center" width="10%">{{ a.Account_Code }}</td>
+                    <td style ="text-align:left" width="20%">{{ a.Account_Name }}</td>
+                    <td style ="text-align:center" width="15%">{{ a.debit }}</td>
+                    <td style ="text-align:center" width="15%">{{ a.credit }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td style ="text-align:center" width="10%"></td>
+                    <td style ="text-align:center" width="20%"><b>Total </b></td>
+                    <td style ="text-align:center" width="15%"><b>{{ debexpensefis }}</b></td>
+                    <td style ="text-align:center" width="15%"><b>{{ creexpensefis }}</b></td>
+                </tr>
+            </table>
+            <p><b>Pendapatan Perusahaan Tahun {{a}} = {{pendapatantahun}}</b></p>
+            <p><b>Beban Perusahaan Tahun {{a}} = {{bebantahun}}</b></p>
+            <p><b>Pendapatan Perusahaan Tahun {{a}} = {{lptahun}}</b></p>
+        </div>
+    </div>
+    {% endif %}
+    
+	{% if b != '' %}
+	<button onclick="javascript:reportlossprofit()" class="button"><img src="/media/static/staticproc/images/doc.png" width="15%"> Download</button></br>
+	<div style="border-width: 2px; width:90%;border-style: dotted; padding: 1em; font-size:120%;line-height: 1.5em;" id="divlossprofit">       
+        <div class="results">
+            <p style ="text-align:left"><img style="float:left; margin:0 10px 0 0; padding:0;" src="/media/static/images/iglas.jpg" width="5%" alt="logo"/><b>PT. IGLAS Persero (Gresik)</b></p>
+		    <p style="font-size:130%;text-align:center"><b>Laporan Laba/Rugi Bulan {{b}}</b></p>
+
+            <p><b>Pendapatan : </b></p>
+            <table cellspacing="0" width="200%" border="1"id="result_list" class="table table-striped table-bordered table-hover table-condensed">
+                <tr>
+                    <td style ="text-align:center" width="10%"><b>Kode Akun </b></td>
+                    <td style ="text-align:center" width="20%"><b>Nama Akun </b></td>
+                    <td style ="text-align:center" width="15%"><b>Debit </b></td>
+                    <td style ="text-align:center" width="15%"><b>Kredit </b></td>
+                </tr>
+                {% for b in income %}
+                <tr>
+                    <td style ="text-align:center" width="10%">{{ b.Account_Code }}</td>
+                    <td style ="text-align:left" width="20%">{{ b.Account_Name }}</td>
+                    <td style ="text-align:center" width="15%">{{ b.debit }}</td>
+                    <td style ="text-align:center" width="15%">{{ b.credit }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td style ="text-align:center" width="10%"></td>
+                    <td style ="text-align:center" width="20%"><b>Total </b></td>
+                    <td style ="text-align:center" width="15%"><b>{{ debincomeper }}</b></td>
+                    <td style ="text-align:center" width="15%"><b>{{ creincomeper }}</b></td>
+                </tr>
+            </table>
+            <p><b>Beban - Beban : </b></p>       
+            <table cellspacing="0" width="200%" border="1"id="result_list" class="table table-striped table-bordered table-hover table-condensed">
+                <tr>
+                    <td style ="text-align:center" width="10%"><b>Kode Akun </b></td>
+                    <td style ="text-align:center" width="20%"><b>Nama Akun </b></td>
+                    <td style ="text-align:center" width="15%"><b>Debit </b></td>
+                    <td style ="text-align:center" width="15%"><b>Kredit </b></td>
+                </tr>
+                {% for b in expense %}
+                <tr>
+                    <td style ="text-align:center" width="10%">{{ b.Account_Code }}</td>
+                    <td style ="text-align:left" width="20%">{{ b.Account_Name }}</td>
+                    <td style ="text-align:center" width="15%">{{ b.debit }}</td>
+                    <td style ="text-align:center" width="15%">{{ b.credit }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td style ="text-align:center" width="10%"></td>
+                    <td style ="text-align:center" width="20%"><b>Total </b></td>
+                    <td style ="text-align:center" width="15%"><b>{{ debexpenseper }}</b></td>
+                    <td style ="text-align:center" width="15%"><b>{{ creexpenseper }}</b></td>
+                </tr>
+            </table>
+            <p><b>Pendapatan Perusahaan bulan {{b}} = {{pendapatanbulan}}</b></p>
+            <p><b>Beban Perusahaan bulan {{b}} = {{bebanbulan}}</b></p>
+            <p><b>Pendapatan Perusahaan bulan {{b}} = {{lpbulan}}</b></p>
+        </div>
+    </div>
+	{% endif %}
+</div>
+{% endblock %}

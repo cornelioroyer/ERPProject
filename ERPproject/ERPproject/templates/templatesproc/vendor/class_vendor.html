@@ -1,0 +1,42 @@
+{% extends 'templatesproc/base_vendor.html' %}
+{%block title%}Klasifikasi Vendor Vendor{%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block extra_navigation%}
+	<div class="breadcrumb_divider"></div> <a class="current">Klasifikasi Vendor</a>
+{%endblock%}
+{%block content%}
+	<article class="module width_full">
+		<header><h3 class="tabs_involved">Klasifikasi Vendor</h3>
+		</header>
+		<div class="isi_post">
+			<b>Klasifikasi Rekanan</b><br><br>
+			<table width="100%">
+			{%if ada4 == 0%}
+			<tr>
+				<td colspan="2"><font color="red">Belum ada klasifikasi yang dimasukkan</font></td>
+			</tr>
+			{%endif%}
+			{%if ada4 > 0%}
+			<tr>
+				<th bgcolor="#fdc89a">Klasifikasi</th>
+				<th bgcolor="#fdc89a">Bidang</th>
+				<th bgcolor="#fdc89a">Sub Bidang</th>
+				<th bgcolor="#fdc89a" width="10%">Aksi</th>
+			</tr>
+			{%for classs in clas%}
+			<tr>
+				<td bgcolor="#fde7d4" align="center">{{classs.classification_id}}</td>
+				<td bgcolor="#fde7d4" align="center">{{classs.fields_id}}</td>
+				<td bgcolor="#fde7d4" align="center">{{classs.sub_fields_id}}</td>
+				<td bgcolor="#fde7d4" align="center"><a href="{{classs.get_absolute_url}}" title="Hapus"><img src="/media/static/staticproc/images/error.png" width="18%"/></a></td>
+			</tr>
+			{%endfor%}
+			{%endif%}
+			<tr>
+				<td colspan="3"><a href="/add_class/"><img src="/media/static/staticproc/images/pencil32.png" width="2%"/>Masukkan data klasifikasi</a></td>
+			</tr>
+			</table>
+			<hr size="1" width="600px" align="left">
+		</div>
+	</article>
+{%endblock%}

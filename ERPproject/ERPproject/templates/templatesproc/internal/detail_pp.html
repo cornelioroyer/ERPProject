@@ -1,0 +1,61 @@
+{% extends 'templatesproc/base_staff.html' %}
+{%block title%}Detail PP {{hs.no_reg}}| IGLAS Procurement{%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block content%}
+	<a href="/hist_rkb/1"> < History PP</a> < PP {{hs.no_reg}}
+	<h3>Permintaan Pembelian</h3>
+	<table width=100%>
+		<tr>
+			<td width="50%"><b>No. Reg. : {{hs.no_reg}}</b></td>
+		</tr>
+		<tr>
+			<td width="50%"><b>Kode Bulan: {{hs.request_month}}</b></td>
+		</tr>
+		<tr>
+			<td width="50%"><b>Tgl Buat : {{hs.request_add_date}}</b></td>
+		</tr>
+	</table>
+	<table width="100%" cellpadding="3" bgcolor="#f9f9f9">
+		
+		<tr valign="top">
+			<td width="3%"><font color="#0c03c2">No.</font></td>
+			<td width="14%"><font color="#0c03c2">Nama Barang</font></td>
+			<td width="10%"><font color="#0c03c2">Jenis Barang</font></td>
+			<td width="8%"><font color="#0c03c2">Satuan</font></td>
+			<td width="10%"><font color="#0c03c2">Rencana Pakai</font></td>
+			<td width="8%"><font color="#0c03c2">Rencana Beli</font></td>
+			<td width="9%"><font color="#0c03c2">Harga Satuan</font></td>
+			<td width="3%"></td>
+			<td width="11%" align="right"><font color="#0c03c2">Jumlah</font></td>
+			<td width="3%"></td>
+			<td width="11%" align="right"><font color="#0c03c2">Total Harga</font></td>
+		</tr>
+		<tr>
+			<td colspan="12"><hr size="1"></td>
+		</tr>
+		{% for datas in data %}
+		{% with n=1 %}
+		<tr cellpadding="3" valign="top">
+			<td>{{forloop.counter}}</td>
+			<td>{{datas.request_goods_name}}</td>
+			<td>{{datas.goods_type_id}}</td>
+			<td>{{datas.unit_of_measure_id}}</td>
+			<td>{{datas.request_used}}</td>
+			<td>{{datas.request_amount}}</td>
+			<td>{{datas.currency_id}} {{datas.request_unit_price}}</td>
+			<td>Rp</td>
+			<td align="right">{{datas.request_total_rupiah}}</td>
+			<td>Rp</td>
+			<td align="right">{{datas.request_total_price}}</td>
+		</tr>
+		{%endwith%}
+		{%endfor%}
+		<tr>
+			<td colspan="12"><hr size="1"></td>
+		</tr>
+		<tr>
+			<td colspan="9" align="right"><b>Total:</b></td>
+			<td>Rp</td>
+			<td align="right">{{total}}</td>
+		</tr>
+{%endblock%}

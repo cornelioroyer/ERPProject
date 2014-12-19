@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block primary %}
+    <!-- START MAP -->
+
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Pabrik</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">About</a> &gt;
+                <a class="no-link current" href="#">Pabrik</a>
+            </p><hr>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block sidebar %}
+{% include "includes/sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+   <div class="page type-page status-publish hentry group">
+
+    <div class="tabs-container">
+
+        <ul class="tabs">
+            <li><h4><a href="#tab1" title="Welcome"><i class="icon-home" style="color:#000;font-size:20px;width:20px;height:20px"></i> Pabrik</a></h4></li>
+         </ul>
+
+        <div class="border-box group">
+            <div id="tab1" class="panel group">
+        <center><h3><img src="/media/static/images/icons/set_icons/monitor-black.png" alt="chart-bar" class="icon" width="32" height="32"/> &nbsp;&nbsp;{{ flatpage.title }}</h3></center>
+        <hr>
+        <p>{{ flatpage.content }}</p>
+
+    </div></div></div></div>
+{% endblock %}

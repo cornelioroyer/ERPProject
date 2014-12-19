@@ -1,0 +1,105 @@
+from django.db import models
+from django.utils.translation import ugettext as _
+from Apps.Manufacturing.ProductionExecution.models import *
+from Apps.Manufacturing.ProductionPlanning.models import production_plans
+from Apps.Manufacturing.ProductionPlanning.models import *
+from Apps.Manufacturing.MasterData.models import *
+"""	
+class out_production (models.Model):
+	speed_out = models.DecimalField(verbose_name=_('Speed'), max_digits=5, decimal_places=2) # FORMULANYA LOM TAHU
+	eff_out	= models.DecimalField(verbose_name=_('Efficiency'), max_digits=5, decimal_places=2) # FORMULANYA LOM TAHU 
+	order_out = models.IntegerField(verbose_name=_('Baik'), default=0) #jumlah produk BAIK yang dihasilkan = order_in + 15% * order_in
+	broken_out = models.IntegerField(verbose_name=_('Gagal'), default=0) #jumlah produk GAGAL yang dihasilkan
+	weight_out = models.DecimalField(verbose_name=_('Berat'), max_digits=5, decimal_places=2) #berat produk hasil produksi
+	add_date_time = models.DateTimeField(verbose_name=_('Tanggal/Jam'), auto_now_add=True) #tanggal dibuat || waktu (07:00 - 07:00)=24 jam
+	
+	
+	class Meta:
+		verbose_name="Item Produksi"
+		verbose_name_plural="Item Produksi"
+        
+	def __unicode__(self):
+		return u'%s' % self.speed_out
+"""	
+class production_record (models.Model):
+	Production_Plans = models.ForeignKey(production_plans, verbose_name=_('Production Schedule'))
+#	Out_Production = models.ForeignKey(out_production, verbose_name=_('Item Produksi'))
+	speed_out = models.DecimalField(verbose_name=_('Speed'), max_digits=5, decimal_places=2) # FORMULANYA LOM TAHU
+	eff_out	= models.DecimalField(verbose_name=_('Efficiency'), max_digits=5, decimal_places=2) # FORMULANYA LOM TAHU 
+	order_out = models.IntegerField(verbose_name=_('Baik'), default=0) #jumlah produk BAIK yang dihasilkan = order_in + 15% * order_in
+	broken_out = models.IntegerField(verbose_name=_('Gagal'), default=0) #jumlah produk GAGAL yang dihasilkan
+	weight_out = models.DecimalField(verbose_name=_('Berat'), max_digits=5, decimal_places=2) #berat produk hasil produksi
+	add_date_time = models.DateTimeField(verbose_name=_('Tanggal/Jam'), auto_now_add=True) #tanggal dibuat || waktu (07:00 - 07:00)=24 jam
+
+	   
+	class Meta:
+		verbose_name="Receive Products"
+		verbose_name_plural="3.Receive Products"
+        
+	def __unicode__(self):
+		return u'%s' % self.id
+		
+		
+class Use_Resources (models.Model):
+	Production_Plans = models.ForeignKey(production_plans, verbose_name=_('Production Schedule')) #'Production_Plans','Issue_Material','	Machine_Usage',
+	Issue_Material = models.ForeignKey(Bill_Of_Material, verbose_name=_('Issue Material'))
+	Machine_Usage = models.ForeignKey(Production_Mechine, verbose_name=_('Mechine Usage'))
+	add_date_time = models.DateTimeField(verbose_name=_('Tanggal/Jam'), auto_now_add=True) #tanggal dibuat || waktu (07:00 - 07:00)=24 jam
+#	speed_out = models.DecimalField(verbose_name=_('Speed'), max_digits=5, decimal_places=2) # FORMULANYA LOM TAHU
+#	eff_out	= models.DecimalField(verbose_name=_('Efficiency'), max_digits=5, decimal_places=2)# FORMULANYA LOM TAHU
+#	order_out = models.IntegerField(verbose_name=_('Baik'), default=0) #jumlah produk BAIK yang dihasilkan = order_in + 15% * order_in
+#	broken_out = models.IntegerField(verbose_name=_('Gagal'), default=0) #jumlah produk GAGAL yang dihasilkan
+#	weight_out = models.DecimalField(verbose_name=_('Berat'), max_digits=5, decimal_places=2) #berat produk hasil produksi
+	
+	
+	
+	class Meta:
+		verbose_name="Use Resources"
+		verbose_name_plural="1.Use Resources"
+        
+	def __unicode__(self):
+		return u'%s' % self.id
+		
+		
+class Inspection_Products (models.Model):
+	Production_Plans = models.ForeignKey(production_plans, verbose_name=_('Production Schedule'))
+#	Out_Labeling = models.ForeignKey(out_labeling, verbose_name=_('Item Pelabelan'))
+	Dimension_Diameter = models.ForeignKey(Product_Dimension_Diameter, verbose_name=_('Diameter')) #'Dimension_Diameter','Dimension_Height','Volume','Physics',
+	Dimension_Height = models.ForeignKey(Product_Dimension_Height, verbose_name=_('Tinggi'))
+	Volume = models.ForeignKey(Product_Volume, verbose_name=_('Volume'))
+	Physics = models.ForeignKey(Product_Physics, verbose_name=_('Fisik'))
+	   
+	class Meta:
+		verbose_name="Inspection Products"
+		verbose_name_plural="2.Inspection Products"
+        
+	def __unicode__(self):
+		return u'%s' % self.id
+		
+#Create your models here.
+
+#	efficiency_output = 
+#	efficiency_production = models.IntegerField(verbose_name=_('Efficiency Production'), default=0)
+#	end_date = models.DateField(verbose_name=_('End Date'))
+#	
+#	long_day = models.IntegerField(verbose_name=_('Long Day'), default=0)
+#	m_c = models.IntegerField(verbose_name=_('M/C'), default=0)
+#	sche_date = models.DateField(verbose_name=_('Schedule Date'))
+#	speed_output = models.IntegerField(verbose_name=_('Speed Output'), default=0)
+#	speed_production = models.IntegerField(verbose_name=_('Speed Production'), default=0)
+#	start_date = models.DateField(verbose_name=_('Start Date'))
+#	type_product = models.CharField(verbose_name=_('Type Product'), max_length=15)
+#	
+
+# Create your models here.
+#class Bill_of_Materials (models.Model):
+#	bom_type = models.CharField(verbose_name=_('Bill of Material'), max_length=50)
+#	materials_quantity = models.IntegerField(verbose_name=_('Quantity'), default=0)
+#	parent_bom = models.IntegerField(verbose_name=_('Parent BoM'), default=0)
+#	reference = models.CharField(verbose_name=_('Refrence'), max_length=50)
+    
+#	class Meta:
+#		verbose_name_plural="Bill of Materials"
+        
+#	def __unicode__(self):
+#		return self.bom_type

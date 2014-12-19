@@ -1,0 +1,44 @@
+{#% extends "../../../../../../Python27/Lib/site-packages/suit/templates/admin/change_form.html" %#}
+{#% extends "/usr/local/lib/python2.7/dist-packages/suit/templates/admin/change_form.html" %#}
+{#% load dajaxice_templatetags %#}
+{% extends "../../../../../virtualenv/Lib/site-packages/suit/templates/admin/change_form.html" %}
+{% block extrahead %}
+    {{ block.super }}
+    {#% dajaxice_js_import %#}
+ {% endblock %}
+{% block extrajs %}
+
+    {{ block.super }}
+
+    <script>
+        $(document).ready(function(){
+            $( ".control-group .form-row .field-total" ).onClick(function() {
+                alert("fungsi");
+
+                });
+            });
+        function toggleFields() {
+            if($("#id_template").val() == "")
+                clear();
+            else if ($("#id_template").val() == 2)
+                 $('.control-group.form-row.field-throttle').show()
+            else
+                $('.control-group.form-row.field-throttle').hide()
+        }
+
+        function clear(){
+            $("#id_throttle").val("");
+            $("#id_rate_limit").val("");
+        }
+        function set(){
+
+        }
+    </script>
+
+{% endblock %}
+
+{% block submit_buttons_bottom %}
+
+    {{ block.super }}
+
+{% endblock %}

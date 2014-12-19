@@ -1,0 +1,80 @@
+<html>
+<head>
+	<title>Print PO: {{data.no_reg}}</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/media/static/jsPDF/examples/css/smoothness/jquery-ui-1.8.17.custom.css">
+	<link rel="stylesheet" type="text/css" href="/media/static/jsPDF/examples/css/main.css">
+
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/dist/jspdf.debug.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/basic.js"></script>
+
+	<script>
+		$(function() {
+			$("#accordion-basic, #accordion-text, #accordion-graphic").accordion({
+				autoHeight: false,
+				navigation: true
+			});
+			$( "#tabs" ).tabs();
+			$(".button").button();
+		});
+	</script>
+</head>
+
+<body>
+	<div class="to_pdf">
+		<div style="border-width: 2px; width:50%;border-style: dotted; padding: 1em; font-size:120%;line-height: 1.5em;" id="printdiv">
+			<img src="/media/static/staticproc/images/header_pdf.png" width="80%">
+			<p style="font-size:100%;text-align:center">Purchase Order (No Reg: {{data.no_reg}})</p>
+			<span style="font-size:90%">
+				<div>Tgl Kirim PO: {{data.po_date_sent}}</div>
+				<div>Tgl Rencana Penerimaan Brg: {{data.goods_receipt_plan}}</div>
+				<div>Dikirim ke: {{data.ship_to_pdf|safe}}</div>
+			
+				<table cellspacing="0" width="100%"> 
+					<tr> 
+						<td width="5%">No.</td>
+						<td width="15%">Nama Brg</td>
+						<td width="12%">Jenis Brg</td>
+						<td width="11%">Satuan</td>
+						<td width="10%">Jumlah</td>
+						<td width="16%">Harga @</td>
+						<td width="20%" align="right">Total Harga</font></td>
+					</tr>
+					{% for i in item_pp %}
+					<tr>
+						<td>{{forloop.counter}}</td>
+						<td>{{i.request_goods_name}}</td>
+						<td>{{i.goods_type_id}}</td>
+						<td>{{i.unit_of_measure_id}}</td>
+						<td>{{i.request_amount}}</td>
+						<td>{{i.currency_id}} {{i.request_unit_price}}</td>
+						<td align="right">Rp {{i.request_total_price}}</td>
+					</tr>
+					{% endfor %}
+					{% for i in item_ro %}
+					<tr>
+						<td>{{forloop.counter}}</td>
+						<td>{{i.ro_goods_name}}</td>
+						<td>{{i.goods_type_id}}</td>
+						<td>{{i.unit_of_measure_id}}</td>
+						<td>{{i.ro_amount}}</td>
+						<td>{{i.currency_id}} {{i.ro_unit_price}}</td>
+						<td align="right">Rp {{i.ro_total_price}}</td>
+					</tr>
+					{% endfor %}
+				</table>
+				<p><strong>Harga Total: </strong>Rp {{totaltok}}</p>				
+				<p><strong>PPN 10%: </strong>Rp {{ppn10}}</p>
+				<p><strong>Total: </strong>Rp {{totalexp}}</p>
+				<p><strong>Persetujuan: </strong></p>
+				{{data.po_agreement|safe}}
+				<p><strong>Ketentuan:</strong> Denda yang akan diberlakukan yaitu per {{data.set_of_delay}}, dengan presentase {{data.delay_fine}}%.</p>
+			</span>
+		</div>
+	</div>
+	<button onclick="javascript:printreport()" class="button"><img src="/media/static/staticproc/images/doc.png" width="15%"> Download</button>
+</body>
+</html>

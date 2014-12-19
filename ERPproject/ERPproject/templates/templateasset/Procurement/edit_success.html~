@@ -1,0 +1,9 @@
+{% extends 'templateasset/base.html' %}
+{%block title%} Message| IGLAS Procurement{%endblock%}
+{%block meta%}<meta http-equiv="refresh" content="3;/{{destination}}/">{%endblock%}
+{% block content %}
+<p align="center">
+	<h2><font color="red">Pesan Anda Berhasil Dikirim{{level}}</font></h2>
+	<br><a href="http://127.0.0.1:8000/{{destination}}/" style="text-decoration:none">< -- Klik untuk kembali ke Sebelumnya</a></br>
+<p>
+{% endblock %}

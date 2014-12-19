@@ -1,0 +1,66 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_list %}
+{% load url from future %}
+{% load admin_urls %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}" />
+  {{ media.css }}
+{% endblock %}
+
+{% block extrahead %}
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/dist/jspdf.debug.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/basic.js"></script>
+{{ block.super }}
+{{ media.js }}
+{% if action_form %}{% if actions_on_top or actions_on_bottom %}
+<script type="text/javascript">
+(function($) {
+    $(document).ready(function($) {
+        $("tr input.action-select").actions();
+    });
+})(django.jQuery);
+</script>
+{% endif %}{% endif %}
+{% endblock %}
+
+{% block bodyclass %}change-list{% endblock %}
+{% block content %}
+<div id="content-main">
+    <form id="changelist-search" class="form-inline" method="post" action="/admin/internal/report_budget/">{% csrf_token %}
+        <div class="search-container"> 
+            <span class="search-filters">
+                <select class="auto-width search-filter" style="max-width: 200px" data-name="departemen">
+                	<option data-name="departemen">Pilih departemen --</option>
+					{% for d in dept %}
+					    <option data-name="departemen">{{d.department}}</option>
+					{%endfor%}
+                </select>
+				<select class="auto-width search-filter" style="max-width: 200px" data-name="year">
+                	<option data-name="year">Pilih tahun --</option>
+					{% for cs in fiscal %}
+					    <option data-name="year">{{cs.Code}}</option>
+					{%endfor%}
+                </select>
+            </span>
+            <input class="btn btn-info" type="submit" value="Laporkan">
+         </div>
+    </form>
+    <div class="results">
+		{{msg}}
+		{% if klik == True %}
+		<h3 align="center">Laporan Anggaran Belanja Tahunan</h3>
+		<p>
+		Departemen: {{dep}}<br>
+		Tahun: {{thn}}<br>
+		Anggaran: Rp {{budget_value}}<br>
+		Total Pengeluaran: Rp {{total_exp}}<br>
+		Sisa Anggaran: Rp {{sisa}}<br>
+		</p>
+		{%endif%}
+    </div>
+</div>        
+{% endblock %}

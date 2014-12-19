@@ -1,0 +1,76 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_list %}
+{% load url from future %}
+{% load admin_urls %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}" />
+  {{ media.css }}
+{% endblock %}
+
+{% block extrahead %}
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/dist/jspdf.debug.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/basic.js"></script>
+{{ block.super }}
+{{ media.js }}
+{% if action_form %}{% if actions_on_top or actions_on_bottom %}
+<script type="text/javascript">
+(function($) {
+    $(document).ready(function($) {
+        $("tr input.action-select").actions();
+    });
+})(django.jQuery);
+</script>
+{% endif %}{% endif %}
+{% endblock %}
+
+{% block bodyclass %}change-list{% endblock %}
+{% block content %}
+<div id="content-main">
+    <form id="changelist-search" class="form-inline" method="post" action="/admin/internal/reportpp/">{% csrf_token %}
+        <div class="search-container"> 
+            <span class="search-filters">
+				Isi dengan 4 digit angka tahun atau 6 digit angka kode bulan Permintaan Pembelian<br> 
+				<input type="text" value="Keyword" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;" name="keyword">
+            </span>
+            <input class="btn btn-info" type="submit" value="Laporkan">
+         </div>
+    </form>
+    <div class="results">
+		<button onclick="javascript:report_lan()" class="button"><img src="/media/static/staticproc/images/doc.png" width="15%"> Download</button>
+		Key = "{{key}}", Jumlah data = {{n}}        
+		<div style="border-width: 2px; width:90%;border-style: dotted; padding: 1em; font-size:120%;line-height: 1.5em;" id="printdiv">
+			<img src="/media/static/staticproc/images/header_pdf.png" width="100%">
+			<p style="font-size:130%;text-align:center">Rush Order</p>
+			<table cellspacing="0" width="100%" border="1"> 
+				<tr> 
+					<td width="15%">No. Reg</td>
+					<td width="15%">Nama Brg</td>
+					<td width="10%">Jenis Brg</td>
+					<td width="10%">Satuan</td>
+					<td width="10%">Kuantitas</td>
+					<td width="12%">Harga @</td>
+					<td width="13%" align="right">Harga (Rp)</font></td>
+					<td width="15%" align="right">Total Harga</font></td>
+				</tr>
+				{% for d in data %}
+				<tr>
+					<td width="15%">{{d.header_rush_order_id.no_reg}}</td>
+					<td width="15%">{{d.ro_goods_name}}</td>
+					<td width="10%">{{d.goods_type_id}}</td>
+					<td width="10%">{{d.unit_of_measure_id}}</td>
+					<td width="10%">{{d.ro_amount}}</td>
+					<td width="12%">{{d.currency_id}} {{d.ro_unit_price}}</td>
+					<td width="13%" align="right"></font>Rp {{d.ro_total_rupiah}}</td>
+					<td width="15%" align="right"></font>Rp {{d.ro_total_price}}</td>
+				</tr>
+				{%endfor%}
+			</table>
+			<p><strong>Total: </strong>Rp {{total}}</p>
+		</div>
+    </div>
+</div>        
+{% endblock %}

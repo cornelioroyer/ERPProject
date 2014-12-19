@@ -1,0 +1,104 @@
+[
+    {
+        "model": "CashBank.Ms_Tax",
+        "pk": 1,
+        "fields": {
+            "Name": "PPN",
+			"Code": "PPN2.5%",
+            "Description": "Standar Pajak Pertambahan Nilai",
+            "Percentage": "2.5"
+        }
+    },
+    {
+        "model": "CashBank.Ms_Tax",
+        "pk": 2,
+        "fields": {
+            "Name": "PPh",
+			"Code": "PPh2%",
+            "Description": "Standar Pajak Penghasilan",
+            "Percentage": "2"
+        }
+    },
+    {
+        "model": "CashBank.Ms_Tax",
+        "pk": 3,
+        "fields": {
+            "Name": "PPn BM",
+			"Code": "PPnBM3%",
+            "Description": "Standar Pajak Pertambahan Nilai Barang Mewah",
+            "Percentage": "3"
+        }
+    },
+    {
+        "model": "CashBank.Ms_Currency",
+        "pk": 1,
+        "fields": {
+            "Name": "Rupiah",
+            "Code": "IDR",
+            "Rate": "1",
+            "Pre_Symbol": "Rp",
+            "Post_Symbol": ""
+        }
+    },
+    {
+        "model": "CashBank.Ms_Currency",
+        "pk": 2,
+        "fields": {
+            "Name": "US Dollar",
+            "Code": "USD",
+            "Rate": "0",
+            "Pre_Symbol": "$",
+            "Post_Symbol": ""
+        }
+    },
+    {
+        "model": "CashBank.Ms_Currency",
+        "pk": 3,
+        "fields": {
+            "Name": "Pounds Sterling",
+            "Code": "GBP",
+            "Rate": "0",
+            "Pre_Symbol": "£",
+            "Post_Symbol": ""
+        }
+    },
+    {
+        "model": "CashBank.Ms_Currency",
+        "pk": 4,
+        "fields": {
+            "Name": "Euro",
+            "Code": "EUR",
+            "Rate": "0",
+            "Pre_Symbol": "€",
+            "Post_Symbol": ""
+        }
+    },
+    {
+        "model": "CashBank.Ms_Bank",
+        "pk": 1,
+        "fields": {
+            "Bank": 1,
+            "Bank_Account" : "090411100114",
+            "Bank_Branch" : "Surabaya",
+            "Address" : "Jl. Darmo Surabaya"
+        }
+    },
+    {
+        "model": "CashBank.Ms_Bank",
+        "pk": 2,
+        "fields": {
+            "Bank": 2,
+            "Bank_Account" : "090411100114",
+            "Bank_Branch" : "Gresik",
+            "Address" : "Jl. Kali Darmo"
+        }
+    },{
+        "model": "GeneralLedger.Ms_Journal",
+        "pk": 1,
+        "fields": {
+            "Code": "PENJUALAN",
+            "Journal_Name": "Jurnal Penjualan",
+            "Type": 1
+        }
+    }
+]

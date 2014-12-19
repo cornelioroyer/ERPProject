@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block primary %}
+
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Register</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">Accounts</a> &gt;
+                <a class="no-link current" href="#">Register</a>
+            </p><hr>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+
+{% block sidebar %}
+    {% include "includes/sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="page type-page status-publish hentry group">
+        <h3>Form Registrasi</h3>
+
+        <p>Silahkan isi form registrasi berikut untuk menjadi mitra kerja bersama PT. IGLAS Persero, dan tunggu konfirmasi kami selanjutnya. Terima Kasih. </p>
+        <p><font color="red"> {% if form.errors %}
+
+                    Please correct the errors below: {{ form.non_field_errors }}
+
+                {% endif %}</font></p>
+
+    <div class="tabs-container">
+
+        <ul class="tabs">
+            <li><h4><a href="#tab1" title="Welcome"><i class="icon-home" style="color:#000;font-size:20px;width:20px;height:20px"></i> Informasi Login</a></h4></li>
+            <li><h4><a href="#tab2" title="Welcome"><i class="icon-group" style="color:#000;font-size:20px;width:20px;height:20px"></i> Informasi Perusahaan</a></h4></li>
+        </ul>
+        <div class="border-box group">
+            <div id="tab1" class="panel group">
+
+                    <table width="600" border="0">
+                        <form id="contact-form-contact-form" class="contact-form row" method="post" action=""
+                              enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <tr>
+                                <td width="90" align="right">Username</td>
+                                <td width="15">:</td>
+                                <td width="167"><div class="input-prepend">
+                                    <span class="add-on"><i class="icon-user"></i></span>{{ form.username }}</div></td>
+                                <td width="93"><font color="red">{% if form.username.errors %}{{ form.username.errors.as_text }}{% endif %}</font></td>
+                            </tr>
+                            <tr><div class="clear"></div>
+                                <td>{{ form.password1.label }}</td>
+                                <td>:</td>
+                                <td><div class="input-prepend">
+                                    <span class="add-on"><i class="icon-lock"></i></span>{{ form.password1 }}</div></td>
+                                <td><font color="red">{% if form.password1.errors %}{{ form.password1.errors.as_text }}{% endif %}</font></td>
+                            </tr>
+                            <tr><div class="clear"></div>
+                                <td>Password (again)</td>
+                                <td>:</td>
+                                <td><div class="input-prepend">
+                                    <span class="add-on"><i class="icon-lock"></i></span>{{ form.password2 }}</div></td>
+                                <td><font color="red">{% if form.password2.errors %}{{ form.password2.errors.as_text }}{% endif %}</font></td>
+                            </tr>
+                    </form></table>
+
+            </div></div></div>
+    </div>
+{% endblock %}

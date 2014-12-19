@@ -1,0 +1,184 @@
+{% extends 'templatesproc/base_vendor.html' %}
+{%block title%}Informasi Umum Vendor{%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block extra_navigation%}
+	<div class="breadcrumb_divider"></div> <a class="current">Informasi Umum</a>
+{%endblock%}
+{%block content%}
+	<article class="module width_full">
+		<header><h3 class="tabs_involved">Informasi Umum</h3>
+		<ul class="tabs" data-persist="true">
+   			<li class="selected" ><a href="#tab1">Identitas Umum</a></li> 
+			<li><a href="#tab2">SIUP, IUJK, APBU</a></li> 
+			<li><a href="#tab3">Dokumen</a></li> 
+		</ul>
+		</header>
+	<div class="isi_post">
+	<div class="tab_container">
+		<div id="tab1" class="tab_content">
+			<strong>Identitas Umum:</strong><br><br>
+			<table width="100%">
+			<tr>
+				<td width="25%" bgcolor="#d3d5ff">Username </td>
+				<td width="75%" colspan="3"><font color="blue">: {{data.username}}</font></td>
+			</tr>
+			<tr>
+				<td width="25%" bgcolor="#d3d5ff">Nama Vendor</td>
+				<td width="75%" colspan="3"><font color="blue">: {{data.vendor_name}}</font></td>
+			</tr>
+			<tr>
+				<td width="25%" bgcolor="#d3d5ff">NPWP</td>
+				<td width="75%" colspan="3"><font color="blue">: {{data.vendor_npwp}}</font></td>
+			</tr>
+			<tr>
+				<td width="25%" bgcolor="#d3d5ff">Alamat</td>
+				<td width="75%" colspan="3"><font color="blue">: {{data.vendor_address}}, {{data.vendor_city}}</font></td>
+			</tr>
+			<tr>
+				<td width="25%" bgcolor="#d3d5ff">Kekayaan Bersih</td>
+				<td width="75%" colspan="3"><font color="blue">: {{data.net_worth}}</font></td>
+			</tr>
+			<tr>
+				<td width="25%" bgcolor="#d3d5ff">Telepon</td>
+				<td width="25%"><font color="blue">: {{data.vendor_phone}}</font> </td>
+				<td width="25%" bgcolor="#d3d5ff">Fax</td>
+				<td width="25%"><font color="blue">: {{data.fax}}</font></td>
+			</tr>
+			<tr>
+				<td width="25%" bgcolor="#d3d5ff">Email</td>
+				<td width="75%" colspan="3"><font color="blue">: {{data.email}}</font></td>
+			</tr>
+			<tr>
+				<td width="25%" bgcolor="#d3d5ff">Nama Contact Person</td>
+				<td width="25%"><font color="blue">: {{data.cp_name}}</td>
+				<td width="25%" bgcolor="#d3d5ff"></font>Telepon</td>
+				<td width="25%"><font color="blue">: {{data.cp_phone}}</font></td>
+			</tr>
+			</table>
+			<a href="http://127.0.0.1:8000/edit_vendor/">
+				<img src="/media/static/staticproc/images/pencil32.png" width="2%"/> Sunting identitas umum
+			</a>
+			<hr size="1" width="600px" align="left">
+		</div>
+			
+			
+		<div id="tab2" class="tab_content">
+			<b>Informasi SIUP, IUJK dan Akta Pendirian Badan Usaha</b><br>
+			<table width="100%">
+			<tr>
+				<td colspan="2" bgcolor="#bffeba"><b>SIUP</b></td>
+			</tr>
+			{%if ada == 0%}
+			<tr>
+				<td colspan="2"><font color="red">Data SIUP belum di masukkan</font></td>
+			</tr>
+			<tr>
+				<td colspan="2"><a href="http://127.0.0.1:8000/siup/"><img src="/media/static/staticproc/images/pencil32.png" width="2%"/> Masukkan data SIUP</a></td>
+			</tr>
+			{%endif%}
+			
+			{%if ada > 0%}
+			{%for siups in siup%}
+			<tr>
+				<td width="25%" bgcolor="#bffeba">No.</td>
+				<td width="75%"><font color="blue">: {{siups.siup_no}}</font></td>
+			</tr>
+			<tr>
+				<td width="25%" bgcolor="#bffeba">Tgl. Berlaku</td>
+				<td width="75%"><font color="blue">: {{siups.siup_valid_until}}</font></td>
+			</tr>
+			<tr>
+				<td width="25%" bgcolor="#bffeba">Instansi</td>
+				<td width="75%"><font color="blue">: {{siups.siup_institute}}</font></td>
+			</tr>
+			{%endfor%}
+			<tr>
+				<td><a href="http://127.0.0.1:8000/edit_siup/"><img src="/media/static/staticproc/images/pencil32.png" width="8%"/> Edit SIUP</a></td>
+			</tr>
+			{%endif%}
+			
+			
+			<tr>
+				<td colspan="2" bgcolor="#bffeba"><b>IUJK</b></td>
+			</tr>
+			{%if ada2 > 0%}
+			{%for iujks in iujk%}
+			<tr>
+				<td width="25%" bgcolor="#bffeba">No.</td>
+				<td width="75%"><font color="blue">: {{iujks.iujk_no}}</font></td>
+			</tr>
+			<tr>
+				<td width="25%" bgcolor="#bffeba">Tgl. Berlaku</td>
+				<td width="75%"><font color="blue">: {{iujks.iujk_valid_until}}</font></td>
+			</tr>
+			<tr>
+				<td width="25%" bgcolor="#bffeba">Instansi</td>
+				<td width="75%"><font color="blue">: {{iujks.iujk_institute}}</font></td>
+			</tr>
+			{%endfor%}
+			<tr>
+				<td><a href="http://127.0.0.1:8000/edit_iujk/"><img src="/media/static/staticproc/images/pencil32.png" width="8%"/> Edit IUJK</a></td>
+			</tr>
+			{%endif%}
+			
+			{%if ada2 == 0%}
+			<tr>
+				<td colspan="2"><font color="red">Data IUJK belum di masukkan</font></td>
+			</tr>
+			<tr>
+				<td colspan="2"><a href="http://127.0.0.1:8000/iujk/"><img src="/media/static/staticproc/images/pencil32.png" width="2%"/> Masukkan data IUJK</a></td>
+			</tr>
+			{%endif%}
+			
+			
+			<tr>
+				<td colspan="2" bgcolor="#bffeba"><b>Akta Pendirian Badan Usaha</b></td>
+			</tr>
+			{%if ada3 > 0%}
+			{%for apbus in apbu%}
+			<tr>
+				<td width="25%" bgcolor="#bffeba">No.</td>
+				<td width="75%"><font color="blue">: {{apbus.apbu_no}}</font></td>
+			</tr>
+			<tr>
+				<td width="25%" bgcolor="#bffeba">Tgl. Berlaku</td>
+				<td width="75%"><font color="blue">: {{apbus.apbu_valid_until}}</font></td>
+			</tr>
+			<tr>
+				<td width="25%" bgcolor="#bffeba">Instansi</td>
+				<td width="75%"><font color="blue">: {{apbus.apbu_institute}}</font></td>
+			</tr>
+			{%endfor%}
+			<tr>
+				<td><a href="http://127.0.0.1:8000/edit_apbu/"><img src="/media/static/staticproc/images/pencil32.png" width="8%"/> Edit APBU</a></td>
+			</tr>
+			{%endif%}
+			{%if ada3 == 0%}
+			<tr>
+				<td colspan="2"><font color="red">Data APBU belum di masukkan</font></td>
+			</tr>
+			<tr>
+				<td><a href="http://127.0.0.1:8000/apbu/"><img src="/media/static/staticproc/images/pencil32.png" width="2%"/> Masukkan data APBU</a></td>
+			</tr>
+			{%endif%}
+			</table>
+			<hr size="1" width="600px" align="left">
+		</div>
+			
+			
+		<div id="tab3" class="tab_content">
+			<b>Dokumen SIUP, IUJK dan APBU</b><br><br>
+			<hr size="1" width="600px" align="left">
+			{% load filetransfers %}
+			<form action="/vendor_page/" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				{% render_upload_data upload_data %}
+				{{ form.as_p }}
+				<input type="submit" value="Submit" class="alt_btn"/>
+			</form>
+			<br>
+		</div>
+	</div>
+	</div>
+	</article>
+{%endblock%}

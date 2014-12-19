@@ -1,0 +1,54 @@
+{% extends 'templatesproc/base_vendor.html' %}
+{%block title%}Purchase Order Inbox | PT. IGLAS (Persero){%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block extra_navigation%}
+	<div class="breadcrumb_divider"></div> <a class="current">Request Quotation Inbox</a>
+{%endblock%}
+    {% block content %}
+	<article class="module width_full">
+		<header><h3 class="tabs_involved">Permintaan Penawaran (Total ada {{jml}})</h3> </header>
+		
+
+		<div class="tab_container">
+			<div id="tab1" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+			<thead> 
+				<tr> 
+    				<th>No REG.</th> 
+    				<th>Dikirim Tanggal</th> 
+    				<th>Berlaku s/d</th>
+					<th>Penawaran Anda</th>
+				</tr> 
+			</thead> 
+			<tbody> 
+				{% for post in postx %}
+				<tr> 
+    				<td><a href="/bid_detail/{{post.id}}/">{{post.no_reg}}</a></td> 
+    				<td><time datetime="{{post.br_sent_date|date:"c"}}">
+						{{post.br_sent_date}}
+						</time></td> 
+    				<td>{{post.br_end_date}}</td>
+					<td>{% if post.bid_value == None %}
+							<font color="red">Penawaran belum Anda masukkan</font>
+						{%endif%}
+						{% if post.bid_value != None %}
+							Rp {{post.bid_value}}
+						{%endif%}
+					</td>
+				</tr> 
+				{% endfor %}
+			<tbody>
+			</table>
+		</div>
+		<p align="center">
+		Pages: 
+		{% for num in postx.paginator.page_range %}
+		  {% ifequal num postx.number %}
+			<span class="current"><font color="red"><b>{{ num }}</b></font></span>
+		  {% else %}
+			<a href="?page={{ num }}"> {{ num }}</a>
+		  {% endifequal %} 
+		{% endfor %}
+		</p>
+	</article>
+    {% endblock %}

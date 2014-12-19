@@ -1,0 +1,27 @@
+{% extends 'templatesproc/base_vendor.html' %}
+{%block title%}Detail Klaim {{post.no_reg}} | PT IGLAS (Persero){%endblock%}
+{%block uname%}<font color="#2081da">{{uname}}</font>{%endblock%}
+{%block extra_navigation%}
+	<div class="breadcrumb_divider"></div><a href="/po_inbox/">Claim Inbox</a> 
+	<div class="breadcrumb_divider"></div> <a class="current">{{post.no_reg}}</a>
+	
+{%endblock%}
+    {% block content %}
+		<article class="module width_3_quarter">
+		<header><h3 class="tabs_involved">{{post.no_reg}}</h3></header>
+		<div class="isi_post">
+            <font color="blue">
+                Sent date:
+                <time datetime="{{post.proc_add_date|date:"c"}}">
+                {{post.claim_sent_date}}
+                </time>
+			</font>
+			<p>
+				<hr size="1">
+				Berdasarkan PO: No. Reg {{post.goods_receipt_id.purchase_order_id.no_reg}}
+				<br>Detail Klaim:
+				<br>{{post.claim_detail|safe}}
+			</p>
+		</div>
+		</article>
+    {% endblock %}

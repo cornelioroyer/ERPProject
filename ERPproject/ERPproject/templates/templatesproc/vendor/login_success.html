@@ -1,0 +1,10 @@
+{% extends 'templatesproc/base.html' %}
+{%block title%}Log In Success | IGLAS Procurement{%endblock%}
+{%block meta%}<meta http-equiv="refresh" content="3;/procurement">{%endblock%}
+{% block content %}
+<p align="center">
+	<font color="blue">Log In Success</font>
+	<br>{{u.username}}{{m.username}}, Anda telah berhasil login.
+	<br><a href="/procurement" style="text-decoration:none">< -- Klik untuk kembali ke Home jika tidak otomatis redirect</a>
+<p>
+{% endblock %}

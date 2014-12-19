@@ -1,0 +1,63 @@
+<html>
+<head>
+	<title>Print PO: {{data.no_reg}}</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="/media/static/jsPDF/examples/css/smoothness/jquery-ui-1.8.17.custom.css">
+	<link rel="stylesheet" type="text/css" href="/media/static/jsPDF/examples/css/main.css">
+
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/dist/jspdf.debug.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/basic.js"></script>
+
+	<script>
+		$(function() {
+			$("#accordion-basic, #accordion-text, #accordion-graphic").accordion({
+				autoHeight: false,
+				navigation: true
+			});
+			$( "#tabs" ).tabs();
+			$(".button").button();
+		});
+	</script>
+</head>
+
+<body>
+	<div class="to_pdf">
+		<div style="border-width: 2px; width:80%;border-style: dotted; padding: 1em; font-size:120%;line-height: 1.5em;" id="printdiv">
+			<img src="/media/static/staticproc/images/header_pdf.png" width="90%">
+			<p style="font-size:100%;text-align:center">RENCANA KAPASITAS DAN JADWAL PRODUKSI (No Reg: {{data.no_reg}})</p>
+			<span style="font-size:90%">
+				<table width="90%" border='1'>
+					<tr>
+						<td width="5%">M/C</td>
+						<td width="10%">JOB</td>
+						<td width="30%">JENIS PRODUKSI</td>
+						<td width="2%">GRAM</td>
+						<td width="2%">SPD<td>
+						<td width="2%">EFF</td>
+						<td width="10%">HARI</td>
+						<td width="10%">ORDER</td>
+						<td width="10%">MULAI</td>
+						<td width="10%">SELESAI</td>
+					</tr>
+					<tr>
+						<td width="5%">{{data.MC_P.MC_Production}}</td>
+						<td width="10%">{{data.no_reg}}</td>
+						<td width="30%">{{data.M_O.Product}}</td>
+						<td width="2%">{{data.rka_production.weight_in}}</td>
+						<td width="2%">{{data.rka_production.speed_in}}<td>
+						<td width="2%">{{data.rka_production.eff_in}}</td>
+						<td width="10%">{{data.Durasi}}</td>
+						<td width="10%">{{data.Product_Quantity_PerMC}}</td>
+						<td width="10%">{{data.Start_Date}}</td>
+						<td width="10%">{{data.End_Date}}</td>
+					</tr>
+				</table>				
+			</span>
+		</div>
+	</div>
+	<button onclick="javascript:report_lan()" class="button"><img src="/media/static/staticproc/images/doc.png" width="15%"> Download</button>
+</body>
+</html>

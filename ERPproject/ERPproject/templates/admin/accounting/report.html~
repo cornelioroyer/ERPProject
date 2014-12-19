@@ -1,0 +1,84 @@
+{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_list %}
+{% load url from future %}
+{% load admin_urls %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}" />
+  {{ media.css }}
+{% endblock %}
+
+{% block extrahead %}
+{{ block.super }}
+{{ media.js }}
+{% if action_form %}{% if actions_on_top or actions_on_bottom %}
+<script type="text/javascript">
+(function($) {
+    $(document).ready(function($) {
+        $("tr input.action-select").actions();
+    });
+})(django.jQuery);
+</script>
+{% endif %}{% endif %}
+{% endblock %}
+
+{% block bodyclass %}change-list{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <form id="changelist-search" class="form-inline" method="post" action="/admin/gl/report/">{% csrf_token %}
+        <div class="search-container"> 
+            <span class="search-filters">
+                <select class="auto-width search-filter" style="max-width: 200px" data-name="com_fiscal">
+                	<option data-name="com_fiscal">Pilih Tahun -</option>
+					{% for cs in fiscal %}
+					    <option data-name="com_fiscal">{{cs.Fiscal_Year}}</option>
+					{%endfor%}
+                </select>
+            </span>
+            <input class="btn btn-info" type="submit" value="Laporkan">
+         </div>
+    </form>
+    <div class="results">
+        <table id="result_list" class="table table-striped table-bordered table-hover table-condensed">
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Ref Jurnal</th>
+                    <th scope="col">Akun</th>
+                    <th scope="col">Debit</th>
+                    <th scope="col">Kredit</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                <tr>
+                    <td>{{ result.Date }}</td>
+                    <td>{{ result.Reference }}</td>
+                    <td>{{ result.Account }}</td>
+                    <td>{{ result.Debit }}</td>
+                    <td>{{ result.Credit }}</td>                      
+                </tr>
+                {% endfor %}
+            </tbody>
+            <thead>
+                <tr>
+                    <th colspan='3'>Total</th>
+                    <th scope="col">Debit</th>
+                    <th scope="col">Kredit</th>
+                </tr>
+            </thead>
+            <tbody>
+        </table>
+    <div class="below-actions">
+        <div class="pagination-block">
+            <div class="pagination-info muted"> 1 - 19   /   19 Master Akun 
+            
+            </div>
+        </div>
+    </div>
+    
+    </div>
+</div>
+{% endblock %}

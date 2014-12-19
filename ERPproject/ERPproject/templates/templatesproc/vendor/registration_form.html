@@ -1,0 +1,16 @@
+{%extends 'templatesproc/base.html'%}
+{%block title%}Registrasi Rekanan | IGLAS Procurement{% endblock%}
+{%block menu%}
+{% include 'templatesproc/vendor/menu.html' %}
+{%endblock%}
+	{%block content%}
+        <h3>Register</h3>
+        <form action="/proc/register/" method="POST">{% csrf_token %}
+            <table align="left">
+            {{form}}
+            </table>
+        <p>
+            <input style="margin-left: 320px;" class="register" type="submit" value="" />
+        </p>
+        </form>
+	{%endblock%}

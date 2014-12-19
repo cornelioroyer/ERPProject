@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block primary %}
+
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Register</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">Register</a>
+            </p>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block sidebar %}
+   {% include "includes/sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+     <div class="page type-page status-publish hentry group">
+        <div class="tabs-container">
+            <ul class="tabs">
+                <li><h4><a href="#tab1" title="Registrasi"><i class="icon-group" style="color:#000;font-size:20px;width:20px;height:20px"></i> Registrasi</a></h4></li>
+            </ul>
+            <div class="border-box group">
+                <div id="tab1" class="panel group">
+        <h2>Registrasi Sukses !</h2>
+
+        <h3>Terima Kasih telah melakukan registrasi,</h3>
+
+        <h5>silahkan tunggu konfirmasi dari kami untuk aktivasi account anda. </h5><br><br><br>
+
+
+        <p>anda akan dibawa ke halaman utama dalam waktu 5 detik.</p>
+
+    </div></div></div></div>
+{% endblock %}
+{% block extrastyle %}
+    <script type="text/javascript">
+        setTimeout(function () {
+            window.location.href = "/";
+        }, 5000);
+    </script>
+{% endblock %}

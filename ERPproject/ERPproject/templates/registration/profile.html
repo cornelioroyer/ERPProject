@@ -1,0 +1,236 @@
+{% extends "base.html" %}
+
+{% block primary %}
+
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Profil</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">Profil</a>
+            </p>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block sidebar %}
+        {% include "includes/sidebaraccounts.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="page type-page status-publish hentry group">
+
+    <div class="tabs-container">
+
+        <ul class="tabs">
+            <li><h4><a href="#tab1" title="Welcome"><i class="icon-home" style="color:#000;font-size:20px;width:20px;height:20px"></i> Information</a></h4></li>
+            {% if not user.is_staff %}<li><h4><a href="#tab2" title="Welcome"><i class="icon-group" style="color:#000;font-size:20px;width:20px;height:20px"></i> Your Profile</a></h4></li>{% endif %}
+        </ul>
+
+        <div class="border-box group">
+            <div id="tab1" class="panel group">{% if not user.is_staff %}
+                <table width="100%" border="0" cellspacing="2" cellpadding="4" align="center">
+                    <tr>
+                        <td rowspan="2"></td>
+                        <td><h3>Selamat Datang !!!</h3></td>
+                    </tr>
+                    <tr>
+                        <td><p>Terima kasih telah berpartisipasi dengan PT. IGLAS Persero.<br>
+                        Silahkan lengkapi profil perusahaan anda agar kami bisa memperoleh data yang valid. Terima Kasih. <br>
+                        </p></td>
+                    </tr>
+                </table><br>{% endif %}
+                <table>
+                    {% if user.is_staff %}
+                    <h2>Welcome : {{ user.username|upper }}</h2>
+
+                    <p><a href="{% url THEME_ADMIN_URL|default:"admin:index" %}" target="_blank">Klik disini untuk menuju dashboard admin anda.</a></p>
+                    {% endif %}
+                    <tr>
+                        <td><h4>Information :</h4>
+                    </tr>
+                    <tr>
+                        <td>Username</td>
+                        <td>:</td>
+                        <td>{{ user.username }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>:</td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr><td>Tanggal Register</td>
+                        <td width="8%">:</td>
+                        <td>{{ user.date_joined }}</td>
+                    </tr>
+                        <td>Login Terakhir</td>
+                        <td>:</td>
+                        <td>{{ user.last_login }}</td>
+                    </tr>
+                </table>
+            </div>{% if not user.is_staff %}
+            <div id="tab2" class="panel group">
+
+                    <div align="center"><h3>PROFIL PERUSAHAAN</h3></div><br>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="24%" rowspan="5">
+                                <div align="center"><img src="{{ company.logo.url }}" width="100" height="100"></div>
+                            </td>
+                            <td width="23%">Nama Pegawai</td>
+                            <td width="3%">:</td>
+                            <td width="50%">{{ company.name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Jabatan</td>
+                            <td>:</td>
+                            <td>{{ company.position }}</td>
+                        </tr>
+                        <tr>
+                            <td>Bentuk Badan Usaha</td>
+                            <td>:</td>
+                            <td>{{ company.get_type_display }}</td>
+                        </tr>
+                        <tr>
+                            <td>Nama Perusahaan</td>
+                            <td>:</td>
+                            <td>{{ company.corporate }}</td>
+                        </tr>
+                        <tr>
+
+                            <td>Kegiatan Bisnis</td>
+                            <td>:</td>
+                            <td>{{ company.get_business_display }}</td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Bidang Industri</td>
+                            <td>:</td>
+                            <td>{{ company.get_industry_display }}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div align="center">Logo Perusahaan</div>
+                            </td>
+                            <td>N.P.W.P Perusahaan</td>
+                            <td>:</td>
+                            <td>{{ company.npwp }}</td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>&nbsp;</div>
+                            </td>
+                            <td>Mata Uang (default)</td>
+                            <td>:</td>
+                            <td>{{ company.currency }}</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Telepon</td>
+                            <td>:</td>
+                            <td>{{ company.phone }}</td>
+
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Email</td>
+                            <td>:</td>
+                            <td>{{ company.email }}</td>
+
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Website</td>
+                            <td>:</td>
+                            <td><a href="{{ company.website }}">{{ company.website }}</a></td>
+
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Fax</td>
+                            <td>:</td>
+                            <td>{{ company.fax }}</td>
+
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Alamat</td>
+                            <td>:</td>
+                            <td height="30">{{ company.address }}</td>
+
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Kota/Kabupaten</td>
+                            <td>:</td>
+                            <td>{{ company.city }}</td>
+
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Provinsi</td>
+                            <td>:</td>
+                            <td>{{ company.province }}</td>
+
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Kode Pos</td>
+                            <td>:</td>
+                            <td>{{ company.zip_code }}</td>
+
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Negara</td>
+                            <td>:</td>
+                            <td>{{ company.get_country_display }}</td>
+
+                        </tr>
+
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Nama Bank</td>
+                            <td>:</td>
+                            <td>{{ company.bank_name }}</td>
+
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Cabang</td>
+                            <td>:</td>
+                            <td>{{ company.bank_branch }}</td>
+
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>Atas Nama</td>
+                            <td>:</td>
+                            <td>{{ company.bank_account_name }}</td>
+
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>No. Rekening</td>
+                            <td>:</td>
+                            <td>{{ company.rek }}</td>
+
+                        </tr>
+            </table>
+                <br>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    </div>
+{% endblock %}

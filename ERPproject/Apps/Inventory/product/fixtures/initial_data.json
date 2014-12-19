@@ -1,0 +1,61 @@
+[
+    {
+       "model": "product.Category",
+       "pk": 1,
+       "fields":{
+            "type": "Farmasi",
+            "description": "Beberapa contoh dan tampilan dari produk kemasan farmasi kami. Kami memproduksi kemasan gelas untuk obat, minuman kesehatan, balsam, dan lain-lain.",
+            "image": "uploads/product/category/gbr_botol_parma.png"
+       }
+    },
+    {
+       "model": "product.Category",
+       "pk": 2,
+       "fields":{
+            "type": "Minuman Ringan",
+            "description": "Beberapa contoh dan tampilan dari produk kemasan minuman ringan kami. Kami memproduksi kemasan gelas untuk minuman bersoda, sirup, susu, dan lain-lain.",
+            "image": "uploads/product/category/btl_beverages.png"
+       }
+    },
+    {
+       "model": "product.Category",
+       "pk": 3,
+       "fields":{
+            "type": "Minuman Beralkohol",
+            "description": "Beberapa contoh dan tampilan dari produk kemasan minuman beralkohol kami. Kami memproduksi kemasan gelas untuk bir, anggur, minuman keras, dan lain-lain.",
+            "image": "uploads/product/category/gbr_bir.png"
+       }
+    },{
+       "model": "product.Category",
+       "pk": 4,
+       "fields":{
+            "type": "Jar dan Saus",
+            "description": "Beberapa contoh dan tampilan dari produk kemasan Jar dan Saus kami. Kami memproduksi kemasan botol dan toples untuk selai, kecap, saus, dan lain-lain.",
+            "image": "uploads/product/category/btl_food.png"
+       }
+    },{
+       "model": "product.Category",
+       "pk": 5,
+       "fields":{
+            "type": "Kosmetik",
+            "description": "Beberapa contoh dan tampilan dari produk kemasan kosmetika kami. Kami memproduksi kemasan botol untuk parfum, sampo, dan lain-lain",
+            "image": "uploads/product/category/gbr_cosmetic.png"
+       }
+    },{
+       "model": "product.ProductItem",
+       "pk": 1,
+       "fields":{
+            "code_item": "PHA01",
+            "name_item": "Balsem",
+            "category": 1,
+            "height": 800,
+            "weight": 500,
+            "capacity": 480,
+            "diameter": 140,
+            "image": "uploads/product/images/Pharma/balm.gif",
+            "design": "uploads/product/sketsa/Pharma/balm.gif",
+            "description": ""
+       }
+    }
+
+]

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load i18n %} 
+{% load url from future %}
+{% block primary %}
+
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Kotak Masuk</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">Kotak Masuk</a>
+            </p>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block content %}
+    <div class="page type-page status-publish hentry group">
+    <div class="tabs-container">
+    <ul class="tabs">
+        <li><h4><a href="#tab1" title="Kotak Masuk"><i class="icon-group" style="color:#000;font-size:20px;width:20px;height:20px"></i> Kotak Masuk</a></h4></li>
+    </ul>
+
+    <div class="border-box group">
+    <div id="tab1" class="panel group">
+    <h2>{% trans "Kotak Masuk" %}</h2>
+    {% if message_list %}
+        <table class="messages" width="100%" border="1">
+
+            <tr><td><h3>{% trans "Pengirim" %}</h3></td><td><h3>{% trans "Judul" %}</h3></td><td><h3>{% trans "Terkirim" %}</h3></td><td><h3>{% trans "Action" %}</h3></td></tr>
+
+            <tbody>
+            {% for message in message_list %}
+                <tr>
+                    <td>{{ message.sender }}</td>
+                    <td>
+                        {% if message.new %}<strong>{% endif %}
+                        {% if message.replied %}<em>{% endif %}
+                        <a href="{{message.get_absolute_url }}">{{ message.subject }}</a>
+                        {% if message.replied %}</em>{% endif %}
+                        {% if message.new %}</strong>{% endif %}</td>
+                    <td>{{ message.sent_at|date:_("DATETIME_FORMAT") }}</td>
+                    <td><a href="{% url 'messages_delete' message.id %}">{% trans "delete" %}</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>{% trans "Tidak ada pesan" %}</p>
+    {% endif %}<br><br></div></div></div></div>
+{% endblock %}
+{% block sidebar %}
+    {% include "includes/sidebaraccounts.html" %}
+{% endblock %}

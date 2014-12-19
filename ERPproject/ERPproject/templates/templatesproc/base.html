@@ -1,0 +1,27 @@
+	<!DOCTYPE html>
+    <html>
+	<link rel="stylesheet" type="text/css" href="/media/static/staticproc/style.css">
+        <head>
+            {%block meta%}{%endblock%}
+            <title>
+                {% block title %}{% endblock %}
+            </title>
+            </head>
+        <body>
+				<div class="header">
+					<div class="menu">{% block menu %}{% endblock %}
+					</div>
+					<div class="txt-head">
+						<font size="4px" color="white">e-Procurement PT. IGLAS</font>
+					</div>
+					<div class="icon">
+						<img src="/media/static/staticproc/images/iglas2.png" width="50px" height="50px">
+					</div>
+				</div>
+				<div class="content">
+					{% block content %}
+					{% endblock %}
+				</div>
+			{% include 'templatesproc/internal/footer.html' %}
+        </body>
+    </html>

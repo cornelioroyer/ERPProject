@@ -1,0 +1,284 @@
+[
+    {
+        "model": "customer.UserCompany",
+        "pk": 2,
+        "fields": {
+            "username": "andikacipta",
+            "password": "pbkdf2_sha256$12000$i1y4LSEfozlJ$uUsQ23uBW6UcwOFkG4/NY3O77HeVvq4EdOmCQB7RvaI=",
+            "email": "andika.cipta@gmail.com",
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "customer.Company",
+        "pk": 1,
+        "fields": {
+            "user": 2,
+            "name": "Andika Cipta Utama",
+            "email": "andika.cipta@gmail.com",
+            "corporate": "Microsoft Jaya" ,
+            "position": "General Manager",
+            "type": 1,
+            "business": 1,
+            "industry": 1,
+            "country": "ID",
+            "zip_code": "12345",
+            "currency": 1,
+            "address": "Jalan Lembayung Senja 32 Surabaya",
+            "phone":"081935139690"
+        }
+    },
+    {
+        "model": "customer.UserCompany",
+        "pk": 3,
+        "fields": {
+            "username": "sabri",
+            "password": "pbkdf2_sha256$12000$i1y4LSEfozlJ$uUsQ23uBW6UcwOFkG4/NY3O77HeVvq4EdOmCQB7RvaI=",
+            "email": "achmad.sabri@gmail.com",
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "customer.Company",
+        "pk": 2,
+        "fields": {
+            "user": 3,
+            "name": "Achmad Sabri Affandi",
+            "email": "achmad.sabri@gmail.com",
+            "corporate": "Indofood Tbk" ,
+            "position": "Sales Manager",
+            "type": 1,
+            "business": 1,
+            "industry": 3,
+            "country": "ID",
+            "zip_code": "34512",
+            "currency": 1,
+            "address": "Jalan Soekarno Hatta 32 Jakarta",
+            "phone":"087853447694"
+        }
+    },{
+        "model": "customer.UserCompany",
+        "pk": 4,
+        "fields": {
+            "username": "rizal",
+            "password": "pbkdf2_sha256$12000$i1y4LSEfozlJ$uUsQ23uBW6UcwOFkG4/NY3O77HeVvq4EdOmCQB7RvaI=",
+            "email": "ichal.noer@gmail.com",
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "customer.Company",
+        "pk": 3,
+        "fields": {
+            "user": 4,
+            "name": "Rizal Noer Pradana",
+            "email": "ichal.noer@gmail.com",
+            "corporate": "Orang Tua Tbk" ,
+            "position": "Accounting Manager",
+            "type": 1,
+            "business": 1,
+            "industry": 4,
+            "country": "ID",
+            "zip_code": "34512",
+            "currency": 1,
+            "address": "Jalan Kapten Pattimura 21 Depok",
+            "phone":"087750699771"
+        }
+    },{
+        "model": "customer.UserCompany",
+        "pk": 5,
+        "fields": {
+            "username": "syaifur",
+            "password": "pbkdf2_sha256$12000$i1y4LSEfozlJ$uUsQ23uBW6UcwOFkG4/NY3O77HeVvq4EdOmCQB7RvaI=",
+            "email": "asep.rahman@gmail.com",
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "customer.Company",
+        "pk": 4,
+        "fields": {
+            "user": 5,
+            "name": "Syaifurrahman",
+            "email": "asep.rahman@gmail.com",
+            "corporate": "Manunggal alam Tbk" ,
+            "position": "Direktur Utama",
+            "type": 1,
+            "business": 2,
+            "industry": 1,
+            "country": "ID",
+            "zip_code": "34212",
+            "currency": 1,
+            "address": "Jalan Pangeran Diponegoro 32 Jakarta",
+            "phone":"087850222231"
+        }
+    },{
+        "model": "customer.UserCompany",
+        "pk": 6,
+        "fields": {
+            "username": "dafir",
+            "password": "pbkdf2_sha256$12000$i1y4LSEfozlJ$uUsQ23uBW6UcwOFkG4/NY3O77HeVvq4EdOmCQB7RvaI=",
+            "email": "dafir.falah@gmail.com",
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "customer.Company",
+        "pk": 5,
+        "fields": {
+            "user": 6,
+            "name": "Dafir Falah",
+            "email": "dafir.falah@gmail.com",
+            "corporate": "Magenta Buana Tbk" ,
+            "position": "HR Manager",
+            "type": 1,
+            "business": 3,
+            "industry": 2,
+            "country": "ID",
+            "zip_code": "24512",
+            "currency": 1,
+            "address": "Jalan Pejuang Pena 27 Surabaya",
+            "phone":"081935178130"
+        }
+    },{
+        "model": "customer.UserCompany",
+        "pk": 7,
+        "fields": {
+            "username": "fitrah",
+            "password": "pbkdf2_sha256$12000$i1y4LSEfozlJ$uUsQ23uBW6UcwOFkG4/NY3O77HeVvq4EdOmCQB7RvaI=",
+            "email": "vtrah@gmail.com",
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "customer.Company",
+        "pk": 6,
+        "fields": {
+            "user": 7,
+            "name": "Fithroh Romadhon",
+            "email": "vtrah@gmail.com",
+            "corporate": "Wahana Agung" ,
+            "position": "Sales Manager",
+            "type": 1,
+            "business": 1,
+            "industry": 4,
+            "country": "ID",
+            "zip_code": "31212",
+            "currency": 1,
+            "address": "Jalan Achmad Yani 20 Jakarta",
+            "phone":"087866230843"
+        }
+    },{
+        "model": "customer.UserCompany",
+        "pk": 8,
+        "fields": {
+            "username": "eenk",
+            "password": "pbkdf2_sha256$12000$i1y4LSEfozlJ$uUsQ23uBW6UcwOFkG4/NY3O77HeVvq4EdOmCQB7RvaI=",
+            "email": "eenk@gmail.com",
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "customer.Company",
+        "pk": 7,
+        "fields": {
+            "user": 8,
+            "name": "Abdur Rahem",
+            "email": "eenk@gmail.com",
+            "corporate": "Karya Utama" ,
+            "position": "General Manager",
+            "type": 1,
+            "business": 2,
+            "industry": 4,
+            "country": "ID",
+            "zip_code": "14356",
+            "currency": 1,
+            "address": "Jalan panglima soedirman 12 Surabaya",
+            "phone":"085230071492"
+        }
+    },{
+        "model": "customer.UserCompany",
+        "pk": 9,
+        "fields": {
+            "username": "rahman",
+            "password": "pbkdf2_sha256$12000$i1y4LSEfozlJ$uUsQ23uBW6UcwOFkG4/NY3O77HeVvq4EdOmCQB7RvaI=",
+            "email": "rahmanda@gmail.com",
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "customer.Company",
+        "pk": 8,
+        "fields": {
+            "user": 9,
+            "name": "Rahmanda Putra",
+            "email": "rahmanda@gmail.com",
+            "corporate": "Sciencetod" ,
+            "position": "Technical Manager",
+            "type": 1,
+            "business": 2,
+            "industry": 5,
+            "country": "ID",
+            "zip_code": "33342",
+            "currency": 1,
+            "address": "Jalan Panglima Polim Rungkut",
+            "phone":"087766130223"
+        }
+    },{
+        "model": "customer.UserCompany",
+        "pk": 10,
+        "fields": {
+            "username": "taufiq",
+            "password": "pbkdf2_sha256$12000$i1y4LSEfozlJ$uUsQ23uBW6UcwOFkG4/NY3O77HeVvq4EdOmCQB7RvaI=",
+            "email": "ismail.taufiq@gmail.com",
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "customer.Company",
+        "pk": 9,
+        "fields": {
+            "user": 10,
+            "name": "Taufiq Ismail",
+            "email": "ismail.taufiq@gmail.com",
+            "corporate": "Putra Sampoerna" ,
+            "position": "General Manager",
+            "type": 1,
+            "business": 1,
+            "industry": 4,
+            "country": "ID",
+            "zip_code": "36512",
+            "currency": 1,
+            "address": "Jalan Kencono Arum Kediri",
+            "phone":"08180123551"
+        }
+    },{
+        "model": "customer.UserCompany",
+        "pk": 11,
+        "fields": {
+            "username": "danusyah",
+            "password": "pbkdf2_sha256$12000$i1y4LSEfozlJ$uUsQ23uBW6UcwOFkG4/NY3O77HeVvq4EdOmCQB7RvaI=",
+            "email": "danusyah@gmail.com",
+            "is_active": "True"
+        }
+    },
+    {
+        "model": "customer.Company",
+        "pk": 10,
+        "fields": {
+            "user": 11,
+            "name": "Ibarsyah Danu",
+            "email": "danusyah@gmail.com",
+            "corporate": "Wingsfood Tbk" ,
+            "position": "Manager Pengadaan",
+            "type": 1,
+            "business": 1,
+            "industry": 3,
+            "country": "ID",
+            "zip_code": "26232",
+            "currency": 1,
+            "address": "Jalan Trunojoyo Putra 20 Solo",
+            "phone":"03122357143"
+        }
+    }
+]

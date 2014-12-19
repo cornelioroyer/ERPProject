@@ -1,0 +1,32 @@
+__author__ = 'FARID ILHAM Al-Q'
+
+from django.conf.urls import patterns, url
+
+urlpatterns = patterns('',
+                       url(r'profile/$', 'apps.distribution.customer.views.profile'),
+                       url(r'update/$', 'apps.distribution.customer.views.update_profile'),
+                       url(r'register/$', 'apps.distribution.customer.views.registration'),
+                       url(r'success/$', 'apps.distribution.customer.views.registration_success'),
+                       url(r'login/$', 'apps.distribution.customer.views.login_request'),
+                       url(r'logout/$', 'apps.distribution.customer.views.logout_request'),
+                       url(r'logged_out/$', 'apps.distribution.customer.views.logout_success'),
+                       url(r'username_change/$', 'apps.distribution.customer.views.username_change'),
+                       url(r'^password_change/$', 'apps.distribution.customer.views.password_change', name='password_change'),
+                       url(r'^password_change/done/$', 'apps.distribution.customer.views.password_change_done',
+                           name='password_change_done'),
+                       url(r'^password_reset/$', 'apps.distribution.customer.views.password_reset', name='password_reset'),
+                       url(r'^password_reset/done/$', 'apps.distribution.customer.views.password_reset_done',
+                           name='password_reset_done'),
+                       url(r'^reset/(?P<uidb36>[0-9A-Za-z]{1,13})-(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+                           'apps.distribution.customer.views.p'
+                           'assword_reset_confirm',
+                           name='password_reset_confirm'),
+                       url(r'^reset/done/$', 'apps.distribution.customer.views.password_reset_complete',
+                           name='password_reset_complete'),
+                       url(r'^reset_password/password_sent/$','django.contrib.auth.views.password_reset_done'),
+                       url(r'^reset_password/$','django.contrib.auth.views.password_reset'),
+                       url(r'^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',
+                           'django.contrib.auth.views.password_reset_confirm'),
+                       url(r'^reset/done/$','django.contrib.auth.views.password_reset_complete'),
+
+)

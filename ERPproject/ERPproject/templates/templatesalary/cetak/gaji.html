@@ -1,0 +1,93 @@
+﻿{% extends "admin/base_site.html" %}
+{% load i18n admin_static admin_list %}
+{% load url from future %}
+{% load admin_urls %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}" />
+  {{ media.css }}
+{% endblock %}
+
+{% block extrahead %}
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/dist/jspdf.debug.js"></script>
+	<script type="text/javascript" src="/media/static/jsPDF/examples/js/basic.js"></script>
+{{ block.super }}
+{{ media.js }}
+{% if action_form %}{% if actions_on_top or actions_on_bottom %}
+<script type="text/javascript">
+(function($) {
+    $(document).ready(function($) {
+        $("tr input.action-select").actions();
+    });
+})(django.jQuery);
+</script>
+{% endif %}{% endif %}
+{% endblock %}
+{% block content %}
+	<div class="to_pdf">
+		<div style="border-width: 2px; width:80%;border-style: dotted; padding: 1em; font-size:120%;line-height: 1.5em;" id="printdiv">
+			<img src="/media/static/staticproc/images/header_pdf.png" width="90%">
+			<h2 align="center"><u>SLIP GAJI</u></h2>
+			
+
+			<span style="font-size:90%">
+				<div>Nama: {{data.employee}}</div>
+				<div>Golongan: {{data.get_group_display}}</div>
+				<div>Seksi: {{data.section}}</div>
+				<div>Periode: {{data.period}}</div>
+			
+			<h2 align="left"><u>Detail Gaji</u></h2>
+
+				<table cellspacing="0" width="100%">
+					<tr>
+						<td width="10%">Gaji Pokok</td>
+						<td width="10%">Tunj. Operasional</td>
+						<td width="10%">Tunj. Transportasi</td>
+						<td width="10%">Tunj. Operasional Sift</td>
+						<td width="10%">Tunj. Penj Operasional Sift</td>
+						<td width="10%">Tunj. Jabatan</td>
+						<td width="10%">Tunj. Biaya Hidup</td>
+					</tr>
+					<tr>
+						<td>{{gaji.basic_salary}}</td>
+						<td>{{gaji.operasional_support}}</td>
+						<td>{{gaji.transport_Support}}</td>
+						<td>{{gaji.shift_operational_support}}</td>
+						<td>{{gaji.shift_operational_supporting}}</td>
+						<td>{{gaji.position_support}}</td>
+						<td>{{gaji.life_cost_support}}</td>
+					</tr>
+
+				</table>
+				
+				<h2 align="left"><u>Rincian Potongan</u></h2>
+
+				<table cellspacing="0" width="100%">
+					<tr>
+						<td width="10%">KPR</td>
+						<td width="10%">THT</td>
+						<td width="10%">BPJS</td>
+						<td width="10%">Iuran Koperasi</td>
+						<td width="10%">Iuran SP</td>
+						<td width="10%">Potongan Koperai</td>
+						<td width="10%">YKKPI</td>	
+					</tr>
+					<tr>
+						<td>{{cut.kpr}}</td>
+						<td>{{cut.tht}}</td>
+						<td>{{cut.bpjs}}</td>
+						<td>{{cut.coorperation_contribution}}</td>
+						<td>{{cut.sp_contribution}}</td>
+						<td>{{cut.coorperation_discount}}</td>
+						<td>{{cut.ykkpi}}</td>
+					</tr>
+				</table>
+                <p><strong>Total Gaji Yang dibayarkan ({{ data.currency.code|upper }}): </strong>{{ tot.total }}</p>
+			</span>
+		</div>
+	</div>
+	<button onclick="javascript:report_lan()" class="button"><img src="/media/static/staticproc/images/doc.png" width="15%"> Download</button>
+{% endblock %}

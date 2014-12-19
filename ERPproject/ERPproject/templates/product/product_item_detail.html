@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block sidebar %}
+{% include "includes/sidebar.html" %}
+{% endblock %}
+{% block primary %}
+
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Produk</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">Item</a>
+                <a class="no-link current" href="#">Produk</a>
+            </p><hr>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block content %}
+    <div class="page type-page status-publish hentry group">
+
+    <div class="tabs-container">
+
+        <ul class="tabs">
+            <li><h4><a href="#tab1" title="Welcome"><i class="icon-home" style="color:#000;font-size:20px;width:20px;height:20px"></i> Produk</a></h4></li>
+        </ul>
+
+        <div class="border-box group">
+            <div id="tab1" class="panel group">
+                <table width="100%" border="1">
+                    <tr>
+                        <td rowspan="7" width="5%"><img  width="100px" height="100px" src="{{ MEDIA_URL }}{{ detail.image }}"><br>&nbsp;</td>
+                        <td width="3%">Nama</td>
+                        <td width="1%">:</td>
+                        <td width="10%">{{ detail.name }}</td>
+                    </tr>
+                    <tr>
+                        <td width="3%">Kapasitas</td>
+                        <td width="1%">:</td>
+                        <td width="10%">{{ detail.capacity }} ml</td>
+                    </tr>
+                    <tr>
+                        <td width="3%">Tinggi</td>
+                        <td width="1%">:</td>
+                        <td width="10%">{{ detail.height }} mm</td>
+                    </tr>
+                    <tr>
+                        <td width="3%">Berat</td>
+                        <td width="1%">:</td>
+                        <td width="10%">{{ detail.weight }} gr</td>
+                    </tr>
+                    <tr>
+                        <td width="3%">Diameter</td>
+                        <td width="1%">:</td>
+                        <td width="10%">{{ detail.diameter }} mm</td>
+                    </tr>
+                    <tr>
+                        <td width="3%">Deskripsi</td>
+                        <td width="1%">:</td>
+                        <td width="10%"><br>{{ detail.description }}</td>
+                    </tr>
+                    <tr>
+                        <td width="3%"><input type="submit" value="Add Order" formaction=""></td>
+                        <td width="1%">&nbsp;</td>
+                        <td width="10%">&nbsp;</td>
+                    </tr>
+                </table><br><br>
+            </div></div></div></div>
+{% endblock %}

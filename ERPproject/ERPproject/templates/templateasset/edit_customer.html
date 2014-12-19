@@ -1,0 +1,15 @@
+{% extends 'templateasset/base.html'%}
+{%block title%}Edit Informasi | PT.IGLAS(Persero) {%endblock%}
+{%block content%}
+<form method="post" action="edit_customer"> 
+			{% csrf_token %}
+	<table>
+		<tr><td><h2> UPDATE PROFIL PELANGAAN</h2></td><td></td></tr>
+		<tr><td>{{form}}</td></tr>
+		<tr><td></td><td></td></tr>
+		<tr><td></td><td></td></tr>
+		<tr><td><input type="submit" value="Submit"/></td><td></td></tr>
+	</table>
+		
+</form>
+{%endblock%}

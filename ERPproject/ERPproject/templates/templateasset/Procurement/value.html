@@ -1,0 +1,42 @@
+{% extends 'templateasset/base.html' %}
+{% block title %} PT.IGLAS(Persero){% endblock %}
+{%block uname%}<p>Welcome, <strong>{{c.username}}</strong></p>{%endblock%}
+
+{% block content %}
+	<br></br>
+	<h3><div align="left"><font color="black">Anda Telah Mengikuti Pelelangan ini. Silahkan tunggu waktu penawaran.</font></div></br></h3>
+	<table>
+		<tr><td><b>Keterangan </b></td><td></td><td></td></tr>
+		<tr><td><h4><font color="blue">Tgl Penutupan Pendaftaran </td><td>:</td><td> {{p.end_enlisting}} </font></br></h4></td></tr>
+		<tr><td><h4><font color="blue">Tgl Batas Penawaran </td><td>:</td><td> {{p.end_bid}} </font></h4></td></tr>
+	</table>
+	{%if p.status == 'Penawaran Dibuka' %}
+		<form action="/value/{{slug}}/" method="POST">{% csrf_token %}
+			{{form}}
+			<button type="submit" class="ok">Submit</button>
+		</form>	
+	{%endif%}	
+	<table border=2>
+		<b><tr><td><b>No. Pelelangan</b></td><td><b>Nama</b></td><td><b>Tgl Pendaftaran</b></td><td><b>Penawaran Awal</b></td></tr>
+		<tr><td>{{m.procurement}}</td><td>{{m.customer}}</td><td>{{m.add_date}}</td><td>{{m.bid_value}}</td></tr>
+		<tr></tr><td></td><td></td><td></td><td></td>
+		<tr></tr><td></td><td></td><td></td><td></td>
+		<tr><td><a href="/allproc/"><b><< Back</b></a></td><td></td><td></td><td></td></tr>
+	</table>
+	
+	{%if p.status == 'Penawaran Dibuka' %}
+				
+		<form action="/post_message/{{m.id}}/" method="POST">{% csrf_token %}
+			<input type="text" name="msg" value="Pesan..."/>
+			<input type="submit" value="Send"/>
+		</form>
+				
+		
+		<table border=3>
+			<tr><td><b>Pesan</b></td><td><b>Pengirim</b></td><td><b>Tgl Kirim</b></td></tr>
+			{% for bs in b %}<tr><td>{{bs.msg}}</td><td>{{bs.uname}}</td><td>{{bs.msg_add_date}}</td></tr>{%endfor%}
+		</table>	
+		
+	{%endif%}
+	
+{% endblock %}

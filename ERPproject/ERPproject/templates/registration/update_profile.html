@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% block primary %}
+
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Profil</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">Update Profil</a>
+            </p>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block sidebar %}
+        {% include "includes/sidebaraccounts.html" %}
+{% endblock %}
+{% block extrastyle %}
+     <script language="javascript" type="text/javascript">
+    function clear(){
+        $("#id_name").val("");
+        $("#id_email").val("");
+        $("#id_rek").val("");
+        $("#id_bank_name").val("");
+        $("#id_bank_branch").val("");
+        $("#id_bank_account_name").val("");
+        $("#id_country").val("");
+        $("#id_type").val("");
+        $("#id_address").val("");
+        $("#id_business").val("");
+        $("#id_industry").val("");
+        $("#id_currency").val("");
+        $("#id_zip_code").val("");
+        $("#id_province").val("");
+        $("#id_city").val("");
+        $("#id_phone").val("");
+        $("#id_fax").val("");
+        $("#id_website").val("");
+        $("#id_corporate").val("");
+        $("#id_position").val("");
+        $("#id_npwp").val("");
+    }
+     </script>
+
+{% endblock %}
+{% block content %}
+    <div class="page type-page status-publish hentry group">
+        <div class="tabs-container">
+            <ul class="tabs">
+                <li><h4><a href="#tab1" title="Update"><i class="icon-group" style="color:#000;font-size:20px;width:20px;height:20px"></i> Update Profil</a></h4></li>
+            </ul>
+            <div class="border-box group">
+                <div id="tab1" class="panel group">
+                    <div align="center"><h3>UPDATE PROFIL PERUSAHAAN</h3></div>
+                    {% if form.errors %}
+                    <p>&nbsp;</p>
+                    <p align="center"><font color="red">
+
+                        Please correct the errors below {{ form.non_field_errors }}
+
+                    {% endif %}</font></p><br>
+
+                    <form enctype="multipart/form-data" method="post" action="">
+                        {% csrf_token %}
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td width="10" rowspan="5">
+                                    &nbsp;
+                                </td>
+                                <td width="21%">{% if form.name.errors %}<font color="red">Nama Pegawai *</font>
+                                {% else %}Nama Pegawai{% endif %}
+                                </td>
+                                <td width="3%">:</td>
+                                <td width="76%">{{ form.name }} {{ form.name.help_text }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>{% if form.position.errors %}<font color="red">Jabatan *</font>
+                                {% else %}Jabatan{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.position }} {{ form.position.help_text }}</td>
+                            </tr>
+                            <tr>
+                                <td>{% if form.type.errors %}<font color="red">Bentuk Badan Usaha *</font>
+                                {% else %}Bentuk Badan Usaha{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.type }} {{ form.type.help_text }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>{% if form.corporate.errors %}<font color="red">Nama Perusahaan *</font>
+                                {% else %}Nama Perusahaan{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.corporate }} {{ form.corporate.help_text }}</td>
+                            </tr>
+                            <tr>
+
+                                <td>{% if form.business.errors %}<font color="red">Kegiatan Bisnis *</font>
+                                {% else %}Kegiatan Bisnis{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.business }} </td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.industry.errors %}<font color="red">Bidang Industri *</font>
+                                {% else %}Bidang Industri{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.industry }}</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.currency.errors %}<font color="red">Mata Uang (default) *</font>
+                                {% else %}Mata Uang (default){% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.currency }} {{ form.currency.help_text }}</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>{% if form.npwp.errors %}<font color="red">N.P.W.P Perusahaan *</font>
+                                {% else %}N.P.W.P Perusahaan{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.npwp }} {{ form.npwp.help_text }}</td>
+
+                            </tr>
+
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.phone.errors %}<font color="red">Telepon *</font>
+                                {% else %}Telepon{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.phone }} {{ form.phone.help_text }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.email.errors %}<font color="red">Email *</font>
+                                {% else %}Email{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.email }} {{ form.email.help_text }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.website.errors %}<font color="red">Website *</font>
+                                {% else %}Website{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.website }}
+                                    {{ form.website.help_text }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.fax.errors %}<font color="red">Fax *</font>
+                                {% else %}Fax{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.fax }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.address.errors %}<font color="red">Alamat *</font>
+                                {% else %}Alamat{% endif %}</td>
+                                <td>:</td>
+                                <td height="30">{{ form.address }}{{ form.address.help_text }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.city.errors %}<font color="red">Kota/Kabupaten *</font>
+                                {% else %}Kota/Kabupaten{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.city }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.province.errors %}<font color="red">Provinsi *</font>
+                                {% else %}Provinsi{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.province }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.zip_code.errors %}<font color="red">Kode Pos *</font>
+                                {% else %}Kode Pos{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.zip_code }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.country.errors %}<font color="red">Negara *</font>
+                                {% else %}Negara{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.country }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.logo.errors %}<font color="red">Logo Perusahaan *</font>
+                                {% else %}Logo Perusahaan{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.logo }}</td>
+
+                            </tr>
+
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.bank_name.errors %}<font color="red">Nama Bank *</font>
+                                {% else %}Nama Bank{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.bank_name }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.bank_branch.errors %}<font color="red">Cabang *</font>
+                                {% else %}Cabang{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.bank_branch }}{{ form.bank_branch.help_text }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.bank_account_name.errors %}<font color="red">Atas Nama *</font>
+                                {% else %}Atas Nama{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.bank_account_name }}{{ form.bank_account_name.help_text }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>{% if form.rek.errors %}<font color="red">No. Rekening *</font>
+                                {% else %}No. Rekening{% endif %}</td>
+                                <td>:</td>
+                                <td>{{ form.rek }}{{ form.rek.help_text }}</td>
+
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="submit" value="Save Changes"></td>
+
+                            </tr>
+                        </table>
+                    </form>
+                </div></div></div></div><br><br>
+{% endblock %}

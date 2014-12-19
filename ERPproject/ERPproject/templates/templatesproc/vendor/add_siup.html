@@ -1,0 +1,31 @@
+{% extends 'templatesproc/base_vendor.html' %}
+{%block extrahead%}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}admin/css/forms.css"/>
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}admin/css/widgets.css"/>
+
+<script type="text/javascript" src="/admin/jsi18n/"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/core.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/jquery.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/actions.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/calendar.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/admin/DateTimeShortcuts.js"></script>
+{%endblock%}
+{%block title%}Masukkan data | Profile Vendor{%endblock%}
+{%block extra_navigation%}
+	<div class="breadcrumb_divider"></div> <a class="current">Masukkan Data</a>
+{%endblock%}
+{%block uname%}{{uname}}{%endblock%}
+	{%block content%}
+		<article class="module width_3_quarter">
+		<header><h3 class="tabs_involved">Masukkan Data {{data}}</h3></header>
+        <form action={{action}} method="POST">{% csrf_token %}
+			<table width="100%">
+				<tr><td></td><td>{{ form }}</td><td></td></tr>
+				<tr><td></td><td align="right"><input type="submit" value="Submit" class="alt_btn"/></td><td width="25%"></td></tr>
+			</table>
+		</form>
+		<br>
+		</article>
+	{%endblock%}

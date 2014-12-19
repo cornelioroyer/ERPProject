@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block primary %}
+
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Login</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">Login</a>
+            </p>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block sidebar %}
+    {% include "includes/sidebaraccounts.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="page type-page status-publish hentry group">
+        <div class="tabs-container">
+            <ul class="tabs">
+                <li><h4><a href="#tab1" title="Change_Username"><i class="icon-group" style="color:#000;font-size:20px;width:20px;height:20px"></i> Ganti Username</a></h4></li>
+            </ul>
+
+            <div class="border-box group">
+                <div id="tab1" class="panel group">
+                    <div align="center"><h2>Ganti Username</h2>
+                    <h5>Mohon maaf kami tidak bisa memberikan anda akses untuk mengganti username.</h5>
+                    <p>Silahkan Kontak administrator untuk mengganti username anda, gunakan fasilitas pesan dan kirimkan ke <strong>admin</strong></p></div>
+                <br><br><br><br><br>
+    </div></div></div></div>
+{% endblock %}

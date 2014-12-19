@@ -6,4 +6,4 @@ ERPProject is an Enterprise Resource Planning Project has 7 businnes module and 
 * Manufacturing Module by Ja'far Assodiq
 * Asset Management Module by Zaenal Arifin
 * Human Resource Module by Fery Febriansyah
-* Warehousing Module by Rhiyananta Catur
+* Inventory Module by Rhiyananta Catur

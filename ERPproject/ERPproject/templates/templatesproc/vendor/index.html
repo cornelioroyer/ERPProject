@@ -1,0 +1,32 @@
+	{% extends 'templatesproc/base.html' %}
+    {% block title %} IGLAS Procurement {% endblock %}
+    {% block menu %}
+	{% include 'templatesproc/vendor/menu.html' %}
+	{% endblock%}
+    {% block content %}
+		
+        <h3 align="center">Pengumuman Pelelangan</h3>
+        {% for post in postx %}
+        <div class="post">
+            <h3>
+				<a href="/lelang/{{post.slug}}/">{{post.title}}</a>
+            </h3>
+            <p>Pendaftaran sampai: {{post.end_enlisting|date}}</p>
+            <p>
+                Posted on
+                <time datetime="{{post.proc_add_date|date:"c"}}">
+                {{post.proc_add_date|date}}
+                </time>
+            </p>
+        </div>
+		<img src="/media/static/staticproc/images/line.png" width="100%">
+        {% endfor %}
+		Pages: 
+		{% for num in postx.paginator.page_range %}
+		  {% ifequal num postx.number %}
+			<span class="current"><font color="red"><b>{{ num }}</b></font></span>
+		  {% else %}
+			<a href="?page={{ num }}"> {{ num }}</a>
+		  {% endifequal %} 
+		{% endfor %}
+    {% endblock %}

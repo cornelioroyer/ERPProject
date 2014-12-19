@@ -1,0 +1,8 @@
+{% extends "admin/base_site.html" %}
+<div id="content" class="{% block coltype %}colM{% endblock %}">
+    {% block content %}
+        <h1>Selamat Datang di Aplikasi Terintegrasi ERP PT IGLAS Persero</h1>
+    {% endblock %}
+    <br class="clear" />
+</div>
+

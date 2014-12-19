@@ -1,0 +1,25 @@
+[
+    {
+        "model": "flatpages.FlatPage",
+        "pk": 1,
+        "fields": {
+            "url": "/",
+            "title": "PT. IGLAS Persero",
+            "template_name": "index.html",
+            "sites": "1",
+            "content":"<b>oke dicoba content</b>"
+        }
+    },
+    {
+        "model": "flatpages.FlatPage",
+        "pk": 2,
+        "fields": {
+            "url": "/about/pabrik/",
+            "title": "ALUR PROSES PEMBUATAN BOTOL",
+            "template_name": "pages/pabrik.html",
+            "sites": "1",
+            "content":"<b>oke dicoba content</b>"
+        }
+    }
+
+]

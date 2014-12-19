@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block primary %}
+    <!-- START MAP -->
+    <div id="page-meta" class="container">
+
+        <!-- TITLE -->
+        <div class="title">
+            <h1>Komplain</h1>
+        </div>
+
+        <!-- BREDCRUMB -->
+        <div class="breadcrumbs">
+            <p id="yit-breadcrumb" itemprop="breadcrumb">
+                <a class="home" href="/">Home</a> &gt;
+                <a class="no-link current" href="#">About</a> &gt;
+                <a class="no-link current" href="#">Komplain</a>
+            </p><hr>
+        </div>
+    </div>
+    <!-- END PAGE META -->
+{% endblock %}
+{% block sidebar %}
+    {% include "includes/sidebar.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="page type-page status-publish hentry group">
+        <div class="tabs-container">
+            <ul class="tabs">
+                <li><h4><a href="#tab1" title="Komplain"><i class="icon-group" style="color:#000;font-size:20px;width:20px;height:20px"></i> Komplain</a></h4></li>
+            </ul>
+            <div class="border-box group">
+                <div id="tab1" class="panel group">
+                    {% if form.errors %}
+                        <p class="errors">
+                            Please correct the errors below: {{ form.non_field_errors }}
+                        </p>
+                    {% endif %}
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="Kirim">
+                    </form>
+                </div></div></div></div>
+{% endblock %}
+{% block extrastyle %}
+{% endblock %}

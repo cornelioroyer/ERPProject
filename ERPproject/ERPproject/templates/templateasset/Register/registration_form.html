@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="author" content="zainal_arifin" />
+<title>Registration</title>
+<link rel="stylesheet" type="text/css" href="/media/static/staticasset/css/css/login.css" media="screen" />
+</head>
+<body>
+
+<div class="wrap">
+	<div id="content">
+		<div id="main">
+			<div class="full_w">
+				<br></br>
+				<div><h2 align="center">Register Customer</h2></div>
+				<form action="/register/" method="POST">{% csrf_token %}
+            <table align="center" border=0>
+            {{form}}
+            </table>
+        <p>
+            <table><tr><td></td><td>====</td> <td><input type="button" value="Back" onclick="window.location.href='/lelang/'"> </td><td>|</td><td> <input style="margin-center: 320px;" type="submit" value="Submit" /></td><td>====</td></tr></table>
+        </p>
+        </form>
+			</div>
+			<div class="footer">&raquo; PT. IGLAS (Persero) | Customer </div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
