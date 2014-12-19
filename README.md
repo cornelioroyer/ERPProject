@@ -1,5 +1,4 @@
-# ERPProject
-## About
+# About
 ERPProject is an Enterprise Resource Planning Project has 7 businnes module and developed by 7 student from SOLATE group, and now them a bachelor degreeof Universitas Trunojoyo Madura. modules that have been developed are:
 * Procurement Module by Reiza Judiz Pradana
 * Financial Accounting by Achmad Afiffudin Nurzein (afifnz@gmail.com)
