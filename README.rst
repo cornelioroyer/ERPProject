@@ -18,6 +18,7 @@ modules that have been developed is:
 The Application is the result of the research, after doing research in PT. IGLAS (Persero), that the company is Indonesian Glass packaging industri. so the business process of the application is following business process in the company.
 
 Thank a lot:
+============
 * Mr. Hermawan (hermawan.unijoyo@gmail.com)
 * Miss Rika Yunitarini (rika-yunitarini@yahoo.com)
 
