@@ -5,6 +5,8 @@ ERP Poject
 ERPProject is an Enterprise Resource Planning Project has 7 businnes module and developed by 7 student group named SOLATE, and now them a bachelor degree of Universitas Trunojoyo Madura.
 
 modules that have been developed is:
+====================================
+
 * Procurement Module by Reiza Judiz Pradana (judiz_7777@live.com)
 * Financial Accounting by Achmad Afiffudin Nurzein (afifnz@gmail.com)
 * CRM and Distribution Module by Farid Ilham Al-qorni (djokers10@gmail.com)
@@ -21,7 +23,7 @@ Thank a lot:
 
 Install
 =======
-First of all you obviously need to clone this project locally, so you must install git application on your machine =)
+First of all you obviously need to clone this project locally, so you must install git application on your machine. 
 `git clone https://github.com/darklow/django-suit.git`
 
 Python
