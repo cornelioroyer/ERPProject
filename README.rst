@@ -25,12 +25,12 @@ Thank a lot:
 Install
 =======
 First of all you obviously need to clone this project locally, so you must install git application on your machine. 
-`git clone https://github.com/darklow/django-suit.git`
+`git clone https://github.com/darklow/django-suit.git`_.
 
 Python
 ======
 You must install python on your machine, because the base of programming in this application using python.
-`sudo apt-get install python`
+`sudo apt-get install python`_.
 automatically your machine will installed 2.7 python version
 
 Virtual Enveronment
@@ -42,19 +42,19 @@ Django & Python modules
 ======================
 
 * Setup a new virtual env and activate it.
-* `pip install -r requirement.txt` to install the correct version of Django
+* `pip install -r requirement.txt`_ to install the correct version of Django
 
 Database
 ========
 
 Default, the database of application using SQLite Database. but you can changing the database with PostgreSQL if you want, with little configuring in setting.py file.
 
-`./manage.py syncdb` to make a database automatically, without write line by line Database Code. It's Simple =)
+`./manage.py syncdb`_ to make a database automatically, without write line by line Database Code. It's Simple =)
 
 Running the project
 ===================
 
 To run this project you will have to run:
-* `./manage.py runserver` to running the server.
-* than open your browser and insert url `127.0.0.1:8000`.
+* `./manage.py runserver`_ to running the server.
+* than open your browser and insert url `127.0.0.1:8000`_.
 * installation  done and the application already running. =)
