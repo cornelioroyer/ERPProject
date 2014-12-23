@@ -49,12 +49,10 @@ Database
 
 Default, the database of application using SQLite Database. but you can changing the database with PostgreSQL if you want, with little configuring in setting.py file.
 
-``./manage.py syncdb`` to make a database automatically, without write line by line Database Code. It's Simple =)
+``./manage.py syncdb`` to make a database automatically, without write line by line Database Code. It's Simple..
 
 Running the project
 ===================
-
-To run this project you will have to run:
 * ``./manage.py runserver`` to running the server.
 * than open your browser and insert url ``127.0.0.1:8000``.
-* installation  done and the application already running. =)
+* installation  done and the application already running.
