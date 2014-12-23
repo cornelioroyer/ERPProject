@@ -25,7 +25,7 @@ Thank a lot:
 Install
 =======
 First of all you obviously need to clone this project locally, so you must install git application on your machine. 
-`git clone https://github.com/darklow/django-suit.git`_.
+`git clone https://github.com/darklow/django-suit.git` .
 
 Python
 ======
